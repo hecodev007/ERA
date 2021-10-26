@@ -313,6 +313,9 @@ export default {
 
 <style >
 @import "./assets/font/font.css";
+body{
+  margin: 0;
+}
 #app {
   color: #fff;
   font-family: "Futura-Book-2";

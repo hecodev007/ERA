@@ -119,7 +119,7 @@
       <div class="main600" v-if="this.screenWidth < 600">
         <el-row>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <div class="item">
+            <div class="item" @click="clkItem">
               <div class="imgItem">
                 <div>100倍</div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
@@ -141,7 +141,7 @@
             </div>
           </el-col>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <div class="item">
+            <div class="item" @click="clkItem">
               <div class="imgItem">
                 <div>100倍</div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />

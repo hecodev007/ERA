@@ -11,33 +11,28 @@
       </div>
       <div class="info">
         <el-row>
-          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
             <div class="marketImg">
               <span>100</span>
               <img src="../../assets/img/xunzhaung1.png" alt />
             </div>
           </el-col>
-          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <el-col :xs="24" :sm="14" :md="14" :lg="14" :xl="14">
             <div class="count">
               <div class="name">NFT name (ID:002101)</div>
-              <div class="box">
+              <div class="boxs">
+                
                 <div class="item">
-                  <span>Auction countdown</span>
-                  <p class="color">14 : 32 : 45</p>
-                  <!-- <P>已成交</P> -->
-                </div>
-                <div class="item">
-                  <span>起價（ERA)≈ 816美元</span>
+                  <span>銷售價格（ERA)≈ 816美元</span>
                   <p>238,647,324</p>
                 </div>
               </div>
-              <div class="link">NFT has been claimed</div>
-              <!-- <div class="bug" @click="submitBuy">Bid now (price increase 10%)</div>
-              <div class="bug" >NFT Not collected</div>
-              <div class="staus">Connect wallet</div>-->
+        
+              <div class="staus">Connect wallet</div>
+              <!-- <div class="bug" >NFT Not collected</div> -->
+             
 
-              <div class="tips">ebate from last bid 21,780,000 ERA</div>
-
+              
               <div class="btn">
                 <img src="../../assets/img/lsdata.png" alt />
               </div>
@@ -176,6 +171,7 @@ img {
         position: relative;
         padding: 0 10px;
         margin-bottom: 40px;
+         margin-right: 20px;
         span {
           background: rgba(102, 230, 129, 0.33);
           font-size: 20px;
@@ -201,9 +197,7 @@ img {
         .name {
           font-size: 22px;
         }
-        .box {
-          display: flex;
-          justify-content: space-between;
+        .boxs { 
           margin: 24px 0;
           .item {
             .color {
@@ -211,6 +205,7 @@ img {
             }
             p {
               font-size: 22px;
+              text-align: left;
             }
           }
         }
@@ -246,6 +241,7 @@ img {
           width: 20%;
           max-width: 88px;
           margin: 20px 0;
+          margin-top: 40px;
         }
         .dataInfo {
           display: flex;

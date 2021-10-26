@@ -12,13 +12,13 @@
       </div>
       <div class="info">
         <el-row>
-          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
             <div class="marketImg">
               <span>100</span>
               <img src="../../assets/img/xunzhaung1.png" alt />
             </div>
           </el-col>
-          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <el-col :xs="24" :sm="14" :md="14" :lg="14" :xl="14">
             <div class="count">
               <div class="name">NFT name (ID:002101)</div>
               <div class="box">
@@ -229,6 +229,7 @@ img {
         position: relative;
         padding: 0 10px;
         margin-bottom: 40px;
+        margin-right: 20px;
         span {
           background: rgba(102, 230, 129, 0.33);
           font-size: 20px;
@@ -389,6 +390,9 @@ img {
   }
 }
 .main {
+  .caintner .info{
+    width: 100%;
+  }
   .caintner {
     width: 90%;
     .info .count {
@@ -397,6 +401,9 @@ img {
     .headerMarket .staus {
       width: 80%;
       top: -42px;
+    }
+    .rule{
+      width: 100%;
     }
   }
 }
