@@ -78,13 +78,15 @@
           </el-col>
         </div>
       </el-row>
-       
-      <div class="main600" >
+
+      <div class="main600">
         <el-row>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
             <div class="item" @click="clkItem">
               <div class="imgItem">
-                <div>100倍</div>
+                <div>
+                  <span>100倍</span>
+                </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
                 <p>大地原石勛章 (ID:002101)</p>
               </div>
@@ -106,7 +108,9 @@
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
             <div class="item" @click="clkItem">
               <div class="imgItem">
-                <div>100倍</div>
+                 <div>
+                  <span>100倍</span>
+                </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
                 <p>大地原石勛章 (ID:002101)</p>
               </div>
@@ -125,11 +129,14 @@
               </div>
             </div>
           </el-col>
-      
         </el-row>
       </div>
     </div>
-    <marketHpList @getConfirmInfoList="getConfirmInfoList" @getCancellist="showList = false" :showList.sync="showList"></marketHpList>
+    <marketHpList
+      @getConfirmInfoList="getConfirmInfoList"
+      @getCancellist="showList = false"
+      :showList.sync="showList"
+    ></marketHpList>
 
     <marketPMList @getConfirmInfo="getConfirmInfo" @getCancel="show = false" :show.sync="show"></marketPMList>
   </div>
@@ -148,9 +155,8 @@ export default {
       bannerbjIMg: "@/assets/img/bannerbj600.png",
       activeNav: 1,
       show: false,
-      showList:false,
-      carouselArr: ["1", "1", "1", "1", "1", "1"],
-    
+      showList: false,
+      carouselArr: ["1", "1", "1", "1", "1", "1"]
     };
   },
   mounted() {
@@ -165,9 +171,7 @@ export default {
         this.bannerbjIMg = require("@/assets/img/bannerbj.png");
       }
     },
-    getConfirmInfoList(){
-
-    },
+    getConfirmInfoList() {},
     getConfirmInfo(v) {
       console.log(v);
     },
@@ -197,7 +201,7 @@ export default {
     history() {
       this.show = true;
     },
-    historyscls(){
+    historyscls() {
       this.showList = true;
     }
   }
@@ -245,7 +249,7 @@ export default {
         float: right;
       }
     }
-   
+
     .main600 {
       margin: 30px auto;
 
@@ -259,11 +263,14 @@ export default {
           display: flex;
           flex-flow: column;
           div {
-            background: rgba(102, 230, 129, 0.33);
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-align: center;
-            display: inline-block;
+            span {
+              float: left;
+              background: rgba(102, 230, 129, 0.33);
+              padding: 10px 20px;
+              border-radius: 50px;
+              text-align: center;
+              display: inline-block;
+            }
           }
           .xz {
             width: 40%;
