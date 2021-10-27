@@ -46,25 +46,23 @@ export default {
   },
   mounted() {
     window.onresize = () => {
-      return (() => {
-        this.setDialogWidth();
-      })();
+      this.screenWidth = document.body.clientWidth;
+      this.GLOBAL.clientWidth = this.screenWidth;
     };
+    this.$nextTick(() => {
+      this.screenWidth = document.body.clientWidth;
+      this.GLOBAL.clientWidth = this.screenWidth;
+    });
   },
   methods: {
     setDialogWidth() { 
-      // var val = document.body.clientWidth;
-      // const def = 12000; // 默认宽度
-      // if (val < def) {
-      //   this.dialogWidth = "80%";
-      // } else {
-      //   this.dialogWidth = def + "px";
-      // }
-      if (this.screenWidth < 600) {
+    
+      if (this.screenWidth &&this.screenWidth < 600) {
         this.dialogWidth = "80%";
          } else {
         this.dialogWidth = 400 + "px";
          }
+         
     },
     check(item) {
       this.active = item;

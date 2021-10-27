@@ -183,10 +183,7 @@ export default {
     }
   },
   mounted() {
-     // this.$toast('提示文字','success')
-   this.$toast('提示文字','error')
-
-
+    
     window.onresize = () => {
       this.screenWidth = document.body.clientWidth;
       this.GLOBAL.clientWidth = this.screenWidth;
@@ -198,6 +195,10 @@ export default {
     this.activeNav();
     // 事件监听滚动条
     window.addEventListener("scroll", this.watchScroll);
+    
+    
+    // this.$toast('提示文字','success')
+   this.$toast('提示文字','error')
   },
   watch: {
     $route(to, from) {
