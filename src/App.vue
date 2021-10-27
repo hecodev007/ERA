@@ -183,6 +183,10 @@ export default {
     }
   },
   mounted() {
+     // this.$toast('提示文字','success')
+   this.$toast('提示文字','error')
+
+   
     window.onresize = () => {
       this.screenWidth = document.body.clientWidth;
       this.GLOBAL.clientWidth = this.screenWidth;

@@ -28,6 +28,8 @@ import global_ from './components/global'
 
 Vue.prototype.GLOBAL = global_
 
+import toast from './plugin/toast/toast'
+Vue.use(toast);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
