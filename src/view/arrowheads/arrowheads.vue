@@ -79,9 +79,9 @@
                   <!-- <span>Confirming…</span> -->
                   <span class="color">Has unlocked +6000 power</span>
                   <div class="info">
-                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1==1" />
-                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="!arrowbtn1==2" />
-                    <img src="@/assets/img/arrowbtn1no2.png" alt v-if="!arrowbtn1==3" />
+                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1==1" @click="openshowNFT(1)"/>
+                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="arrowbtn1==2" />
+                    <img src="@/assets/img/arrowbtn1no2.png" alt v-if="arrowbtn1==3" />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
                   </div>
                 </div>
@@ -101,14 +101,23 @@
       @getCancel="showarrowUp = false"
       :showarrowUp.sync="showarrowUp"
     ></arrowUpItem>-->
+       <NFTmedule
+        @getConfirmNFT="getConfirmNFT"
+        @getCancelNFT="showNFTs = false"
+        :showNFT.sync="showNFTs"
+        :routeQury="2"
+    ></NFTmedule>
   </div>
 </template>
 <script>
 import arrowItem from "./arrowItem.vue";
+
+import NFTmedule from "../../components/NFTmedule.vue";
 // import arrowUpItem from "./arrowUpItem.vue";
 export default {
   components: {
-    arrowItem
+    arrowItem,
+    NFTmedule
     // arrowUpItem
   },
   data() {
@@ -177,7 +186,9 @@ export default {
           have: 20,
           name: "大地原石勛章"
         }
-      ]
+      ],
+      showNFTs:true,
+
     };
   },
   mounted() {
@@ -201,6 +212,13 @@ export default {
     //up
     upslz() {
       this.showarrowUp = true;
+    },
+    openshowNFT(v){ 
+      console.log(v)
+      this.showNFTs = true
+    },
+    getConfirmNFT(){
+
     }
   }
 };

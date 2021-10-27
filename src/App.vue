@@ -158,6 +158,7 @@
       @getConfirmNFT="getConfirmNFT"
       @getCancelNFT="showNFT = false"
       :showNFT.sync="showNFT"
+      :routeQury="1"
     ></NFTmedule>
     <router-view></router-view>
   </div>
@@ -289,8 +290,7 @@ export default {
       console.log(v);
     },
     //我的钱包
-    linkPackageShow() {
-      // this.show = true
+    linkPackageShow() { 
       this.showNFT = true;
     },
     //链接钱包

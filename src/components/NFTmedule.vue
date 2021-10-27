@@ -35,7 +35,7 @@
                 </div>
                 <div class="width2">200</div>
                 <div :class="['width3',dialogWidth=='80%'?'width3active':'']">
-                  <img src="../assets/img/paimai.png" alt @click="check(1)" />
+                  <img src="../assets/img/paimai.png" alt @click="check(1)" v-if="routeQurydata==1" />
                   <img src="../assets/img/sell.png" alt @click="check(2)" />
                 </div>
               </div>
@@ -137,6 +137,10 @@ export default {
     showNFT: {
       type: Boolean,
       default: false
+    },
+    routeQury:{
+      type:Number,
+       default: 1//默认传1 我的   2是farms
     }
   },
   data() {
@@ -146,16 +150,26 @@ export default {
       dialogWidth: "0",
       avtiveHeader: "", //1是押宝 2 是拍卖
       avtiveText: "",
-      time: "1"
+      time: "1",
+      routeQurydata:this.routeQury
+
     };
   },
   watch: {
     showNFT(val) {
       this.centerDialogVisible = val;
+    },
+    routeQury(val){
+      this.routeQurydata = val;
     }
   },
  
   mounted() {
+     window.onresize = () => {
+      return (() => {
+        this.setDialogWidth();
+      })();
+    };
     this.setDialogWidth();
   },
   methods: {
