@@ -169,11 +169,14 @@ export default {
   },
  
   mounted() {
-     window.onresize = () => {
-      return (() => {
-        this.setDialogWidth();
-      })();
+    window.onresize = () => {
+      this.screenWidth = document.body.clientWidth;
+      this.GLOBAL.clientWidth = this.screenWidth;
     };
+    this.$nextTick(() => {
+      this.screenWidth = document.body.clientWidth;
+      this.GLOBAL.clientWidth = this.screenWidth;
+    });
     this.setDialogWidth();
   },
   methods: {
@@ -183,6 +186,7 @@ export default {
       } else {
         this.dialogWidth = 600 + "px";
       }
+      console.log("222")
     },
     goback() {
       this.avtiveText = "";
