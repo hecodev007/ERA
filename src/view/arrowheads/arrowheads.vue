@@ -75,11 +75,13 @@
                   </div>
 
                   <img :src="item.icon" alt class="yuansu" />
+                  <!-- <span>unlocked</span> -->
                   <!-- <span>Confirming…</span> -->
                   <span class="color">Has unlocked +6000 power</span>
                   <div class="info">
-                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1" />
-                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="!arrowbtn1" />
+                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1==1" @click="openshowNFT(1)"/>
+                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="arrowbtn1==2" />
+                    <img src="@/assets/img/arrowbtn1no2.png" alt v-if="arrowbtn1==3" />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
                   </div>
                 </div>
@@ -98,15 +100,24 @@
       @getConfirmUp="getConfirmUp"
       @getCancel="showarrowUp = false"
       :showarrowUp.sync="showarrowUp"
-    ></arrowUpItem> -->
+    ></arrowUpItem>-->
+       <NFTmedule
+        @getConfirmNFT="getConfirmNFT"
+        @getCancelNFT="showNFTs = false"
+        :showNFT.sync="showNFTs"
+        :routeQury="2"
+    ></NFTmedule>
   </div>
 </template>
 <script>
 import arrowItem from "./arrowItem.vue";
+
+import NFTmedule from "../../components/NFTmedule.vue";
 // import arrowUpItem from "./arrowUpItem.vue";
 export default {
   components: {
     arrowItem,
+    NFTmedule
     // arrowUpItem
   },
   data() {
@@ -115,7 +126,7 @@ export default {
       bannerbjIMg: "@/assets/img/bannerbj600.png",
       showarrowItem: false, //arrowItem
       showarrowUp: false,
-      arrowbtn1: false,
+      arrowbtn1: 1,
       arrowbtn2: true,
       qxslshow: true, //取消算力的显示
       list: [
@@ -175,7 +186,9 @@ export default {
           have: 20,
           name: "大地原石勛章"
         }
-      ]
+      ],
+      showNFTs:false,
+
     };
   },
   mounted() {
@@ -199,6 +212,13 @@ export default {
     //up
     upslz() {
       this.showarrowUp = true;
+    },
+    openshowNFT(v){ 
+      console.log(v)
+      this.showNFTs = true
+    },
+    getConfirmNFT(){
+
     }
   }
 };

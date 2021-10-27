@@ -78,45 +78,8 @@
           </el-col>
         </div>
       </el-row>
-      <div class="swiper" v-if="this.screenWidth >= 600">
-        <div class>
-          <swiper :options="swiperOption" @click-slide="clkItem" class="swiper-no-swiping">
-            <swiper-slide class="swiper-slide" v-for="(item,index) in carouselArr" :key="index">
-              <div class="item">
-                <div class="imgItem">
-                  <div>100倍</div>
-                  <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                  <p>大地原石勛章 (ID:002101)</p>
-                </div>
-                <div class="infoItme">
-                  <div class="info">
-                    <span>最新出價</span>
-                    <span class="weight">
-                      <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
-                      333,234,567,676
-                    </span>
-                  </div>
-                  <div class="info" v-if="activeNav==1">
-                    <span>剩餘時間</span>
-                    <span class="weight">12:12:12</span>
-                  </div>
-                </div>
-              </div>
-            </swiper-slide>
-          </swiper>
-          <img
-            src="@/assets/img/swiperLeft.png"
-            slot="button-prev"
-            class="swiper-button-prev swiperLeft"
-          />
-          <img
-            src="@/assets/img/swiperRight.png"
-            slot="button-next"
-            class="swiper-button-next swiperRight"
-          />
-        </div>
-      </div>
-      <div class="main600" v-if="this.screenWidth < 600">
+       
+      <div class="main600" >
         <el-row>
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
             <div class="item" @click="clkItem">
@@ -154,14 +117,15 @@
                     <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
                     333,234,567,676
                   </span>
-                  <div class="info" v-if="activeNav==1">
-                    <span>剩餘時間</span>
-                    <span class="weight">12:12:12</span>
-                  </div>
+                </div>
+                <div class="info" v-if="activeNav==1">
+                  <span>剩餘時間</span>
+                  <span class="weight">12:12:12</span>
                 </div>
               </div>
             </div>
           </el-col>
+      
         </el-row>
       </div>
     </div>
@@ -186,27 +150,7 @@ export default {
       show: false,
       showList:false,
       carouselArr: ["1", "1", "1", "1", "1", "1"],
-      swiperOption: {
-        //显示分页
-        pagination: {
-          el: ".swiper-pagination"
-        },
-        //设置点击箭头
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        },
-        //自动轮播
-        // autoplay: {
-        //   delay: 2000,
-        //   //当用户滑动图片后继续自动轮播
-        //   disableOnInteraction: false
-        // },
-        observer: true,
-        slidesPerView: 4,
-        //开启循环模式
-        loop: true
-      }
+    
     };
   },
   mounted() {
@@ -301,69 +245,13 @@ export default {
         float: right;
       }
     }
-    .swiper {
-      margin: 0 auto;
-      position: relative;
-      padding: 60px;
-      .swiperLeft {
-        width: 40px;
-        position: absolute;
-        right: 0;
-        z-index: 999;
-      }
-      .swiperRight {
-        width: 40px;
-      }
-      .item {
-        margin: 0 20px;
-        .imgItem {
-          background: rgba(38, 53, 44, 1);
-          border-radius: 20px;
-          padding: 20px 15px;
-
-          div {
-            background: rgba(102, 230, 129, 0.33);
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-align: center;
-            display: inline-block;
-          }
-          .xz {
-            width: 40%;
-            display: block;
-            margin: 10px auto;
-          }
-          p {
-            text-align: center;
-            margin-top: 30px;
-          }
-        }
-        .infoItme {
-          background: rgba(38, 53, 44, 1);
-          border-radius: 20px;
-          padding: 10px;
-          margin-top: 20px;
-          .info {
-            display: flex;
-            justify-content: space-between;
-            line-height: 28px;
-            img {
-              width: 14px;
-              vertical-align: middle;
-              margin-right: 3px;
-            }
-            .weight {
-              font-weight: 900;
-            }
-          }
-        }
-      }
-    }
+   
     .main600 {
       margin: 30px auto;
 
       .item {
         margin: 0 10px;
+        margin-bottom: 30px;
         .imgItem {
           background: rgba(38, 53, 44, 1);
           border-radius: 20px;
@@ -394,8 +282,9 @@ export default {
           margin-top: 20px;
           .info {
             display: flex;
-            flex-flow: column;
+            // flex-flow: column;
             text-align: center;
+            justify-content: space-between;
             line-height: 28px;
             img {
               width: 14px;

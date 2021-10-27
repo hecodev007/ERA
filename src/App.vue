@@ -10,50 +10,22 @@
       </el-col>
       <el-col :xs="12" :sm="18" :md="18" :lg="20" :xl="20">
         <div v-if="Object.keys(rightNavItems).length === 0?true:false" class="box">
-          <!-- <el-menu
-            :default-active="defaultOpenedsIndex"
+          <el-menu
+            :default-active="this.$route.path"
             id="navid"
             class="nav"
             mode="horizontal"
             :default-openeds="defaultOpeneds"
             router
-          >-->
-          <el-menu
-            @select="handleSelect"
-            id="navid"
-            mode="horizontal"
-            :default-openeds="defaultOpeneds"
-            default-active="/home"
-            class="nav"
           >
-            <!-- <el-menu-item
-              :key="key"
-              v-for="(item,key) in leftNavItems"
-              :index="item.index"
-              :route="item.activeIndex"
-             
-            >{{item.name}}</el-menu-item>-->
+        
+
             <el-menu-item
               :key="key"
               v-for="(item,key) in leftNavItems"
               :index="item.activeIndex"
             >{{item.name}}</el-menu-item>
-            <!-- <el-submenu
-          style="float:right;"
-          class="right-item"
-          v-if="Object.keys(rightNavItems).length === 0?false:true"
-          index="10"
-        >
-          <template slot="title">
-            <i class="el-icon-s-fold" style="font-size:28px;"></i>
-          </template>
-          <el-menu-item
-            :key="key"
-            v-for="(item,key) in rightNavItems"
-            :index="item.index"
-            :route="item.activeIndex"
-          >{{item.name}}</el-menu-item>
-            </el-submenu>-->
+          
           </el-menu>
           <div class="navimg" >
             <img src="./assets/img/en.png" alt class="luange" />
@@ -119,33 +91,21 @@
         />
       </div>
       <div class="navList">
-        <!-- <el-menu
-          :default-active="defaultOpenedsIndex"
+        <el-menu
+          :default-active="this.$route.path"
           id="navid"
           class="nav"
           mode="horizontal"
           :default-openeds="defaultOpeneds"
           router
-        >-->
-        <el-menu
-          @select="handleSelect"
-          id="navid"
-          mode="horizontal"
-          :default-openeds="defaultOpeneds"
-          default-active="/home"
-          class="nav"
         >
+ 
           <el-menu-item
             :key="key"
             v-for="(item,key) in rightNavItems"
             :index="item.activeIndex"
           >{{item.name}}</el-menu-item>
-          <!-- <el-menu-item
-            :key="key"
-            v-for="(item,key) in rightNavItems"
-            :index="item.index"
-            :route="item.activeIndex"
-          >{{item.name}}</el-menu-item>-->
+
         </el-menu>
       </div>
       <div class="itemList">
@@ -158,6 +118,7 @@
       @getConfirmNFT="getConfirmNFT"
       @getCancelNFT="showNFT = false"
       :showNFT.sync="showNFT"
+      :routeQury="1"
     ></NFTmedule>
     <router-view></router-view>
   </div>
@@ -194,7 +155,7 @@ export default {
       show: false, //链接钱包弹窗
       showNFT: false, //NFT
       mouse: true, //鼠标滑过
-      mypackage: true,
+      mypackage: false,
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
@@ -224,6 +185,10 @@ export default {
     }
   },
   mounted() {
+     // this.$toast('提示文字','success')
+   this.$toast('提示文字','error')
+
+
     window.onresize = () => {
       this.screenWidth = document.body.clientWidth;
       this.GLOBAL.clientWidth = this.screenWidth;
@@ -266,14 +231,7 @@ export default {
         this.GLOBAL.clientWidth = this.screenWidth;
       }
     },
-    handleSelect(key, keyPath) {
-      if (key) {
-        this.$router.push({
-          path: key,
-          params: { data: "query" }
-        });
-      }
-    },
+ 
     watchScroll() {
       var scrollTop =
         window.pageYOffset ||
@@ -291,8 +249,7 @@ export default {
       console.log(v);
     },
     //我的钱包
-    linkPackageShow() {
-      // this.show = true
+    linkPackageShow() { 
       this.showNFT = true;
             getContract().then(()=>{
         alert("钱包连接成功")
@@ -325,11 +282,11 @@ body{
 }
 #app {
   color: #fff;
-  font-family: "Futura-Book-2";
+  font-family: "bolden";
   background: rgba(19, 29, 23, 1);
 }
 #app div {
-  font-family: "Gen2";
+  font-family: "bolden";
 }
 /* .pcmain{
   min-height: 100vh;
