@@ -18,25 +18,33 @@ export default {
   
 };
 </script>
-<style scoped>
+<style scoped lang="less">
 .dialog-tips{
     min-width: 380px;
     box-sizing: border-box;
-    border-radius: 4px;
-    border: 1px solid #e1f3d8;
+    border-radius: 4px; 
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    background-color: #f0f9eb;
+    background-color: rgba(44, 134, 80, 0.9);
     overflow: hidden;
-    padding: 15px 15px 15px 20px;
-    display: flex;
+    height: 82px;
+    line-height: 82px;
+    // display: flex;
+    text-align: center;
     align-items: center;
-    color: #67c23a;
+    color: #fff;
+    div{
+        text-align: center;
+    }
 }
 .error{
-      color: red;
+    background: rgba(233, 70, 42, 0.9);
+    color: fff;
+    div{
+        text-align: center;
+    }
 }
 
 .slide-fade-enter, .slide-fade-leave-to {
