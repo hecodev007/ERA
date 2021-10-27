@@ -1,7 +1,7 @@
 <template>
   <div class="mask">
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
-      <div class="main">
+      <div class="main"  :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
         <div class="headerTop">
           <div class="goback" @click="goback" v-if="avtiveHeader">
             <i class="el-icon-arrow-left"></i>
@@ -16,7 +16,11 @@
           />
         </div>
         <div v-if="!avtiveHeader">
-          <p class="count">NFT數量:0</p>
+           <div class="taboption">
+             <div :class="activeOption==1?'activeTab':''"  @click="activeTab(1)">ALL<span>11</span></div>
+              <div :class="activeOption==2?'activeTab':''"  @click="activeTab(2)">Auction<span>11</span></div>
+               <div :class="activeOption==3?'activeTab':''" @click="activeTab(3)">Sell<span>11</span></div>
+           </div>
           <div class="list">
             <div class="tbHeader">
               <span>name</span>
@@ -29,12 +33,12 @@
                 <p class="textNO">暫無數據</p>
               </div>
               <div class="item">
-                <div :class="['width1',dialogWidth=='80%'?'width1active':'']">
+                <div :class="['width1',dialogWidth=='90%'?'width1active':'']">
                   <img src="../assets/img/xunzhaung1.png" alt />
                   <p>泉水琉璃勛章</p>
                 </div>
                 <div class="width2">200</div>
-                <div :class="['width3',dialogWidth=='80%'?'width3active':'']">
+                <div :class="['width3',dialogWidth=='90%'?'width3active':'']">
                   <img src="../assets/img/paimai.png" alt @click="check(1)" v-if="routeQurydata==1" />
                   <img src="../assets/img/sell.png" alt @click="check(2)" />
                 </div>
@@ -151,8 +155,8 @@ export default {
       avtiveHeader: "", //1是押宝 2 是拍卖
       avtiveText: "",
       time: "1",
-      routeQurydata:this.routeQury
-
+      routeQurydata:this.routeQury,
+      activeOption:1,
     };
   },
   watch: {
@@ -175,7 +179,7 @@ export default {
   methods: {
     setDialogWidth() {
       if (this.screenWidth < 600) {
-        this.dialogWidth = "80%";
+        this.dialogWidth = "90%";
       } else {
         this.dialogWidth = 600 + "px";
       }
@@ -198,14 +202,17 @@ export default {
     // 点击弹框下的关闭
     closemodule(v) {
       this.$emit("getCancelNFT", v);
+    },
+    activeTab(v){
+      this.activeOption = v
     }
   }
 };
 </script>
 <style scoped lang="less">
-.main {
+.pcmain {
   color: #fff;
-}
+
 .el-dialog--center .el-dialog__body {
   padding: 0;
 }
@@ -228,9 +235,29 @@ export default {
   top: 50%;
   transform: translate(0, -50%);
 }
-.count {
-  text-align: right;
-  margin: 20px 0;
+// .count {
+//   text-align: right;
+//   margin: 20px 0;
+// }
+.taboption{
+  display: flex;
+  justify-content: space-between;
+  div{
+    width: 94px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    margin: 20px 0;
+    background: url(../assets/img/mytabno.png) no-repeat center;
+ background-size:cover ;
+ span{
+   margin-left: 3px;
+ }
+ }
+ .activeTab{
+    background: url(../assets/img/mytab.png) no-repeat center;
+ background-size:cover ;
+ }
 }
 .list {
   max-height: 700px;
@@ -307,7 +334,7 @@ export default {
     }
   }
 }
-
+}
 .yabao {
   margin-top: 30px;
   .iconMain {

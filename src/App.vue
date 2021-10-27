@@ -186,7 +186,7 @@ export default {
      // this.$toast('提示文字','success')
    this.$toast('提示文字','error')
 
-   
+
     window.onresize = () => {
       this.screenWidth = document.body.clientWidth;
       this.GLOBAL.clientWidth = this.screenWidth;
@@ -279,7 +279,7 @@ body{
   background: rgba(19, 29, 23, 1);
 }
 #app div {
-  font-family: "Gen2";
+  font-family: "bolden";
 }
 /* .pcmain{
   min-height: 100vh;
