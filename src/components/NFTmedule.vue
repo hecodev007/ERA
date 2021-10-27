@@ -243,9 +243,8 @@ export default {
       text-align: center;
       padding: 30px;
       img {
-        margin: 0 auto;
-        width: 90px;
-        height: 56px;
+        margin: 20px auto;
+     
       }
       .textNO {
         line-height: 20px;

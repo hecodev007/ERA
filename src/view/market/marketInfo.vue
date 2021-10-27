@@ -94,15 +94,18 @@
                   <span class="wid6" v-if="this.screenWidth >= 600">state</span>
                 </div>
                 <div class="tbody">
-                  <div>
+                  <div class="dataNo">
+                    <img src="../../assets/img/nodata.png" alt />
+                    <p class="textNO">暫無數據</p>
+                  </div>
+                  <div class="item">
                     <span class="wid1" v-if="this.screenWidth >= 600">1112313213123123121</span>
                     <span class="wid2">13jh…783123sa</span>
-                    <span class="colo2 wid3" >10,000</span>
+                    <span class="colo2 wid3">10,000</span>
                     <span class="wid4">20121.10.02 16:23:43</span>
                     <span class="colo2 wid5" v-if="this.screenWidth >= 600">238,646,124</span>
                     <span class="wid6" v-if="this.screenWidth >= 600">拍賣中</span>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -344,8 +347,24 @@ img {
             span {
             }
           }
-          .tbody {
-            div {
+          .tbody { 
+              .dataNo {
+                text-align: center;
+                padding: 30px;
+                img {
+                  margin: 20px auto;
+               
+                }
+                .textNO {
+                  line-height: 20px;
+                  font-size: 16px;
+                  padding: 0;
+                  margin: 0;
+                }
+              }
+              
+           
+            .item {
               display: flex;
               justify-content: space-between;
               align-items: center;
@@ -383,7 +402,7 @@ img {
   }
 }
 .main {
-  .caintner .info{
+  .caintner .info {
     width: 100%;
   }
   .caintner {
@@ -395,21 +414,19 @@ img {
       width: 80%;
       top: -42px;
     }
-    .rule{
+    .rule {
       width: 100%;
     }
   }
- .caintner .info .table .dataTB .wid3{
-   text-align: center;
-   
- }
- .caintner .info .table .dataTB  .colo2{
-color: rgba(112, 244, 165, 1);
- }
-.caintner .info .table .dataTB .wid4{
-   
-   color: rgba(112, 244, 165, 1);
- }
+  .caintner .info .table .dataTB .wid3 {
+    text-align: center;
+  }
+  .caintner .info .table .dataTB .colo2 {
+    color: rgba(112, 244, 165, 1);
+  }
+  .caintner .info .table .dataTB .wid4 {
+    color: rgba(112, 244, 165, 1);
+  }
 }
 .wid1 {
   width: 100px;
