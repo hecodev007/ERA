@@ -187,7 +187,7 @@ export default {
           name: "大地原石勛章"
         }
       ],
-      showNFTs:true,
+      showNFTs:false,
 
     };
   },
