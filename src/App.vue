@@ -318,7 +318,7 @@ body{
 }
 #app {
   color: #fff;
-  font-family: "Futura-Book-2";
+  font-family: "bolden";
   background: rgba(19, 29, 23, 1);
 }
 #app div {

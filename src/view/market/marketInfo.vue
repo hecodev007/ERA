@@ -86,30 +86,23 @@
               </div>
               <div class="dataTB">
                 <div class="tbHeaderTB">
-                  <span class="wid1">Wallet address</span>
+                  <span class="wid1" v-if="this.screenWidth >= 600">Wallet address</span>
                   <span class="wid2">Hash</span>
                   <span class="wid3">Auction Price (AVS)</span>
-                  <span class="wid4">Auction time</span>
+                  <span class="wid4" v-if="this.screenWidth >= 600">Auction time</span>
                   <span class="wid5">Rebate (?)</span>
-                  <span class="wid6">state</span>
+                  <span class="wid6" v-if="this.screenWidth >= 600">state</span>
                 </div>
                 <div class="tbody">
                   <div>
-                    <span class="wid1">1112313213123123121</span>
+                    <span class="wid1" v-if="this.screenWidth >= 600">1112313213123123121</span>
                     <span class="wid2">13jh…783123sa</span>
-                    <span class="colo2 wid3">10,000</span>
+                    <span class="colo2 wid3" >10,000</span>
                     <span class="wid4">20121.10.02 16:23:43</span>
-                    <span class="colo2 wid5">238,646,124</span>
-                    <span class="wid6">拍賣中</span>
+                    <span class="colo2 wid5" v-if="this.screenWidth >= 600">238,646,124</span>
+                    <span class="wid6" v-if="this.screenWidth >= 600">拍賣中</span>
                   </div>
-                  <div>
-                    <span class="wid1">1111</span>
-                    <span class="wid2">13jh…78sa</span>
-                    <span class="colo2 wid3">10,000</span>
-                    <span class="wid4">20121.10.02 16:23:43</span>
-                    <span class="colo2 wid5">238,646,124</span>
-                    <span class="wid6">拍賣中</span>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -406,6 +399,17 @@ img {
       width: 100%;
     }
   }
+ .caintner .info .table .dataTB .wid3{
+   text-align: center;
+   
+ }
+ .caintner .info .table .dataTB  .colo2{
+color: rgba(112, 244, 165, 1);
+ }
+.caintner .info .table .dataTB .wid4{
+   
+   color: rgba(112, 244, 165, 1);
+ }
 }
 .wid1 {
   width: 100px;

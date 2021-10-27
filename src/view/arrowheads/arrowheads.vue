@@ -75,11 +75,13 @@
                   </div>
 
                   <img :src="item.icon" alt class="yuansu" />
+                  <!-- <span>unlocked</span> -->
                   <!-- <span>Confirming…</span> -->
                   <span class="color">Has unlocked +6000 power</span>
                   <div class="info">
-                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1" />
-                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="!arrowbtn1" />
+                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1==1" />
+                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="!arrowbtn1==2" />
+                    <img src="@/assets/img/arrowbtn1no2.png" alt v-if="!arrowbtn1==3" />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
                   </div>
                 </div>
@@ -98,7 +100,7 @@
       @getConfirmUp="getConfirmUp"
       @getCancel="showarrowUp = false"
       :showarrowUp.sync="showarrowUp"
-    ></arrowUpItem> -->
+    ></arrowUpItem>-->
   </div>
 </template>
 <script>
@@ -106,7 +108,7 @@ import arrowItem from "./arrowItem.vue";
 // import arrowUpItem from "./arrowUpItem.vue";
 export default {
   components: {
-    arrowItem,
+    arrowItem
     // arrowUpItem
   },
   data() {
@@ -115,7 +117,7 @@ export default {
       bannerbjIMg: "@/assets/img/bannerbj600.png",
       showarrowItem: false, //arrowItem
       showarrowUp: false,
-      arrowbtn1: false,
+      arrowbtn1: 1,
       arrowbtn2: true,
       qxslshow: true, //取消算力的显示
       list: [
