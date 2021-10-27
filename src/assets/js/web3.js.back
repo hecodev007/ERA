@@ -1,0 +1,230 @@
+import Web3 from "web3";
+// import tp from 'tp-js-sdk'
+// import { openTokenPocket } from "./tokenpocket";
+
+//  import VConsole from 'vconsole';
+import BigNumber from "bignumber.js";
+
+//  const vConsole = new VConsole();
+
+var web3;
+var abi = '[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"id","type":"uint256"},{"indexed":false,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"level","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"power","type":"uint256"},{"indexed":false,"internalType":"string","name":"name","type":"string"},{"indexed":false,"internalType":"string","name":"res","type":"string"},{"indexed":false,"internalType":"address","name":"author","type":"address"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"Minted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Paused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"nftId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"oldRoyalties","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newRoyalties","type":"uint256"}],"name":"RoyaltiesUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Unpaused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"nft1Id","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"nft2Id","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newNftId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newLevel","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"timestamp","type":"uint256"}],"name":"Upgraded","type":"event"},{"inputs":[],"name":"_feeWallet","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_addMinter","type":"address"}],"name":"addMinter","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"components":[{"internalType":"address payable","name":"account","type":"address"},{"internalType":"uint96","name":"value","type":"uint96"}],"internalType":"struct LibPart.Part","name":"newPart","type":"tuple"}],"name":"addRoyalty","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"baseURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"canUpgrade","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_delMinter","type":"address"}],"name":"delMinter","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getDefultRoyalty","outputs":[{"components":[{"internalType":"address payable","name":"account","type":"address"},{"internalType":"uint96","name":"value","type":"uint96"}],"internalType":"struct LibPart.Part","name":"part","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getFeeToken","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getLevel","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_index","type":"uint256"}],"name":"getMinter","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getMinterLength","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"getNft","outputs":[{"components":[{"internalType":"uint256","name":"level","type":"uint256"},{"internalType":"uint256","name":"power","type":"uint256"},{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"res","type":"string"},{"internalType":"address","name":"author","type":"address"}],"internalType":"struct LibPart.NftInfo","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getPower","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getRoyalties","outputs":[{"components":[{"internalType":"address payable","name":"account","type":"address"},{"internalType":"uint96","name":"value","type":"uint96"}],"internalType":"struct LibPart.Part[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"newLevel","type":"uint256"}],"name":"getUpgradeFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"},{"internalType":"address","name":"feeToken","type":"address"},{"internalType":"address","name":"feeWallet_","type":"address"},{"internalType":"bool","name":"_canUpgrade","type":"bool"},{"internalType":"string","name":"baseURI_","type":"string"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"isMinter","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxLevel","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"string","name":"nftName","type":"string"},{"internalType":"uint256","name":"level","type":"uint256"},{"internalType":"uint256","name":"power","type":"uint256"},{"internalType":"string","name":"res","type":"string"},{"internalType":"address","name":"author","type":"address"}],"name":"mint","outputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"uri","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"newVal","type":"bool"}],"name":"setCanUpgrade","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address payable","name":"account","type":"address"},{"internalType":"uint96","name":"value","type":"uint96"}],"name":"setDefaultRoyalty","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"}],"name":"setFeeToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"feeWallet_","type":"address"}],"name":"setFeeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"sumRoyalties","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"components":[{"internalType":"address payable","name":"account","type":"address"},{"internalType":"uint96","name":"value","type":"uint96"}],"internalType":"struct LibPart.Part[]","name":"parts","type":"tuple[]"}],"name":"updateRoyalties","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"index","type":"uint256"},{"components":[{"internalType":"address payable","name":"account","type":"address"},{"internalType":"uint96","name":"value","type":"uint96"}],"internalType":"struct LibPart.Part","name":"newPart","type":"tuple"}],"name":"updateRoyalty","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"nftId","type":"uint256"},{"internalType":"uint256","name":"materialNftId","type":"uint256"}],"name":"upgradeNft","outputs":[],"stateMutability":"nonpayable","type":"function"}]'
+const contract_address = "0xd775293043AFD31FC5Cd95973515D4C39bd40c0A"
+var Contract;
+var Account;
+let bscTestnet = {
+  chainId: Web3.utils.numberToHex(97), rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
+  chainName: 'Binance Smart Chain Testnet',
+  blockExplorerUrls: ['https://testnet.bscscan.com'],
+  nativeCurrency: {
+    name: 'BNB',
+    symbol: 'tBNB', // 2-6 characters long
+    decimals: 18,
+  }
+};
+var phoneOs = (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent))
+
+
+const getWeb3 = () => {
+  return new Promise((resolve, reject) => {
+
+    // if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    //   if (!tp.isConnected()) {
+    //     openTokenPocket()
+    //     //手机
+    //     //  window.location.href ='tpdapp://open?params={"url": "http://192.168.31.43:1024", "chain": "ETH", "source":""}'
+    //      return
+    //   }
+    //   //mobile
+    // }
+
+    // Wait for loading completion to avoid race conditions with web3 injection timing.
+    // window.addEventListener("load", async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+      if (window.ethereum.chainId != bscTestnet.chainId) {
+        switchChain(bscTestnet)
+        return
+      }
+      web3 = new Web3(window.ethereum);
+      try {
+        // Request account access if needed
+        //   await window.ethereum.enable();
+
+        window.ethereum.enable()
+          .catch(function (reason) {
+            //如果用户拒绝了登录请求
+            if (reason === "User rejected provider access") {
+              return reject("ser rejected provider access")
+              // 用户拒绝登录后执行语句；
+            } else {
+              // 本不该执行到这里，但是真到这里了，说明发生了意外
+              return reject("There was a problem signing you in");
+            }
+          }).then(function (accounts) {
+            // 判断是否连接以太
+            //    if (window.ethereum.networkVersion !== desiredNetwork) {}
+            let currentProvider = web3.currentProvider;
+            web3.setProvider(currentProvider);
+            //如果用户同意了登录请求，你就可以拿到用户的账号
+            web3.eth.defaultAccount = accounts[0];
+            Account = accounts[0]
+            //   初始化合约
+            //这里返回用户钱包地址
+            //   callback(accounts[0]);
+            resolve(web3);
+          });
+        // Acccounts now exposed 
+      } catch (error) {
+        reject(error);
+      }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+      // Use Mist/MetaMask's provider.
+      web3 = window.web3;
+      console.log("Injected web3 detected.");
+      resolve(web3);
+    }
+    // Fallback to localhost; use dev console port by default...
+    else {
+      // const provider = new Web3.providers.HttpProvider(
+      //   "http://127.0.0.1:9545"
+      // );
+      // web3 = new Web3(provider);
+      if (phoneOs) {
+        return reject("Please use MetaMask app's  browser to open it");
+      }
+      return reject("Please install MetaMask Browser plug-in");
+    }
+    // });
+  });
+}
+
+
+const getContract = () => {
+  return new Promise((resolve, reject) => {
+    getWeb3().then((web3) => {
+      console.log(">>>>>>>>>>web3>>>", web3)
+
+      Contract = new web3.eth.Contract(JSON.parse(abi), contract_address);
+      resolve(Contract);
+    }).catch((error) => {
+      console.log(">>>>>>>>>>", error)
+      reject(error);
+    })
+  });
+}
+
+
+
+// //获取token单价 wei
+// function getPrice() {
+//   return new Promise((resolve, reject) => {
+//     Contract.methods.apePrice().call(null, function (error, result) {
+//       if (error) {
+//         return reject(error)
+//       }
+//       resolve(result)
+//     });
+//   });
+// }
+
+
+const myallnft = () => {
+  return new Promise((resolve, reject) => {
+    var map = new Map();
+    Contract.methods.balanceOf(Account).call(null, function (error, count) {
+      if (error) {
+        return reject(error)
+      }
+      for (let index = 0; index < count; index++) {
+        Contract.methods.tokenOfOwnerByIndex(Account, index).call(null, function (error, tokenID) {
+          if (error) {
+            return reject(error)
+          }
+          var tokenCount = map.get(tokenID)
+          if (tokenCount) {
+            map.set(tokenID, tokenCount++);
+          } else {
+            map.set(tokenID,0);
+          }
+          if (index == (count - 1)) {
+            resolve(map)
+          }
+        });
+      }
+    })
+
+  });
+}
+
+
+
+
+//铸造 wei  to 铸造给谁 nftName 可以传空 level 等级 1-5 power[1000,2500,6500,14500,35000,90000] res 随便 author 随便
+const mint = (nftName, level, power, res) => {
+  console.log("mint")
+  return new Promise((resolve, reject) => {
+
+    if (web3 == undefined || web3 == null) {
+      if (phoneOs) {
+        return reject("Please use MetaMask app's  browser to open it");
+      }
+      return reject("Please install MetaMask Browser plug-in and Connect it");
+    }
+    if (Contract == null) {
+      getContract()
+      return reject("wallet cannot connect,Please try again later")
+    }
+
+    console.log("Account", Account)
+    // getPrice().then((price) => {
+    let amount = BigNumber("0").multipliedBy(0.08)
+    console.log(Account, nftName, level, power, res)
+    Contract.methods.mint(Account, nftName, level, power, res, Account).send({ from: Account, value: amount }, function (error, transactionHash) {
+      console.log("error>>>>>>>>>", error)
+      if (error) {
+        return reject(error.message)
+      }
+      return resolve("txHash:" + transactionHash)
+    });
+    // })
+  });
+}
+const switchChain = async (data) => {
+  try {
+    let { chainId } = data;
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId }],
+    });
+  } catch (switchError) {
+    // This error code indicates that the chain has not been added to MetaMask.
+    if (switchError.code === 4902 || switchError.code === -32603) {
+      addChain(data);
+    }
+    // handle other "switch" errors
+  }
+}
+
+const addChain = async (data) => {
+  try {
+    await window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [data],
+    });
+  } catch (addError) {
+    console.log(addError)
+  }
+}
+// vConsole.destroy();
+export {
+  // getPrice,
+  myallnft,
+  getWeb3,
+  getContract,
+  mint,
+  switchChain,
+  addChain
+};
