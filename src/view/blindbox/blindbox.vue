@@ -1,17 +1,21 @@
 <template>
-  <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
-    <div class="intraduse" v-if="this.screenWidth < 600">鑄造一個盲盒需要消耗0.08ETH，包括隨機生成的6種不同等級的寶物，祝好運～</div>
+  <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
+    <div class="intraduse" v-if="this.screenWidth < 600">
+      鑄造一個盲盒需要消耗0.08ETH，包括隨機生成的6種不同等級的寶物，祝好運～
+    </div>
 
     <div class="cainter">
       <div class="caiterTop">
         <div class="topLe" v-if="this.screenWidth >= 600">
           <div class="instructions">
             <img src="../../assets/img/logo.png" alt />
-            <span>鑄造一個盲盒需要消耗0.08ETH，包括隨機生成的6種不同等級的寶物，祝好運～</span>
+            <span
+              >鑄造一個盲盒需要消耗0.08ETH，包括隨機生成的6種不同等級的寶物，祝好運～</span
+            >
           </div>
           <div class="meth">
             <div class="button">
-              <img src="../../assets/img/btnn.png" alt />
+              <img src="../../assets/img/btnn.png" alt @click="goMint" />
             </div>
             <div class="count">
               <img src="../../assets/img/mangheicon.png" alt />
@@ -32,19 +36,31 @@
         <p>NTF計數666/10000</p>
       </div>
       <div class="caiterMain">
-        <el-row >
-          <el-col :xs="12" :sm="8" :md="8" :lg="8" :xl="8" :key="key" v-for="(item,key) in list">
-            <div
+        <el-row>
+          <el-col
+            :xs="12"
+            :sm="8"
+            :md="8"
+            :lg="8"
+            :xl="8"
+            :key="key"
+            v-for="(item, key) in myNFTs"
+          >
+            <!-- <div
               class="contentbox"
               :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
-            >
-              <div class="info">
-                <span>{{item.bei}}倍</span>
-                <div>拥有：X{{item.have}}</div>
+            > -->
+            <div class="contentbox">
+              请使用编号显示对应图片{{ item }}
+              {{ key }}
+            </div>
+            <!-- <div class="info">
+                <span>{{ item.bei }}倍</span>
+                <div>拥有：X{{ item.have }}</div>
               </div>
               <img :src="item.icon" alt />
-              <p>大地原石勛章</p>
-            </div>
+              <p>大地原石勛章</p> -->
+            <!-- </div> -->
           </el-col>
         </el-row>
       </div>
@@ -54,62 +70,91 @@
 </template>
 <script>
 import infoBindBox from "./infoBindBox.vue";
+import { mint, myallnft } from "@/assets/js/web3.js";
+
 export default {
   components: {
-    infoBindBox
+    infoBindBox,
   },
   data() {
     return {
       screenWidth: this.GLOBAL.clientWidth,
       show: false,
+      power: [1000, 2500, 6500, 14500, 35000, 90000],
+      myNFTs: [],
       list: [
         {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           bei: 100,
           have: 20,
-          name: "大地原石勛章"
+          name: "大地原石勛章",
         },
         {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           bei: 100,
           have: 20,
-          name: "大地原石勛章"
+          name: "大地原石勛章",
         },
         {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           bei: 100,
           have: 20,
-          name: "大地原石勛章"
+          name: "大地原石勛章",
         },
         {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           bei: 100,
           have: 20,
-          name: "大地原石勛章"
+          name: "大地原石勛章",
         },
         {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           bei: 100,
           have: 20,
-          name: "大地原石勛章"
+          name: "大地原石勛章",
         },
         {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           bei: 100,
           have: 20,
-          name: "大地原石勛章"
-        }
-      ]
+          name: "大地原石勛章",
+        },
+      ],
     };
   },
-  mounted() {},
-  methods: {}
+  mounted() {
+    myallnft()
+      .then((nfts) => {
+        this.myNFTs = nfts;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  methods: {
+    goMint() {
+      // mint(nftName,level,power,res,author)nftName 可以传空 level 等级 1-5 power[1000,2500,6500,14500,35000,90000] res 随便 author 随便
+      mint(
+        "nftName",
+        Math.floor((Math.random() * 10) % 5) + 1,
+        this.power[Math.floor((Math.random() * 10) % 6) + 1],
+        "res"
+      )
+        .then((hash) => {
+          alert("铸造成功，交易Hash", hash);
+        })
+        .catch((err) => {
+          console.log(".......", err);
+          alert("铸造失败" + err);
+        });
+    },
+  },
 };
 </script>
 <style scoped lang="less">
@@ -187,12 +232,12 @@ export default {
           font-size: 80px;
           top: 0;
           text-align: center;
-          span{
- position: absolute;
-          left: 50%;
-          transform: translate(-50%,-50%);
-          font-size: 80px;
-          top: 50%;
+          span {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            top: 50%;
           }
         }
       }
