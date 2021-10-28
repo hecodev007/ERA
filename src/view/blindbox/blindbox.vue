@@ -51,7 +51,7 @@
               :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
             > -->
             <div class="contentbox">
-              请使用编号显示对应图片{{ item }}
+              TokenID: {{ item[0] }} Count:{{ item[1] }}
               {{ key }}
             </div>
             <!-- <div class="info">
@@ -147,11 +147,10 @@ export default {
         "res"
       )
         .then((hash) => {
-          alert("铸造成功，交易Hash", hash);
+          this.$toast("铸造成功，交易Hash" + hash, "success");
         })
         .catch((err) => {
-          console.log(".......", err);
-          alert("铸造失败" + err);
+          this.$toast("铸造失败" + err, "error");
         });
     },
   },

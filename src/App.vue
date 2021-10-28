@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <div :class="[navBarFixed == true ? 'navBarWrap' :'','header']">
+    <div :class="[navBarFixed == true ? 'navBarWrap' : '', 'header']">
       <el-col :xs="12" :sm="6" :md="4" :lg="3" :xl="8">
         <img
-          :class="['logoimg',this.screenWidth >= 600 ?'':'logoimg600']"
+          :class="['logoimg', this.screenWidth >= 600 ? '' : 'logoimg600']"
           src="./assets/img/logo.png"
           alt="logo"
         />
       </el-col>
       <el-col :xs="12" :sm="18" :md="18" :lg="20" :xl="20">
-        <div v-if="Object.keys(rightNavItems).length === 0?true:false" class="box">
+        <div
+          v-if="Object.keys(rightNavItems).length === 0 ? true : false"
+          class="box"
+        >
           <el-menu
             :default-active="this.$route.path"
             id="navid"
@@ -18,16 +21,14 @@
             :default-openeds="defaultOpeneds"
             router
           >
-        
-
             <el-menu-item
               :key="key"
-              v-for="(item,key) in leftNavItems"
+              v-for="(item, key) in leftNavItems"
               :index="item.activeIndex"
-            >{{item.name}}</el-menu-item>
-          
+              >{{ item.name }}</el-menu-item
+            >
           </el-menu>
-          <div class="navimg" >
+          <div class="navimg">
             <img src="./assets/img/en.png" alt class="luange" />
             <div @mouseenter="enter" v-if="!mypackage">
               <img
@@ -66,14 +67,14 @@
           </div>
 
           <div class="item">
-            <img :src="item.img" alt v-for="(item,key) in navImg" :key="key" />
+            <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
           </div>
         </div>
 
         <img
           class="navs"
           @click="drawer = true"
-          v-if="Object.keys(rightNavItems).length === 0?false:true"
+          v-if="Object.keys(rightNavItems).length === 0 ? false : true"
           src="./assets/img/navlist.png"
         />
       </el-col>
@@ -81,7 +82,13 @@
     <el-drawer :visible.sync="drawer" :size="size" :with-header="false">
       <div class="navimgList">
         <img src="./assets/img/en.png" alt class="luange" />
-        <img src="./assets/img/package.png" v-if="!mypackage" alt class="package" @click="linkShow" />
+        <img
+          src="./assets/img/package.png"
+          v-if="!mypackage"
+          alt
+          class="package"
+          @click="linkShow"
+        />
         <img
           src="./assets/img/mypackage.png"
           alt
@@ -99,20 +106,23 @@
           :default-openeds="defaultOpeneds"
           router
         >
- 
           <el-menu-item
             :key="key"
-            v-for="(item,key) in rightNavItems"
+            v-for="(item, key) in rightNavItems"
             :index="item.activeIndex"
-          >{{item.name}}</el-menu-item>
-
+            >{{ item.name }}</el-menu-item
+          >
         </el-menu>
       </div>
       <div class="itemList">
-        <img :src="item.img" alt v-for="(item,key) in navImg" :key="key" />
+        <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
       </div>
     </el-drawer>
-    <linkPackage @getConfirm="getConfirmCheck" @getCancel="show = false" :show.sync="show"></linkPackage>
+    <linkPackage
+      @getConfirm="getConfirmCheck"
+      @getCancel="show = false"
+      :show.sync="show"
+    ></linkPackage>
 
     <NFTmedule
       @getConfirmNFT="getConfirmNFT"
@@ -127,13 +137,13 @@
 <script>
 import NFTmedule from "./components/NFTmedule.vue";
 import linkPackage from "./components/linkPackage.vue"; // 第一步 先使用import导入你要在该组件中使用的子组件
-import {getContract} from "@/assets/js/web3.js"
+import { getContract } from "@/assets/js/web3.js";
 
 export default {
   name: "App",
   components: {
     linkPackage,
-    NFTmedule
+    NFTmedule,
   },
   data() {
     return {
@@ -143,7 +153,7 @@ export default {
         { name: "NFT", activeIndex: "/blindbox", index: "2" },
         { name: "Market", activeIndex: "/market", index: "3" },
         // { name: "Pledge Mining", activeIndex: "/arrowheads", index: "4" },
-        { name: "Farms", activeIndex: "/FARMS", index: "4" }
+        { name: "Farms", activeIndex: "/FARMS", index: "4" },
         // { name: "Contract" },
         // { name: "Backstage" }
       ],
@@ -159,33 +169,32 @@ export default {
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
-          link: ""
+          link: "",
         },
         {
           img: require(`@/assets/img/navRight2.png`),
-          link: ""
+          link: "",
         },
         {
           img: require(`@/assets/img/navRight3.png`),
-          link: ""
+          link: "",
         },
         {
           img: require(`@/assets/img/navRight4.png`),
-          link: ""
-        }
-      ]
+          link: "",
+        },
+      ],
     };
   },
   computed: {
-    leftNavItems: function() {
+    leftNavItems: function () {
       return this.screenWidth >= 600 ? this.navItems : {};
     },
-    rightNavItems: function() {
+    rightNavItems: function () {
       return this.screenWidth < 600 ? this.navItems : {};
-    }
+    },
   },
   mounted() {
-    
     window.onresize = () => {
       this.screenWidth = document.body.clientWidth;
       this.GLOBAL.clientWidth = this.screenWidth;
@@ -197,10 +206,9 @@ export default {
     this.activeNav();
     // 事件监听滚动条
     window.addEventListener("scroll", this.watchScroll);
-    
-    
+
     // this.$toast('提示文字','success')
-   this.$toast('提示文字','error')
+    this.$toast("提示文字", "error");
   },
   watch: {
     $route(to, from) {
@@ -218,12 +226,12 @@ export default {
           this.timer = false;
         }, 400);
       }
-    }
+    },
   },
   methods: {
     activeNav() {
       let path = this.$route.path;
-      let thisNav = this.navItems.find(item => {
+      let thisNav = this.navItems.find((item) => {
         return item.activeIndex.includes(path);
       });
       if (thisNav) {
@@ -232,7 +240,7 @@ export default {
         this.GLOBAL.clientWidth = this.screenWidth;
       }
     },
- 
+
     watchScroll() {
       var scrollTop =
         window.pageYOffset ||
@@ -247,16 +255,26 @@ export default {
     },
     //获取钱包链接选择
     getConfirmCheck(v) {
-      console.log(v);
+      console.log("choise wallet", v);
+      switch (v) {
+        case 0:
+          getContract()
+            .then(() => {
+              this.$toast("连接成功", "success");
+              this.show = false;
+            })
+            .catch((err) => {
+              this.$toast("连接metamask出错" + err, "success");
+            });
+          break;
+
+        default:
+          break;
+      }
     },
     //我的钱包
-    linkPackageShow() { 
+    linkPackageShow() {
       this.showNFT = true;
-            getContract().then(()=>{
-        alert("钱包连接成功")
-      }).catch(err=>{
-        alert("连接metamask 出错",err)
-      })
     },
     //链接钱包
     linkShow() {
@@ -271,14 +289,14 @@ export default {
     },
     out() {
       this.mouse = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style >
 @import "./assets/font/font.css";
-body{
+body {
   margin: 0;
 }
 #app {
