@@ -139,25 +139,17 @@ export default {
   },
   data() {
     return {
-      screenWidth: this.GLOBAL.clientWidth,
-      bannerbjIMg: "@/assets/img/bannerbj600.png",
+      screenWidth: this.GLOBAL.clientWidth, 
       activeNav: 1,
       show: false,
       showBuy: false
     };
   },
-  mounted() {
-    this.setDialogWidth();
+  mounted() { 
     console.log(this.screenWidth);
   },
   methods: {
-    setDialogWidth() {
-      if (this.screenWidth < 600) {
-        this.bannerbjIMg = require("@/assets/img/bannerbj.png");
-      } else {
-        this.bannerbjIMg = require("@/assets/img/bannerbj.png");
-      }
-    },
+  
     getConfirmInfo(v) {
       console.log(v);
     },

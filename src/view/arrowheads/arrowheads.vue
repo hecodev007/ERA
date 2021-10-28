@@ -122,8 +122,7 @@ export default {
   },
   data() {
     return {
-      screenWidth: this.GLOBAL.clientWidth,
-      bannerbjIMg: "@/assets/img/bannerbj600.png",
+      screenWidth: this.GLOBAL.clientWidth, 
       showarrowItem: false, //arrowItem
       showarrowUp: false,
       arrowbtn1: 1,
@@ -197,11 +196,6 @@ export default {
   },
   methods: {
     setDialogWidth() {
-      if (this.screenWidth < 600) {
-        this.bannerbjIMg = require("@/assets/img/bannerbj.png");
-      } else {
-        this.bannerbjIMg = require("@/assets/img/bannerbj.png");
-      }
     },
     getConfirmInfo() {},
     getConfirmUp() {},

@@ -298,6 +298,7 @@ export default {
 @import "./assets/font/font.css";
 body {
   margin: 0;
+  background: rgba(19, 29, 23, 1);
 }
 #app {
   color: #fff;
