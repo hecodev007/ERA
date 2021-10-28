@@ -205,7 +205,7 @@ export default {
         this.home4 = require("@/assets/img/home6004.png");
         this.btn = require("@/assets/img/btnn600.png");
       } else {
-        this.bannerbjIMg = require("@/assets/img/bannerBJ.png");
+        this.bannerbjIMg = require("@/assets/img/bannerbjs.png");
         this.home1 = require("@/assets/img/home1.png");
         this.home2 = require("@/assets/img/home2.png");
         this.home3 = require("@/assets/img/home3.png");
