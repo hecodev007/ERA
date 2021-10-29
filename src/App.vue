@@ -207,8 +207,8 @@ export default {
     // 事件监听滚动条
     window.addEventListener("scroll", this.watchScroll);
 
-    // this.$toast('提示文字','success')
-    this.$toast("提示文字", "error");
+    // // this.$toast('提示文字','success')
+    // this.$toast("提示文字", "error");
   },
   watch: {
     $route(to, from) {
@@ -261,10 +261,12 @@ export default {
           getContract()
             .then(() => {
               this.$toast("连接成功", "success");
+              this.mypackage = true
               this.show = false;
             })
             .catch((err) => {
-              this.$toast("连接metamask出错" + err, "success");
+              this.$toast("连接metamask出错" + err, "error");
+               this.show = false;
             });
           break;
 
@@ -307,6 +309,9 @@ body {
 }
 #app div {
   font-family: "ProximaNova-Xbold.woff";
+}
+.tittleFont{
+  font-family: "Share-Tech";
 }
 /* .pcmain{
   min-height: 100vh;
@@ -491,6 +496,10 @@ li,
 ul {
   margin: 0;
   padding: 0;
+}
+ .el-dialog__body {
+  background: rgba(38, 53, 44, 1) !important;
+  padding: 20px;
 }
 .pcmain .el-dialog--center .el-dialog__body {
   background: rgba(38, 53, 44, 1) !important;

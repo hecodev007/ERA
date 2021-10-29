@@ -46,12 +46,13 @@ export default {
     transform: translate(-50%, -50%);
     background-color: rgba(44, 134, 80, 0.9);
     overflow: hidden;
-    
+    padding: 0 10px;
     line-height: 82px;
     // display: flex;
     text-align: center;
     align-items: center;
     color: #fff;
+    z-index: 999;
     div {
       text-align: center;
     }

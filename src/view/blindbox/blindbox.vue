@@ -44,23 +44,23 @@
             :lg="8"
             :xl="8"
             :key="key"
-            v-for="(item, key) in myNFTs"
+            v-for="(item, key) in list"
           >
-            <!-- <div
+            <div
               class="contentbox"
               :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
-            > -->
-            <div class="contentbox">
+            >
+            <!-- <div class="contentbox">
               TokenID: {{ item[0] }} Count:{{ item[1] }}
               {{ key }}
-            </div>
-            <!-- <div class="info">
+            </div> -->
+            <div class="info">
                 <span>{{ item.bei }}倍</span>
                 <div>拥有：X{{ item.have }}</div>
               </div>
               <img :src="item.icon" alt />
-              <p>大地原石勛章</p> -->
-            <!-- </div> -->
+              <p>大地原石勛章</p>
+            </div>
           </el-col>
         </el-row>
       </div>
