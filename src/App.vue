@@ -334,14 +334,15 @@ body {
 }
 #app {
   color: #fff;
-  font-family: "ProximaNova-Xbold.woff";
+  font-family: "Share-Tech";
   background: rgba(19, 29, 23, 1);
 }
 #app div {
-  font-family: "ProximaNova-Xbold.woff";
+  font-family: "Share-Tech";
 }
 .tittleFont{
-  font-family: "Share-Tech";
+
+  font-family: "ProximaNova-Xbold.woff"!important;
 }
 /* .pcmain{
   min-height: 100vh;
@@ -395,6 +396,7 @@ body {
 .el-menu-item {
   background: 0 !important;
   color: #fff !important;
+   font-family: "ProximaNova-Xbold.woff";
 }
 
 .header .el-menu--horizontal > .el-menu-item {

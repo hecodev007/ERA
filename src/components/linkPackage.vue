@@ -2,7 +2,7 @@
   <div class="mask">
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible"   :width="dialogWidth" center>
       <div class="main">
-        <div class="headerTop">
+        <div class="headerTop tittleFont">
           連結到錢包
           <img src="../assets/img/close.png" alt class="close" @click="closemodule" />
         </div>
@@ -77,13 +77,17 @@ export default {
 };
 </script>
 <style scoped lang="less">
- 
+ .tittleFont{
+
+  font-family: "ProximaNova-Xbold.woff";
+}
 .main {
   color: #fff; 
 }
 .headerTop {
   text-align: center;
   color: #fff;
+
 }
 .close {
   width: 25x;

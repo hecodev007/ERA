@@ -12,7 +12,7 @@
             <!-- :class="['pool', this.screenWidth >= 600?'':'toppoll']" -->
             <div class="pool">
               <div class="title">Angel valley Mining Pool</div>
-              <div class="count">23,456,231</div>
+              <div class="count tittleFont">23,456,231</div>
               <p class="yu">Remaining prize pool(DXCT) ≈ $6,170,505</p>
               <img src="@/assets/img/logo.png" v-if="this.screenWidth < 600" class="logos" alt />
             </div>
@@ -20,33 +20,33 @@
             <div class="rule">
               <div class="poolLeft">
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>Total Mining Power</p>
                 </div>
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>Total Staked Amount</p>
                 </div>
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>Total Staked Tokens(DXCT) ≈ $9,201,761</p>
                 </div>
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>(DXCT)≈$0</p>
                 </div>
               </div>
               <div class="poolRight">
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>My Mining Power</p>
                 </div>
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>My Staked Amount</p>
                 </div>
                 <div>
-                  <span>13,253,571</span>
+                  <span class="tittleFont">13,253,571</span>
                   <p>My Staked Tokens(DXCT)≈ $0</p>
                 </div>
                 <div class>
@@ -365,6 +365,10 @@ export default {
       }
     }
   }
+}
+.tittleFont{
+
+  font-family: "ProximaNova-Xbold.woff" !important;
 }
 .main {
   // padding: 140px 0;

@@ -2,7 +2,7 @@
   <div class="mask">
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
       <div class="main"  :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
-        <div class="headerTop">
+        <div class="headerTop tittleFont">
           <div class="goback" @click="goback" v-if="avtiveHeader">
             <i class="el-icon-arrow-left"></i>
             My NFT
@@ -74,7 +74,7 @@
             <div class="textname">Starting price</div>
             <div class="exchange">
               <span class="color">372136129361</span>
-              <span>≈ $ 2812</span>
+              <span class="tittleFont">≈ $ 2812</span>
             </div>
           </div>
 
@@ -103,7 +103,7 @@
             <div class="textname">Starting price</div>
             <div class="exchange">
               <span class="color">372136129361</span>
-              <span>≈ $ 2812</span>
+              <span class="tittleFont">≈ $ 2812</span>
             </div>
           </div>
           <div class="margin0">

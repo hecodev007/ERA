@@ -24,7 +24,7 @@
                 
                 <div class="item">
                   <span>銷售價格（ERA)≈ 816美元</span>
-                  <p>238,647,324</p>
+                  <p class="tittleFont">238,647,324</p>
                 </div>
               </div>
         

@@ -59,8 +59,8 @@
                   <span>（#002102）</span>
                 </p>
               </div>
-              <div class="width2 color">200</div> 
-              <div class="width2 color">200</div>
+              <div class="width2 color tittleFont">200</div> 
+              <div class="width2 color tittleFont">200</div>
               <div class="width2">交易中</div>
               <div class="width3">
                 <img src="../../assets/img/detail.png" alt />

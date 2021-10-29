@@ -101,9 +101,9 @@
                   <div class="item">
                     <span class="wid1" v-if="this.screenWidth >= 600">1112313213123123121</span>
                     <span class="wid2">13jh…783123sa</span>
-                    <span class="colo2 wid3">10,000</span>
+                    <span class="colo2 wid3 tittleFont">10,000</span>
                     <span class="wid4">20121.10.02 16:23:43</span>
-                    <span class="colo2 wid5" v-if="this.screenWidth >= 600">238,646,124</span>
+                    <span class="colo2 wid5 tittleFont" v-if="this.screenWidth >= 600">238,646,124</span>
                     <span class="wid6" v-if="this.screenWidth >= 600">拍賣中</span>
                   </div>
                 </div>
@@ -392,6 +392,10 @@ img {
       }
     }
   }
+   .info .table .dataTB .colo2 {
+    color: rgba(112, 244, 165, 1);
+  }
+   
 }
 .main {
   .caintner .info {
@@ -410,13 +414,13 @@ img {
       width: 100%;
     }
   }
-  .caintner .info .table .dataTB .wid3 {
+   .info .table .dataTB .wid3 {
     text-align: center;
   }
-  .caintner .info .table .dataTB .colo2 {
+   .info .table .dataTB .colo2 {
     color: rgba(112, 244, 165, 1);
   }
-  .caintner .info .table .dataTB .wid4 {
+   .info .table .dataTB .wid4 {
     color: rgba(112, 244, 165, 1);
   }
 }
