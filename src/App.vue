@@ -137,8 +137,9 @@
 <script>
 import NFTmedule from "./components/NFTmedule.vue";
 import linkPackage from "./components/linkPackage.vue"; // 第一步 先使用import导入你要在该组件中使用的子组件
-import { getContract } from "@/assets/js/web3.js";
-
+import { initContract } from "@/assets/js/web3.js";
+import { _WalletContract } from "@/assets/js/walletconnect.js";
+import { _MeatMaskContract } from "@/assets/js/metamask.js";
 export default {
   name: "App",
   components: {
@@ -253,12 +254,22 @@ export default {
         this.navBarFixed = false;
       }
     },
+    newContract() {
+      initContract().then(() => {
+          this.$toast("连接成功", "success");
+          this.show = !this.show;
+        })
+        .catch((err) => {
+          this.$toast("连接失败" + err, "error");
+          this.show = !this.show;
+        });
+    },
     //获取钱包链接选择
     getConfirmCheck(v) {
       console.log("choise wallet", v);
       switch (v) {
         case 0:
-          getContract()
+          _MeatMaskContract()
             .then(() => {
               this.$toast("连接成功", "success");
               this.mypackage = true
@@ -268,6 +279,25 @@ export default {
               this.$toast("连接metamask出错" + err, "error");
                this.show = false;
             });
+          break;
+        case 1:
+          _WalletContract(
+            (accountsChanged) => {
+              console.log("accountsChanged", accountsChanged);
+              this.$toast("切换账户", "success");
+            },
+            (disconnect) => {
+              this.$toast("连接已断开，code" + disconnect, "error");
+            },
+            (accounts) => {
+              console.log("accounts", accounts);
+              this.newContract();
+              
+            },
+            (error) => {
+              this.$toast(error, "error");
+            }
+          );
           break;
 
         default:
@@ -281,7 +311,7 @@ export default {
     //链接钱包
     linkShow() {
       // this.show = true
-      this.show = true;
+      this.show = !this.show;
     },
     //NFT方法
     getConfirmNFT(v) {},

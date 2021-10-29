@@ -70,7 +70,7 @@
 </template>
 <script>
 import infoBindBox from "./infoBindBox.vue";
-import { mint, myallnft } from "@/assets/js/web3.js";
+import { mint, myAllNFT } from "@/assets/js/web3.js";
 
 export default {
   components: {
@@ -129,7 +129,7 @@ export default {
     };
   },
   mounted() {
-    myallnft()
+    myAllNFT()
       .then((nfts) => {
         this.myNFTs = nfts;
       })
