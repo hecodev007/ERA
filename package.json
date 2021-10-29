@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@walletconnect/client": "^1.6.6",
+    "@walletconnect/qrcode-modal": "^1.6.6",
     "base-x": "^3.0.8",
     "bignumber.js": "^9.0.1",
     "core-js": "^3.6.5",
