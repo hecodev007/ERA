@@ -81,14 +81,16 @@
 
       <div class="main600">
         <el-row>
+        
           <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
             <div class="item" @click="clkItem">
               <div class="imgItem">
-                <div>
+                 <div>
                   <span>100倍</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                <p>大地原石勛章 (ID:002101)</p>
+                <p>大地原石勛章 </p>
+                <p>(ID:002101)</p>
               </div>
               <div class="infoItme">
                 <div class="info">
@@ -112,7 +114,33 @@
                   <span>100倍</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                <p>大地原石勛章 (ID:002101)</p>
+                <p>大地原石勛章 </p>
+                <p>(ID:002101)</p>
+              </div>
+              <div class="infoItme">
+                <div class="info">
+                  <span>最新出價</span>
+                  <span class="weight">
+                    <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
+                    333,234,567,676
+                  </span>
+                </div>
+                <div class="info" v-if="activeNav==1">
+                  <span>剩餘時間</span>
+                  <span class="weight">12:12:12</span>
+                </div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
+            <div class="item" @click="clkItem">
+              <div class="imgItem">
+                 <div>
+                  <span>100倍</span>
+                </div>
+                <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
+                <p>大地原石勛章 </p>
+                <p>(ID:002101)</p>
               </div>
               <div class="infoItme">
                 <div class="info">
@@ -269,11 +297,11 @@ export default {
           .xz {
             width: 40%;
             display: block;
-            margin: 10px auto;
+            margin: 10px auto 30px;
           }
           p {
             text-align: center;
-            margin-top: 30px;
+            line-height: 20px;
           }
         }
         .infoItme {
