@@ -1,43 +1,14 @@
-@font-face {
-    font-family: 'Futura-Bold-5';
-    src: url('/Futura/Futura-Bold-5.ttf') format('truetype');
+
+  @font-face {
+    font-family: 'ProximaNova-Xbold.woff';
+    src: url('./ProximaNova-Xbold.woff.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-size: 14px;
   }
   @font-face {
-    font-family: 'Futura-Book-2';
-    src: url('./Futura/Futura-Book-2.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Futura-Heavy-4';
-    src: url('./Futura/Futura-Heavy-4.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Futura-Light-3';
-    src: url('./Futura/Futura-Light-3.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Futura-Medium-6';
-    src: url('./Futura/Futura-Medium-6.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Gen2';
-    src: url('./GenJyuuGothicMonospaceHeavy2.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-size: 18px;
-  }
-  @font-face {
-    font-family: 'bolden';
-    src: url('./bolden.ttf') format('truetype');
+    font-family: 'Share-Tech.woff';
+    src: url('./Share-Tech.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-size: 14px;

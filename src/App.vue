@@ -302,11 +302,11 @@ body {
 }
 #app {
   color: #fff;
-  font-family: "bolden";
+  font-family: "ProximaNova-Xbold.woff";
   background: rgba(19, 29, 23, 1);
 }
 #app div {
-  font-family: "bolden";
+  font-family: "ProximaNova-Xbold.woff";
 }
 /* .pcmain{
   min-height: 100vh;
