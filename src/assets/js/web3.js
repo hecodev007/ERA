@@ -6,9 +6,9 @@ import base from "./base.js"
 
 const initContract = () => {
     return new Promise((resolve, reject) => {
-            base.contract = new base.web3.eth.Contract(JSON.parse(base.abi), base.contractAddress);
-            resolve(base.contract);
-        })
+        base.contract = new base.web3.eth.Contract(JSON.parse(base.abi), base.contractAddress);
+        resolve(base.contract);
+    })
 }
 
 
@@ -27,25 +27,25 @@ const initContract = () => {
 
 
 const myAllNFT = async () => {
-    if (base.contract ==null){
-         throw new Error("please connect the wallet");
+    if (base.contract == null) {
+        throw new Error("please connect the wallet");
     }
 
     var count = await base.contract.methods.balanceOf(base.accounts[0]).call()
-    console.log("count",count)
+    console.log("count", count)
     var map = {};
-            for (let index = 0; index < count; index++) {
-          var tokenID =  await  base.contract.methods.tokenOfOwnerByIndex(base.accounts[0], index).call({})
-          var info = await  base.contract.methods.getNft(tokenID).call({})
-          if (map[tokenID]){
-            map[tokenID]["count"]++
-          }else{
-              //author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569" level: "1" name: "10" power: "1000" res: "1"
-            map[tokenID]= {"count":0,"author":info.author,"level":info.level,"name":info.level,"power":info.power,"res":info.res}
-          }
-        }      
-        
-        return map; 
+    for (let index = 0; index < count; index++) {
+        var tokenID = await base.contract.methods.tokenOfOwnerByIndex(base.accounts[0], index).call({})
+        var info = await base.contract.methods.getNft(tokenID).call({})
+        if (map[info.level]) {
+            map[info.level]["count"]++
+        } else {
+            //author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569" level: "1" name: "10" power: "1000" res: "1"
+            map[info.level] = { "count": 0, "author": info.author, "level": info.level, "name": info.level, "power": info.power, "res": info.res }
+        }
+    }
+
+    return map;
 }
 
 
