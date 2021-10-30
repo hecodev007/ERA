@@ -36,7 +36,6 @@
         <p>NTF計數666/10000</p>
       </div>
       <div class="caiterMain">
-        {{myNFTs}}
         <el-row>
           <el-col
             :xs="12"
@@ -45,22 +44,22 @@
             :lg="8"
             :xl="8"
             :key="key"
-            v-for="(item, key) in list"
+            v-for="(item, key) in myNFTs"
           >
             <div
               class="contentbox"
-              :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
+              :style="`background: url(${item.res}) no-repeat center;background-size: contain;`"
             >
             <!-- <div class="contentbox">
               TokenID: {{ item[0] }} Count:{{ item[1] }}
               {{ key }}
             </div> -->
             <div class="info">
-                <span>{{ item.bei }}倍</span>
-                <div>拥有：X{{ item.have }}</div>
+                <span>{{ item.power }}倍</span>
+                <div>拥有：X{{ item.count }}</div>
               </div>
-              <img :src="item.icon" alt />
-              <p>大地原石勛章</p>
+              <img :src="item.res" alt />
+              <p>Token:{{key}}</p>
             </div>
           </el-col>
         </el-row>
