@@ -1,7 +1,7 @@
 <template>
   <div class="mask">
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
-      <div class="main"  :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
+      <div  :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
         <div class="headerTop tittleFont">
           <div class="goback" @click="goback" v-if="avtiveHeader">
             <i class="el-icon-arrow-left"></i>
@@ -15,120 +15,123 @@
             @click="closemodule"
           />
         </div>
-        <div v-if="!avtiveHeader">
-           <div class="taboption">
-             <div :class="activeOption==1?'activeTab':''"  @click="activeTab(1)">ALL<span>11</span></div>
-              <div :class="activeOption==2?'activeTab':''"  @click="activeTab(2)">Auction<span>11</span></div>
-               <div :class="activeOption==3?'activeTab':''" @click="activeTab(3)">Sell<span>11</span></div>
-           </div>
-          <div class="list">
-            <div class="tbHeader">
-              <span>name</span>
-              <span>ID</span>
-              <span>Opeartion</span>
+        <div>
+          <div v-if="!avtiveHeader">
+            <div class="taboption">
+              <div :class="activeOption==1?'activeTab':''"  @click="activeTab(1)">ALL<span>11</span></div>
+                <div :class="activeOption==2?'activeTab':''"  @click="activeTab(2)">Auction<span>11</span></div>
+                <div :class="activeOption==3?'activeTab':''" @click="activeTab(3)">Sell<span>11</span></div>
             </div>
-            <div class="tbody">
-              <div class="dataNo">
-                <img src="../assets/img/nodata.png" alt />
-                <p class="textNO">暫無數據</p>
+            <div class="list">
+              <div class="tbHeader">
+                <span>name</span>
+                <span>ID</span>
+                <span>Opeartion</span>
               </div>
-              <div class="item">
-                <div :class="['width1',dialogWidth=='90%'?'width1active':'']">
-                  <img src="../assets/img/xunzhaung1.png" alt />
-                  <p>泉水琉璃勛章</p>
+              <div class="tbody">
+                <div class="dataNo">
+                  <img src="../assets/img/nodata.png" alt />
+                  <p class="textNO">暫無數據</p>
                 </div>
-                <div class="width2">200</div>
-                <div :class="['width3',dialogWidth=='90%'?'width3active':'']">
-                  <img src="../assets/img/paimai.png" alt @click="check(1)" v-if="routeQurydata==1" />
-                  <img src="../assets/img/sell.png" alt @click="check(2)" />
+                <div class="item">
+                  <div :class="['width1',dialogWidth=='90%'?'width1active':'']">
+                    <img src="../assets/img/xunzhaung1.png" alt />
+                    <p>泉水琉璃勛章</p>
+                  </div>
+                  <div class="width2">200</div>
+                  <div :class="['width3',dialogWidth=='90%'?'width3active':'']">
+                    <img src="../assets/img/paimai.png" alt @click="check(1)" v-if="routeQurydata==1 && routeQuryDetail==1" />
+                    <img src="../assets/img/sell.png" alt @click="checksell(2)" v-if="routeQuryDetail==1" />
+
+                    <img src="../assets/img/shichang.png" alt @click="checkDetail(1)" v-if="routeQuryDetail==2" />
+                    <img src="../assets/img/sellD.png" alt @click="checkDetail(2)" v-if="routeQuryDetail==2" />
+                  </div>
+                </div>
+                <div class="item">
+                  <div :class="['width1',dialogWidth=='90%'?'width1active':'']">
+                    <img src="../assets/img/xunzhaung1.png" alt />
+                    <p>泉水琉璃勛章</p>
+                  </div>
+                  <div class="width2">200</div>
+                  <div :class="['width3',dialogWidth=='90%'?'width3active':'']">
+                    <img src="../assets/img/markeD.png" alt @click="checkDetail(1)"   />
+                    <img src="../assets/img/sellD.png" alt @click="checkDetail(2)"   />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- 質押 -->
-        <div class="yabao paimai" v-if="avtiveHeader==2">
-          <!-- <div class="iconMain">
-            <img src="../assets/img/xunzhaung1.png" alt class="iconxunzhang" />
-            <div class="boxname">
-              <div class="name">泉水琉璃勛章</div>
-              <span>ID：002102</span>
-            </div>
-          </div>
-          <div class="textname">算力</div>
-          <div class="slcount">
-            <span class="slcount">+200</span>
-          </div>
-          <div class="ntfQR">
-            <img src="../assets/img/ntfQR.png" alt />
-          </div>-->
+          <!-- 質押 -->
+          <div class="yabao paimai" v-if="avtiveHeader==2">
+  
 
-          <div class="iconMain">
-            <img src="../assets/img/xunzhaung1.png" alt class="iconxunzhang" />
-            <div class="boxname">
-              <div class="name">泉水琉璃勛章</div>
-              <span>ID：002102</span>
+            <div class="iconMain">
+              <img src="../assets/img/xunzhaung1.png" alt class="iconxunzhang" />
+              <div class="boxname">
+                <div class="name">泉水琉璃勛章</div>
+                <span>ID：002102</span>
+              </div>
             </div>
-          </div>
-          <div class="margin0">
-            <div class="textname">Starting price</div>
-            <div class="exchange">
-              <span class="color">372136129361</span>
-              <span class="tittleFont">≈ $ 2812</span>
+            <div class="margin0">
+              <div class="textname">Starting price</div>
+              <div class="exchange">
+                <span class="color">372136129361</span>
+                <span class="tittleFont">≈ $ 2812</span>
+              </div>
             </div>
-          </div>
 
-          <div class="ntfQR">
-            <img src="../assets/img/ntfQRsell.png" alt />
-          </div>
-          <div class="rule">
-            <h6>Note</h6>
-            <ul>
-              <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
+            <div class="ntfQR">
+              <img src="../assets/img/ntfQRsell.png" alt />
+            </div>
+            <div class="rule">
+              <h6>Note</h6>
+              <ul>
+                <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
 
-              <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
-            </ul>
-          </div>
-        </div>
-        <!-- 拍卖 -->
-        <div class="yabao paimai" v-if="avtiveHeader==1">
-          <div class="iconMain">
-            <img src="../assets/img/xunzhaung1.png" alt class="iconxunzhang" />
-            <div class="boxname">
-              <div class="name">泉水琉璃勛章</div>
-              <span>ID：002102</span>
+                <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
+              </ul>
             </div>
           </div>
-          <div class="margin0">
-            <div class="textname">Starting price</div>
-            <div class="exchange">
-              <span class="color">372136129361</span>
-              <span class="tittleFont">≈ $ 2812</span>
+          <!-- 拍卖 -->
+          <div class="yabao paimai" v-if="avtiveHeader==1">
+            <div class="iconMain">
+              <img src="../assets/img/xunzhaung1.png" alt class="iconxunzhang" />
+              <div class="boxname">
+                <div class="name">泉水琉璃勛章</div>
+                <span>ID：002102</span>
+              </div>
             </div>
-          </div>
-          <div class="margin0">
-            <div class="textname">Initial countdown</div>
-            <div class="slcount">
-              <span :class="[ time==1? 'bjtime':'']">12小时</span>
-              <span :class="[ time==2? 'bjtime':'']">24小时</span>
+            <div class="margin0">
+              <div class="textname">Starting price</div>
+              <div class="exchange">
+                <span class="color">372136129361</span>
+                <span class="tittleFont">≈ $ 2812</span>
+              </div>
             </div>
-          </div>
-          <div class="margin0">
-            <div class="textname">
-              Bid range:：
-              <span class="color">10% fixed price increase</span>
+            <div class="margin0">
+              <div class="textname">Initial countdown</div>
+              <div class="slcount">
+                <span :class="[ time==1? 'bjtime':'']">12小时</span>
+                <span :class="[ time==2? 'bjtime':'']">24小时</span>
+              </div>
             </div>
-          </div>
-          <div class="ntfQR">
-            <img src="../assets/img/ntfQR.png" alt />
-          </div>
-          <div class="rule">
-            <h6>Note</h6>
-            <ul>
-              <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
+            <div class="margin0">
+              <div class="textname">
+                Bid range:：
+                <span class="color">10% fixed price increase</span>
+              </div>
+            </div>
+            <div class="ntfQR">
+              <img src="../assets/img/ntfQR.png" alt />
+            </div>
+            <div class="rule">
+              <h6>Note</h6>
+              <ul>
+                <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
 
-              <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
-            </ul>
+                <li>1、注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明注意事項說明，注意事項說明注意事項說明注意事項說明</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -157,6 +160,7 @@ export default {
       time: "1",
       routeQurydata:this.routeQury,
       activeOption:1,
+      routeQuryDetail:1,//详情 
     };
   },
   watch: {
@@ -193,16 +197,23 @@ export default {
       this.avtiveHeader = null;
     },
     check(item) {
-      this.avtiveHeader = item;
-      if (item == 1) {
-        this.avtiveText = "Auction";
-      } else {
-        this.avtiveText = "質押";
-      }
-
+      console.log(item)
       //选择按钮 押宝 拍卖
       this.$emit("getConfirmNFT", item);
     },
+     checksell(index) {
+      this.$emit("getConfirmNFTsell", index);
+    },
+    //checkDetail
+    checkDetail(v){
+      console.log(v)
+      if(v==1){
+        this.avtiveHeader=1
+      }else{
+        this.avtiveHeader=2
+      }
+    },
+   
     // 点击弹框下的关闭
     closemodule(v) {
       this.$emit("getCancelNFT", v);
@@ -224,6 +235,7 @@ export default {
   text-align: center;
   color: #fff;
   position: relative;
+      height: 20px;
   .goback {
     position: absolute;
     left: 0;
@@ -340,7 +352,7 @@ export default {
 }
 }
 .yabao {
-  margin-top: 30px;
+ 
   .iconMain {
     display: flex;
     justify-content: center;
@@ -384,6 +396,7 @@ export default {
 .paimai {
   max-height: 400px;
   overflow: scroll;
+  
   .iconMain {
     margin: 20px 0;
   }
