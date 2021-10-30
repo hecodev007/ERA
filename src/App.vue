@@ -126,6 +126,7 @@
 
     <NFTmedule
       @getConfirmNFT="getConfirmNFT"
+      @getConfirmNFTsell="getConfirmNFTsell"
       @getCancelNFT="showNFT = false"
       :showNFT.sync="showNFT"
       :routeQury="1"
@@ -316,8 +317,27 @@ export default {
       this.show = !this.show;
     },
     //NFT方法
-    getConfirmNFT(v) {},
-
+    getConfirmNFT(v) { 
+      this.showNFT = false
+        this.$router.push({
+          path: "/marketInfo",
+          query: {
+            actives: this.actives,
+            souse:"my"
+          }
+        });
+      
+    },
+    getConfirmNFTsell(index){
+      this.showNFT = false
+      this.$router.push({
+        path: "/marketBuyInfo",
+        query: {
+          actives: this.actives,
+          souse:"my"
+        }
+      });
+    },
     enter() {
       this.mouse = false;
     },

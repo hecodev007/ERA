@@ -2,7 +2,11 @@
   <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
     <div class="caintner">
       <div class="headerMarket">
-        <div class="nav">
+        <div class="nav" v-if="souse=='my'">
+          Market >
+          <span class="color">NFT name（ID:002101）</span>
+        </div>
+        <div class="nav" v-else>
           <img v-if="activeNav==1" src="@/assets/img/paimai.png" alt />
         </div>
         <div class="goback" @click="goback">
@@ -27,11 +31,15 @@
                   <p class="tittleFont">238,647,324</p>
                 </div>
               </div>
-        
-              <div class="staus">Connect wallet</div>
-              <!-- <div class="bug" >NFT Not collected</div> -->
-             
-
+              <div v-if="souse=='my'">
+                 <div class="mystaus" @click="auction">Cancel sale</div>
+                 <div class="link">NFT has been sold</div>
+                 <div class="bug">Repost the auction</div>
+              </div>
+               <div v-else>
+                <div class="staus">Connect wallet</div>
+                <div class="bug" >NFT Not collected</div> 
+               </div>
               
               <div class="btn">
                 <img src="../../assets/img/lsdata.png" alt />
@@ -80,27 +88,48 @@
       </div>
     </div>
     <buymarket @getConfirmear="getConfirmear" @getCancel="showBuy = false" :showBuy.sync="showBuy"></buymarket>
+   <auctionsell @getCancelNFT="getCancelNFT" @getConfirmshowauction="getConfirmshowauction" @getCancel="showauction = false" :showauction.sync="showauction"></auctionsell>
+
   </div>
 </template>
 <script>
 import buymarket from "./buymarket.vue";
+
+import auctionsell from "./auctionsell.vue";
 export default {
   components: {
-    buymarket
+    buymarket,
+    auctionsell
   },
   data() {
     return {
       screenWidth: this.GLOBAL.clientWidth, 
       activeNav: 1,
-      showBuy: false
+      showBuy: false,
+       actives:null,//当前的id
+      souse:"",//来源，区分我的，市场
+      showauction:false
     };
   },
   mounted() {
     this.setDialogWidth();
+     this.actives =  this.$route.query.actives
+   this.souse = this.$route.query.souse
     console.log(this.screenWidth);
   },
   methods: {
     setDialogWidth() {
+    },
+   
+    //sell
+    auction(){
+      this.showauction = true
+    },
+     getConfirmshowauction(){
+
+    },
+     getCancelNFT(){
+      this.showauction = false
     },
     //era
     getConfirmear(v) {

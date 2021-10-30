@@ -139,7 +139,7 @@
                   <span>100倍</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                <p>大地原石勛章 </p>
+                <p>Spring Water Glass Medal</p>
                 <p>(ID:002101)</p>
               </div>
               <div class="infoItme">

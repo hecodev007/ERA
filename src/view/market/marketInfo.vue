@@ -3,8 +3,8 @@
     <div class="caintner">
       <div class="headerMarket">
         <div class="nav">
-          拍賣 >
-          <span class="color">神秘紫晶勛章（ID:002101）</span>
+         {{souse=="my"?"My Nft":"拍賣 >"}} 
+          <span class="color">NFT name（ID:002101）</span>
         </div>
         <div class="goback" @click="goback">
           <img src="@/assets/img/goback.png" alt />
@@ -32,11 +32,17 @@
                   <p>238,647,324</p>
                 </div>
               </div>
-              <div class="link">NFT has been claimed</div>
-              <!-- <div class="bug" @click="submitBuy">Bid now (price increase 10%)</div>
-              <div class="bug" >NFT Not collected</div>
-              <div class="staus">Connect wallet</div>-->
-
+              <div v-if="souse=='my'">
+                 <div class="mystaus" @click="auction">Cancel auction</div>
+                 <div class="link">NFT has been auctioned</div>
+                 <div class="bug">Repost the auction</div>
+              </div>
+               <div v-else>
+                <div class="link">NFT has been claimed</div>
+                <div class="bug" @click="submitBuy">Bid now (price increase 10%)</div>
+                <div class="bug" >NFT Not collected</div>
+                <div class="staus">Connect wallet</div>
+               </div>
               <div class="tips">Rebate from last bid 21,780,000 ERA</div>
 
               <div class="btn">
@@ -127,29 +133,41 @@
     <buymarket @getConfirmear="getConfirmear" @getCancel="showBuy = false" :showBuy.sync="showBuy"></buymarket>
 
     <marketPMList @getConfirmInfo="getConfirmInfo" @getCancel="show = false" :show.sync="show"></marketPMList>
+    <auction @getCancelNFT="getCancelNFT" @getConfirmshowauction="getConfirmshowauction" @getCancel="showauction = false" :showauction.sync="showauction"></auction>
   </div>
 </template>
 <script>
 import marketPMList from "./marketPMList.vue";
 import buymarket from "./buymarket.vue";
+
+import auction from "./auction.vue";
+
 export default {
   components: {
     marketPMList,
-    buymarket
+    buymarket,
+    auction
   },
   data() {
     return {
       screenWidth: this.GLOBAL.clientWidth, 
       activeNav: 1,
       show: false,
-      showBuy: false
+      showBuy: false,
+      actives:null,//当前的id
+      souse:"",//来源，区分我的，市场
+      showauction:false,
     };
   },
   mounted() { 
     console.log(this.screenWidth);
+   this.actives =  this.$route.query.actives
+   this.souse = this.$route.query.souse
   },
   methods: {
-  
+  getConfirmear(){
+
+  },
     getConfirmInfo(v) {
       console.log(v);
     },
@@ -158,6 +176,16 @@ export default {
     },
     goback() {
       this.$router.go(-1);
+    },
+    //Cancel auction
+    auction(){
+      this.showauction = true
+    },
+    getConfirmshowauction(){
+
+    },
+    getCancelNFT(){
+      this.showauction = false
     }
   }
 };
@@ -274,6 +302,14 @@ img {
         }
         .link {
           background: url(../../assets/img/maketStatusbj.png) no-repeat center;
+          background-size: contain;
+          line-height: 43px;
+          height: 43px;
+          color: #fff;
+          text-align: center;
+        }
+        .mystaus{
+           background: url(../../assets/img/marketmybj.png) no-repeat center;
           background-size: contain;
           line-height: 43px;
           height: 43px;
