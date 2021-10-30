@@ -287,6 +287,7 @@ export default {
             (accountsChanged) => {
               console.log("accountsChanged", accountsChanged);
               this.$toast("accountsChanged", "success");
+              this.mypackage=true
             },
             (disconnect) => {
               this.$toast("disconnect，code" + disconnect, "error");

@@ -15,7 +15,7 @@
           </div>
           <div class="meth">
             <div class="button">
-              <img src="../../assets/img/btnn.png" alt @click="goMint" />
+              <img src="../../assets/img/btnns.png" alt @click="goMint" />
             </div>
             <div class="count">
               <img src="../../assets/img/mangheicon.png" alt />
@@ -45,20 +45,19 @@
             :xl="8"
             :key="key"
             v-for="(item, key) in myNFTs"
+           
           >
             <div
+             v-if="key<=6"
               class="contentbox"
-              :style="`background: url(${item.res}) no-repeat center;background-size: contain;`"
-            >
-            <!-- <div class="contentbox">
-              TokenID: {{ item[0] }} Count:{{ item[1] }}
-              {{ key }}
-            </div> -->
+              :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
+              @click="minting"
+              >
             <div class="info">
                 <span>{{ item.power }}倍</span>
                 <div>拥有：X{{ item.count }}</div>
               </div>
-              <img :src="item.res" alt />
+              <img :src="item.icon" alt />
               <p>Token:{{key}}</p>
             </div>
           </el-col>
@@ -82,63 +81,126 @@ export default {
       show: false,
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
-      list: [
-        {
+     list:{
+        "1":  {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
-          bei: 100,
-          have: 20,
           name: "大地原石勛章",
         },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/xunzhaung1.png"),
-          bei: 100,
-          have: 20,
+         "2":  {
+          bjimh: require("@/assets/img/xzBj2.png"),
+          icon: require("@/assets/img/xunzhaung2.png"),
           name: "大地原石勛章",
         },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/xunzhaung1.png"),
-          bei: 100,
-          have: 20,
+         "3":  {
+          bjimh: require("@/assets/img/xzBj3.png"),
+          icon: require("@/assets/img/xunzhaung3.png"),
           name: "大地原石勛章",
         },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/xunzhaung1.png"),
-          bei: 100,
-          have: 20,
+         "4":  {
+          bjimh: require("@/assets/img/xzBj4.png"),
+          icon: require("@/assets/img/xunzhaung4.png"),
           name: "大地原石勛章",
         },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/xunzhaung1.png"),
-          bei: 100,
-          have: 20,
+         "5":  {
+          bjimh: require("@/assets/img/xzBj5.png"),
+          icon: require("@/assets/img/xunzhaung5.png"),
           name: "大地原石勛章",
         },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/xunzhaung1.png"),
-          bei: 100,
-          have: 20,
+         "6":  {
+          bjimh: require("@/assets/img/xzBj6.png"),
+          icon: require("@/assets/img/xunzhaung6.png"),
           name: "大地原石勛章",
         },
-      ],
+    },
+      list2:{
+    "1": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "1",
+        "name": "1",
+        "power": "1000",
+        "res": "1"
+    },
+    "2": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "2",
+        "name": "2",
+        "power": "2500",
+        "res": "res"
+    },
+    "3": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "4",
+        "name": "4",
+        "power": "90000",
+        "res": "res"
+    },
+    "4": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "3",
+        "name": "3",
+        "power": "6500",
+        "res": "res"
+    },
+    "5": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "4",
+        "name": "4",
+        "power": "35000",
+        "res": "res"
+    },
+    "6": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "5",
+        "name": "5",
+        "power": "14500",
+        "res": "res"
+    },
+    "7": {
+        "count": 0,
+        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+        "level": "4",
+        "name": "4",
+        "power": "35000",
+        "res": "res"
+    }
+}
     };
   },
   mounted() {
+//  this.myNFTs = this.deepMerge(this.list2,this.list);
+//     console.log( this.myNFTs)
     myAllNFT()
       .then((nfts) => {
-        this.myNFTs = nfts;
+        
         console.log("mynfts",nfts)
+        this.myNFTs = this.deepMerge(nfts,this.list); 
+        
       })
       .catch((err) => {
           this.$toast(err, "error");
       });
   },
   methods: {
+
+  deepMerge(obj1, obj2) {
+          let key;
+          for (key in obj2) {
+            // 如果target(也就是obj1[key])存在，且是对象的话再去调用deepMerge，否则就是obj1[key]里面没这个对象，需要与obj2[key]合并
+            obj1[key] = obj1[key] && obj1[key].toString() === "[object Object]"
+              ? this.deepMerge(obj1[key], obj2[key])
+              : (obj1[key] = obj2[key]);
+          }
+          return obj1;
+        },
+
+
     goMint() {
       // mint(nftName,level,power,res,author)nftName 可以传空 level 等级 1-5 power[1000,2500,6500,14500,35000,90000] res 随便 author 随便
       mint(
@@ -153,6 +215,9 @@ export default {
         .catch((err) => {
           this.$toast("mint failed" + err, "error");
         });
+    },
+    minting(v){
+      this.show = true
     },
   },
 };
@@ -243,15 +308,18 @@ export default {
       }
     }
     .contentbox {
-      text-align: center;
-      width: 70%;
-      background-size: cover;
-      padding: 10%;
-      margin: 5%;
+     text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    /* background-size: cover; */
+    padding: 10%;
+    margin: 5% auto;
       .info {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 90%;
+        margin: 0 auto;
         span {
           background: rgba(102, 230, 129, 0.33);
           padding: 0 10px;
