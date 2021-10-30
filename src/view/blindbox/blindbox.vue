@@ -36,6 +36,7 @@
         <p>NTF計數666/10000</p>
       </div>
       <div class="caiterMain">
+        {{myNFTs}}
         <el-row>
           <el-col
             :xs="12"
@@ -132,9 +133,10 @@ export default {
     myAllNFT()
       .then((nfts) => {
         this.myNFTs = nfts;
+        console.log("mynfts",nfts)
       })
       .catch((err) => {
-        console.log(err);
+          this.$toast(err, "error");
       });
   },
   methods: {
@@ -147,10 +149,10 @@ export default {
         "res"
       )
         .then((hash) => {
-          this.$toast("铸造成功，交易Hash" + hash, "success");
+          this.$toast("send success，Hash" + hash, "success");
         })
         .catch((err) => {
-          this.$toast("铸造失败" + err, "error");
+          this.$toast("mint failed" + err, "error");
         });
     },
   },

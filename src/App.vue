@@ -256,11 +256,11 @@ export default {
     },
     newContract() {
       initContract().then(() => {
-          this.$toast("连接成功", "success");
+          this.$toast("connect success", "success");
           this.show = !this.show;
         })
         .catch((err) => {
-          this.$toast("连接失败" + err, "error");
+          this.$toast("connect faild" + err, "error");
           this.show = !this.show;
         });
     },
@@ -271,23 +271,24 @@ export default {
         case 0:
           _MeatMaskContract()
             .then(() => {
-              this.$toast("连接成功", "success");
-              this.mypackage = true
-              this.show = false;
+              this.newContract()
+              // this.$toast("连接成功", "success");
+              // this.mypackage = true
+              // this.show = !this.show;
             })
             .catch((err) => {
               this.$toast("连接metamask出错" + err, "error");
-               this.show = false;
+              this.show = !this.show;
             });
           break;
         case 1:
           _WalletContract(
             (accountsChanged) => {
               console.log("accountsChanged", accountsChanged);
-              this.$toast("切换账户", "success");
+              this.$toast("accountsChanged", "success");
             },
             (disconnect) => {
-              this.$toast("连接已断开，code" + disconnect, "error");
+              this.$toast("disconnect，code" + disconnect, "error");
             },
             (accounts) => {
               console.log("accounts", accounts);
@@ -295,6 +296,7 @@ export default {
               
             },
             (error) => {
+              this.show = !this.show;
               this.$toast(error, "error");
             }
           );

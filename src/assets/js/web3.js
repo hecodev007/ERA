@@ -6,7 +6,7 @@ import base from "./base.js"
 
 const initContract = () => {
     return new Promise((resolve, reject) => {
-            base.contract = new base.web3.eth.contract(JSON.parse(base.abi), base.contractAddress);
+            base.contract = new base.web3.eth.Contract(JSON.parse(base.abi), base.contractAddress);
             resolve(base.contract);
         })
 }
@@ -27,6 +27,10 @@ const initContract = () => {
 
 
 const myAllNFT = async () => {
+    if (base.contract ==null){
+         throw new Error("please connect the wallet");
+    }
+    
     var count = await base.contract.methods.balanceOf(base.accounts[0]).call()
     console.log("count",count)
     var map = {};
@@ -39,7 +43,9 @@ const myAllNFT = async () => {
               //author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569" level: "1" name: "10" power: "1000" res: "1"
             map[tokenID]= {"count":0,"author":info.author,"level":info.level,"name":info.level,"power":info.power,"res":info.res}
           }
-        }       
+        }      
+        
+        return map; 
 }
 
 

@@ -44,6 +44,7 @@ const _WalletContract = function _WalletContract(accountsChanged,disconnect,succ
         provider.on("disconnect", (code, reason) => {
 
             base.web3 = null
+            base.contract = null
             disconnect(code)
         });
 
