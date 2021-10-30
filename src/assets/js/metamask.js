@@ -68,7 +68,7 @@ const _MeatMaskContract = () => {
             //   "http://127.0.0.1:9545"
             // );
             // web3 = new Web3(provider);
-            if (phoneOs) {
+            if (base.phoneOs) {
                 return reject("Please use MetaMask app's  browser to open it");
             }
             return reject("Please install MetaMask Browser plug-in");

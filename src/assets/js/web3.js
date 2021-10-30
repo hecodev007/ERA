@@ -30,7 +30,7 @@ const myAllNFT = async () => {
     if (base.contract ==null){
          throw new Error("please connect the wallet");
     }
-    
+
     var count = await base.contract.methods.balanceOf(base.accounts[0]).call()
     console.log("count",count)
     var map = {};
@@ -57,13 +57,12 @@ const mint = (nftName, level, power, res) => {
     return new Promise((resolve, reject) => {
 
         if (web3 == undefined || web3 == null) {
-            if (phoneOs) {
+            if (base.phoneOs) {
                 return reject("Please use MetaMask app's  browser to open it");
             }
             return reject("Please install MetaMask Browser plug-in and Connect it");
         }
         if (base.contract == null) {
-            getcontract()
             return reject("wallet cannot connect,Please try again later")
         }
 
