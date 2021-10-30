@@ -54,8 +54,8 @@
               @click="minting"
               >
             <div class="info">
-                <span>{{ item.power }}倍</span>
-                <div>拥有：X{{ item.count }}</div>
+                <span v-if="item.power">{{ item.power }}倍</span>
+                <div v-if="item.count">拥有：X{{ item.count }}</div>
               </div>
               <img :src="item.icon" alt />
               <p>Token:{{key}}</p>
@@ -174,6 +174,7 @@ export default {
     };
   },
   mounted() {
+    this.myNFTs =this.list
 //  this.myNFTs = this.deepMerge(this.list2,this.list);
 //     console.log( this.myNFTs)
     myAllNFT()
