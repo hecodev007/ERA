@@ -1,7 +1,7 @@
 <template>
   <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
     <div class="intraduse" v-if="this.screenWidth < 600">
-      鑄造一個盲盒需要消耗0.08ETH，包括隨機生成的6種不同等級的寶物，祝好運～
+      It takes 0.3BNB to cast a blind box, including 6 randomly generated treasures of different levels. Good luck~
     </div>
 
     <div class="cainter">
@@ -10,7 +10,7 @@
           <div class="instructions">
             <img src="../../assets/img/logo.png" alt />
             <span
-              >鑄造一個盲盒需要消耗0.08ETH，包括隨機生成的6種不同等級的寶物，祝好運～</span
+              >It takes 0.3BNB to cast a blind box, including 6 randomly generated treasures of different levels. Good luck~</span
             >
           </div>
           <div class="meth">
@@ -18,14 +18,14 @@
               <img src="../../assets/img/btnns.png" alt @click="goMint" />
             </div>
             <div class="count">
-              <img src="../../assets/img/mangheicon.png" alt />
-              <p>NTF計數666/10000</p>
+              <img src="../../assets/img/iconInfo.png" alt />
+              <p>NTF 666/10000</p>
             </div>
           </div>
         </div>
         <div class="topRi">
           <img src="../../assets/img/mangheicon.png" alt />
-          <div><span>?</span></div>
+          
         </div>
       </div>
       <div class="button600" v-if="this.screenWidth < 600">
@@ -51,11 +51,11 @@
              v-if="key<=6"
               class="contentbox"
               :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
-              @click="minting"
+              @click="minting(item)"
               >
             <div class="info">
-                <span v-if="item.power">{{ item.power }}倍</span>
-                <div v-if="item.count">拥有：X{{ item.count }}</div>
+                <span v-if="item.power">{{ item.power }}X</span>
+                <div v-if="item.count">Hold：X{{ item.count }}</div>
               </div>
               <img :src="item.icon" alt />
               <!-- <p>Token:{{key}}</p> -->
@@ -65,7 +65,7 @@
         </el-row>
       </div>
     </div>
-    <infoBindBox @getCancel="show = false" :show.sync="show"></infoBindBox>
+    <infoBindBox @getCancel="show = false" :show.sync="show" :itemData="itemData"></infoBindBox>
   </div>
 </template>
 <script>
@@ -83,6 +83,7 @@ export default {
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
      list:this.GLOBAL.list,
+     itemData:{},
       list2:{
     "1": {
         "count": 0,
@@ -204,6 +205,7 @@ export default {
     },
     minting(v){
       this.show = true
+      this.itemData = v
     },
   },
 };
@@ -257,9 +259,11 @@ export default {
             width: 50%;
             align-items: center;
             margin-left: 20px;
+                justify-content: center;
+
             img {
-              width: 38px;
-              height: 45px;
+              width: 47px;
+              height: 44px;
               margin-right: 20px;
             }
             p {
@@ -318,13 +322,14 @@ export default {
         }
       }
       img {
-        width: 50%;
+        width: 70%;
         // margin: 20px 0;
       }
       p {
         text-align: center;
         padding: 0;
         margin: 0;
+        font-weight: bold;
       }
     }
   }
@@ -369,11 +374,12 @@ export default {
     .count {
       display: flex;
       justify-content: center;
+      align-items: center;
+      margin: 10px 0;
 
       img {
         width: 30px;
-        margin-right: 10px;
-        margin-bottom: 10px;
+        margin-right: 10px; 
       }
     }
   }

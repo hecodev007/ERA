@@ -7,44 +7,40 @@
         </div>
 
         <el-row >
-          <el-col :xs="24" :md="8" :lg="8" :xl="8">
-            <div class="left">
-              <img src="@/assets/img/xunzhaung1.png" alt />
-              <p>大地原石勛章</p>
+          <el-col :xs="24" :md="6" :lg="6" :xl="6">
+            <div    :class="['left', this.screenWidth >= 600 ? '' : 'leftmain']">
+              <img :src="itemlist.icon" alt />
+              <p>{{itemlist.name}}</p>
             </div>
           </el-col>
           <el-col :xs="24" :md="16" :lg="16" :xl="16">
             <div class="right">
               <div class="info">
-                <h6>勛章簡介</h6>
-                <p>利用分佈在萊比斯廣袤大陸上的岩石作為材料，由地精工匠打造而成，它通常作為冒險者們首次任務成功的標誌，由萊比斯-ERA酒館公會頒發，價</p>
+                <h6>Introduction</h6>
+                <p>{{itemlist.info}}</p>
               </div>
               <div class="count">
-                <h6>勛章屬性</h6>
+                <h6>Attributes</h6>
                 <div
                   :class="['bj',this.screenWidth >= 600 ?'':'bj600']"
                   :style="`background: url(${bjIMg}) no-repeat center;background-size: contain;`"
                 >
                   <div class="item">
                     <img src="@/assets/img/shux1.png" alt />
-                    <span>2131</span>
-                    <p>總流通量</p>
+                    <span>{{itemlist.countinfo}}</span>
+                    <p>Total Supply</p>
                   </div>
                   <div class="item">
                     <img src="@/assets/img/shux2.png" alt />
-                    <span>普通</span>
-                    <p>製造等級</p>
+                    <span>ordinary</span>
+                    <p>Manufacturing grade</p>
                   </div>
                   <div class="item">
                     <img src="@/assets/img/shux3.png" alt />
-                    <span>LV.1</span>
-                    <p>稀有等級</p>
+                    <span>LV.{{itemlist.level}}</span>
+                    <p>Rare level</p>
                   </div>
-                  <div class="item">
-                    <img src="@/assets/img/shux4.png" alt />
-                    <span>土</span>
-                    <p>元素</p>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -60,6 +56,10 @@ export default {
     show: {
       type: Boolean,
       default: false
+    },
+    itemData:{
+      type:Object,
+      default: {}
     }
   },
   data() {
@@ -67,12 +67,14 @@ export default {
       centerDialogVisible: this.show,
       dialogWidth: "0",
       screenWidth: this.GLOBAL.clientWidth,
-      bjIMg: require("@/assets/img/shuxbj1.png")
+      bjIMg: require("@/assets/img/shuxbj1.png"),
+      itemlist:{}
     };
   },
   watch: {
     show(val) {
       this.centerDialogVisible = val;
+      this.itemlist = this.itemData
     }
   },
   created() {},
@@ -102,22 +104,34 @@ export default {
   padding: 20px 0 0 0;
 
   .left {
+    margin-right: 10px;
     text-align: center;
     img {
-      width: 50%;
+      width: 100%;
     }
     p {
-      text-align: center;
-      color: #70F4A5;
+      text-align: center; 
+      font-weight: 900;
     }
   }
+  .leftmain{
+     margin-right:  0;
+     margin-bottom: 20px;
+      img {
+      width: 40%;
+    }
+    p{
+      font-weight: bolder;
+    }
+  }
+
   .right {
     .info {
-      margin-bottom: 10px;
+      margin-bottom: 30px;
       p {
         font-weight: 800;
         color: #ffffff;
-        line-height: 24px;
+        line-height: 18px;
       }
     }
     h6 {
@@ -136,10 +150,12 @@ export default {
           img {
             width: 20px;
             vertical-align: middle;
+            margin-right: 5px;
           }
         }
         span {
           color: #70f4a5;
+          font-weight: bolder;
         }
         p {
           margin: 10px 0;
@@ -148,9 +164,11 @@ export default {
       }
       .bj600{
            padding: 15px 20px;
+           text-align: center;
            p {
           margin: 2px 0;
           text-align: center;
+          font-size: 12px;
         }
       }
     }
