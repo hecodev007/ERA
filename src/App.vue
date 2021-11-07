@@ -159,6 +159,7 @@ export default {
         // { name: "Contract" },
         // { name: "Backstage" }
       ],
+      list:this.GLOBAL.list,
       defaultOpenedsIndex: "1",
       defaultOpeneds: null,
       navBarFixed: false,

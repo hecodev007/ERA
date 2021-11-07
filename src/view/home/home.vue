@@ -33,13 +33,13 @@
                 <swiper :options="swiperOption">
                   <swiper-slide
                     class="swiper-slide"
-                    v-for="(item,index) in carouselArr"
+                    v-for="(item,index) in list"
                     :key="index"
                   >
                     <div class="itemMain">
-                      <img src="@/assets/img/xzBj1.png" class="itemMainbj" alt />
-                      <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                      <p>大地原石勛章</p>
+                      <img :src="item.bjimh" class="itemMainbj" alt />
+                      <img :src="item.icon" class="xz" alt />
+                  <p> {{item.name}}</p>
                     </div>
                   </swiper-slide>
                   <img
@@ -151,6 +151,7 @@ export default {
       home3600: "@/assets/img/home3bottom.png",
       home4: "@/assets/img/home4.png",
       btn: "@/assets/img/btnn.png",
+      list:this.GLOBAL.list,
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
@@ -311,7 +312,7 @@ export default {
           transform: translate(-50%, -50%);
         }
         .xz {
-          width: 40%;
+          width: 60%;
           position: absolute;
           top: 40%;
           left: 50%;

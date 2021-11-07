@@ -58,7 +58,8 @@
                 <div v-if="item.count">拥有：X{{ item.count }}</div>
               </div>
               <img :src="item.icon" alt />
-              <p>Token:{{key}}</p>
+              <!-- <p>Token:{{key}}</p> -->
+              <p>{{item.name}}</p>
             </div>
           </el-col>
         </el-row>
@@ -81,38 +82,7 @@ export default {
       show: false,
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
-     list:{
-        "1":  {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/xunzhaung1.png"),
-          name: "大地原石勛章",
-        },
-         "2":  {
-          bjimh: require("@/assets/img/xzBj2.png"),
-          icon: require("@/assets/img/xunzhaung2.png"),
-          name: "大地原石勛章",
-        },
-         "3":  {
-          bjimh: require("@/assets/img/xzBj3.png"),
-          icon: require("@/assets/img/xunzhaung3.png"),
-          name: "大地原石勛章",
-        },
-         "4":  {
-          bjimh: require("@/assets/img/xzBj4.png"),
-          icon: require("@/assets/img/xunzhaung4.png"),
-          name: "大地原石勛章",
-        },
-         "5":  {
-          bjimh: require("@/assets/img/xzBj5.png"),
-          icon: require("@/assets/img/xunzhaung5.png"),
-          name: "大地原石勛章",
-        },
-         "6":  {
-          bjimh: require("@/assets/img/xzBj6.png"),
-          icon: require("@/assets/img/xunzhaung6.png"),
-          name: "大地原石勛章",
-        },
-    },
+     list:this.GLOBAL.list,
       list2:{
     "1": {
         "count": 0,
@@ -179,13 +149,17 @@ export default {
 //     console.log( this.myNFTs)
     myAllNFT()
       .then((nfts) => {
-        
         console.log("mynfts",nfts)
         this.myNFTs = this.deepMerge(nfts,this.list); 
         
       })
       .catch((err) => {
-          this.$toast(err, "error");
+          // this.$toast(err, "error");
+           this.$notify({
+            title: 'error',
+            message: err,
+            type: 'error'
+          });
       });
   },
   methods: {
@@ -211,10 +185,21 @@ export default {
         "res"
       )
         .then((hash) => {
-          this.$toast("send success，Hash" + hash, "success");
+          // this.$toast("send success，Hash" + hash, "success");
+
+          this.$notify({
+            title: 'success',
+            message: "send success，Hash",
+            type: 'success'
+          });
         })
         .catch((err) => {
-          this.$toast("mint failed" + err, "error");
+          // this.$toast("mint failed" + err, "error");
+           this.$notify({
+            title: 'error',
+            message: "mint failed",
+            type: 'error'
+          });
         });
     },
     minting(v){
