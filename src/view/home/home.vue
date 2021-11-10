@@ -1,32 +1,151 @@
 <template>
-  <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
-    <img :src="bannerbjIMg" alt class="banner" />
-    <div class="caintner">
-      <div class="map">
-        <!-- <el-row :gutter="20" class="Box">
-          <el-col :xs="24" :md="12" :lg="12" :xl="12">
-            <img src="@/assets/img/mapINfo.png" alt class="mapImg" />
-          </el-col>
-          <el-col :xs="24" :md="12" :lg="12" :xl="12">
-             <div class="info">
-              <div class="title">关于 ERA</div>
-              <p>恭喜～你進入了一個鮮為人知的世界，OPEN ERA是一個虛擬靈境，這裏有大量未開墾的森林、土地、和礦物資源，並且孕育了這片大陸的原住民——種類多樣數量繁多的精靈幻獸。由於元宇宙的力量漸漸覺醒，使OPEN ERA世界中的元素魔法十分不穩定，它需要您的幫助，成為勇者，去塑造這股神秘的力量，您可以在這裏購買土地，訓練自己的精靈夥伴，去探索這個世界，您的每一個決定，每一場冒險旅程都將決定OPEN ERA世界命的運走向～</p>
-              <div class="imgBox" v-if="this.screenWidth >= 600">
-                <img src="@/assets/img/ji1.png" alt />
-                <img src="@/assets/img/fei1.png" alt />
-              </div>
-            </div>  
-           
-          </el-col>
-        </el-row>-->
-        <div class="info">
-          <img :src="home1" alt />
+  <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
+    <!-- <img :src="bannerbjIMg" alt class="banner" /> -->
+    <div
+      class="banner"
+      :style="`background: url(${bannerbjIMg}) no-repeat center;background-size: cover;`"
+    >
+      <div class="bannerm">
+        <img src="@/assets/img/bannerlogo.png" alt="" class="bannerlogo" />
+        <img :src="tilebanner" alt="" class="bannertitle" />
+        <div class="navs">
+          <div>
+            <img src="@/assets/img/inconbanner.png" alt="" /><span>Battle</span>
+          </div>
+          <div>
+            <img src="@/assets/img/inconbanner.png" alt="" /><span
+              >EXPLORATION</span
+            >
+          </div>
+          <div>
+            <img src="@/assets/img/inconbanner.png" alt="" /><span
+              >FARMING</span
+            >
+          </div>
+          <div>
+            <img src="@/assets/img/inconbanner.png" alt="" /><span
+              >FOSTERING</span
+            >
+          </div>
+        </div>
+        <div class="btnBox">
+          <img src="@/assets/img/bannerbtn1.png" alt="" />
+          <img src="@/assets/img/bannerbtn2.png" alt="" />
         </div>
       </div>
-      <div class="xunzhang">
-        <!-- <div class="titleH">盲盒</div> -->
+    </div>
+    <div class="caintner">
+      <div class="part2">
+        <img src="@/assets/img/tittle1.png" alt="" class="tittle" />
+        <div class="partmain">
+          <el-row class="boxflex">
+            <el-col :xs="24" :md="14" :lg="14" :xl="14">
+              <div class="left"><img src="@/assets/img/vido.png" alt="" /></div>
+            </el-col>
+            <el-col :xs="24" :md="10" :lg="10" :xl="10">
+              <div class="right">
+                <div class="color">
+                  <img src="@/assets/img/vidoicon.png" alt="" /><span
+                    >https://youtube/AngelValley</span
+                  >
+                </div>
+                <p>
+                  AngelValley's world starts in the warm Alps, passing through
+                  quiet forests and barren deserts. Four seasons of weather and
+                  a meticulous biological environment, there are vast virgin
+                  forests, land and mineral resources and a variety of angels,
+                  each with a unique superpower, unique appearance and rarity.
+                  Players will be immersed in a mystical forest and spend many
+                  relaxing hours raising creatures. AngelValley makes the world
+                  of the game more realistic to us, and it's a testament to the
+                  ingenuity of the makers.
+                </p>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </div>
+    </div>
+    <div
+      class="part3"
+      :style="`background: url(${part3bjIMg}) no-repeat center;backgroundSize: cover;`"
+    >
+      <div class="shubox">
+        <img src="@/assets/img/shu.png" alt="" class="shu1" />
+        <img
+          src="@/assets/img/shu.png"
+          alt=""
+          class="shu2"
+          v-if="this.screenWidth >= 600"
+        />
+      </div>
+      <img src="@/assets/img/tittle2.png" alt="" class="tittle" />
+      <div class="testp">
+        <p>
+          Angel are adorable bipedal creatures that inhabit a lush and
+          mysterious forest valley. They have a spiritual connection to the
+          forest and use magical spells to maintain and protect it.
+        </p>
+        <p>
+          You can draw gems from the blind box , and when the game goes live,
+          each gem can be exchanged for an angel
+        </p>
+        <p>
+          You will be paired with an Ancestor Angel to get you started on your
+          adventure. Ancestor Angel can help you with basic tasks
+        </p>
+      </div>
+      <div class="imgpart3">
+        <div class="scroll">
+          <img src="@/assets/img/c1.png" alt="" class="iconimg" />
+          <img src="@/assets/img/c2.png" alt="" class="iconimg" />
+          <img src="@/assets/img/c3.png" alt="" class="iconimg" />
+          <img src="@/assets/img/c4.png" alt="" class="iconimg" />
+          <img src="@/assets/img/c5.png" alt="" class="iconimg" />
+        </div>
+      </div>
+    </div>
+    <div
+      class="part4"
+      :style="`background: url(${part4bjIMg}) no-repeat bottom;    background-size: cover;`"
+      style="background-size: cover"
+    >
+      <img src="@/assets/img/tittle2.png" alt="" class="tittle" />
+      <div class="mianbox">
+        <el-row>
+          <el-col :xs="24" :md="8" :lg="8" :xl="8">
+            <div class="items bj1">
+              <p>
+                Battle against wild cursed Angel and other trainers to increase
+                your Angel’s level. A angel with a higher level can defeat
+                stronger foes receive better rewards.
+              </p>
+            </div>
+          </el-col>
+          <el-col :xs="24" :md="8" :lg="8" :xl="8">
+            <div class="items bj2">
+              <p>
+                Send your Angel to the Angel Sage to learn spells. Increasing
+                your Angel’s spell level will allow it to gather valuable
+                in-game tokenized resources
+              </p>
+            </div>
+          </el-col>
+          <el-col :xs="24" :md="8" :lg="8" :xl="8">
+            <div class="items bj3">
+              <p>
+                Feed your Angel its favourite food to increase its happiness
+                level. A higher happiness level unlocks higher staking reward
+                APY when a Angel is assigned to the Shrine of Giving.
+              </p>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
+    </div>
 
-        <div :class="this.screenWidth < 600?'':'swipers'">
+    <div class="xunzhang">
+      <!-- <div :class="this.screenWidth < 600?'':'swipers'">
           <el-row>
             <el-col :xs="24" :md="10" :lg="10" :xl="10">
               <div class="left">
@@ -56,64 +175,21 @@
               </div>
             </el-col>
             <el-col :xs="24" :md="12" :lg="12" :xl="12">
-              <!-- <div class="right">
-              <div class="info">
-                <h6>勛章簡介</h6>
-                <p>利用分佈在萊比斯廣袤大陸上的岩石作為材料，由地精工匠打造而成，它通常作為冒險者們首次任務成功的標誌，由萊比斯-ERA酒館公會頒發，價</p>
-              </div>
-              <div class="count">
-                <h6>勛章屬性</h6>
-                <el-row>
-                  <el-col :xs="24" :md="24" :lg="24" :xl="24">
-                    
-                    <div :class="['bj',this.screenWidth >= 600 ?'':'bj600']">
-                      <img :src="bjIMg" alt class="bj600s" />
-                      <div class="item">
-                        <img src="@/assets/img/shux1.png" alt />
-                        <span>2131</span>
-                        <p>總流通量</p>
-                      </div>
-                      <div class="item">
-                        <img src="@/assets/img/shux2.png" alt />
-                        <span>普通</span>
-                        <p>製造等級</p>
-                      </div>
-                      <div class="item">
-                        <img src="@/assets/img/shux3.png" alt />
-                        <span>LV.1</span>
-                        <p>稀有等級</p>
-                      </div>
-                      <div class="item">
-                        <img src="@/assets/img/shux4.png" alt />
-                        <span>土</span>
-                        <p>元素</p>
-                      </div>
-                    </div>
-                  </el-col>
-                </el-row>
-              </div>
-              </div>-->
+             <img :src="home2" alt class="home2" />
             </el-col>
           </el-row>
-        </div>
-        <img :src="home2" alt class="home2" />
-        <!-- <p>
+        </div> -->
+
+      <!-- <p>
           <img :src="btn" alt :class="this.screenWidth < 600?'btns':'btnns'" />
         </p>-->
-      </div>
-      <div class="btnhome" @click="goNFT">
-        <img :src="btn" alt :class="this.screenWidth < 600?'btns':'btnns'" />
-      </div>
-      <div class="hister">
-        <img :src="home3" alt class="hister" />
-        <img :src="home3600" alt class="hister" v-if="this.screenWidth < 600" />
-      </div>
-      <div class="bili">
-        <img :src="home4" alt class="bili" />
-      </div>
     </div>
+    <div class="btnhome" @click="goNFT">
+      <img :src="btn" alt :class="this.screenWidth < 600 ? 'btns' : 'btnns'" />
+    </div>
+
     <div class="foot">
-      <el-row :class="[this.screenWidth >= 600 ?'flex':'']">
+      <el-row :class="[this.screenWidth >= 600 ? 'flex' : '']">
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <div class="footLogo">
             <img src="../../assets/img/logo.png" alt="logo" />
@@ -121,17 +197,21 @@
         </el-col>
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <div class="footList">
-            <span>關於</span>
+            <span>About</span>
             <span>NFT</span>
-            <span>路線圖</span>
-            <span>常見問題</span>
-            <span>團隊</span>
+            <span>Route map </span>
+            <span>FAQ</span>
+            <span>Team</span>
           </div>
+          <p class="ptip" v-if="this.screenWidth >= 600">Copyright     xxx.beauty</p>
         </el-col>
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <div class="footImg">
-            <img :src="item.img" alt v-for="(item,key) in navImg" :key="key" />
+            <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
           </div>
+        </el-col>
+         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8" v-if="this.screenWidth < 600">
+            <p class="intsra">Copyright     xxx.beauty</p>
         </el-col>
       </el-row>
       <div></div>
@@ -143,43 +223,39 @@ export default {
   data() {
     return {
       screenWidth: this.GLOBAL.clientWidth,
-      bannerbjIMg: "@/assets/img/bannerbj600.png",
-      bjIMg: require("@/assets/img/shuxbj1.png"),
-      home1: "@/assets/img/home1.png",
-      home2: "@/assets/img/home2.png",
-      home3: "@/assets/img/home3.png",
-      home3600: "@/assets/img/home3bottom.png",
-      home4: "@/assets/img/home4.png",
+      bannerbjIMg: "",
+      part3bjIMg: "",
+      part4bjIMg: "",
       btn: "@/assets/img/btnn.png",
-      list:this.GLOBAL.list,
+      list: this.GLOBAL.list,
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
-          link: ""
+          link: "",
         },
         {
           img: require(`@/assets/img/navRight2.png`),
-          link: ""
+          link: "",
         },
         {
           img: require(`@/assets/img/navRight3.png`),
-          link: ""
+          link: "",
         },
         {
           img: require(`@/assets/img/navRight4.png`),
-          link: ""
-        }
+          link: "",
+        },
       ],
       carouselArr: ["1", "1"],
       swiperOption: {
         //显示分页
         pagination: {
-          el: ".swiper-pagination"
+          el: ".swiper-pagination",
         },
         //设置点击箭头
         navigation: {
           nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
+          prevEl: ".swiper-button-prev",
         },
         //自动轮播
         // autoplay: {
@@ -188,8 +264,8 @@ export default {
         //   disableOnInteraction: false
         // },
         //开启循环模式
-        loop: true
-      }
+        loop: true,
+      },
     };
   },
   mounted() {
@@ -200,26 +276,23 @@ export default {
     setDialogWidth() {
       if (this.screenWidth < 600) {
         this.bannerbjIMg = require("@/assets/img/bannerbj600.png");
-        this.home1 = require("@/assets/img/home6001.png");
-        this.home2 = require("@/assets/img/home6002.png");
-        this.home3 = require("@/assets/img/home6003top.png");
-        this.home4 = require("@/assets/img/home6004.png");
-        this.btn = require("@/assets/img/btnn600.png");
+        this.part3bjIMg = require("@/assets/img/vbj600.png");
+        this.part4bjIMg = require("@/assets/img/part4bj600.png");
+        this.tilebanner = require("@/assets/img/bannertitle600.png");
+        console.log("222");
       } else {
-        this.bannerbjIMg = require("@/assets/img/bannerbjs.png");
-        this.home1 = require("@/assets/img/home1.png");
-        this.home2 = require("@/assets/img/home2.png");
-        this.home3 = require("@/assets/img/home3.png");
-        this.home4 = require("@/assets/img/home4.png");
-        this.btn = require("@/assets/img/btnn.png");
+        this.bannerbjIMg = require("@/assets/img/bannerbj.png");
+        this.part3bjIMg = require("@/assets/img/vbj.png");
+        this.part4bjIMg = require("@/assets/img/part4bj.png");
+        this.tilebanner = require("@/assets/img/bannertitle.png");
       }
     },
-    goNFT(){
+    goNFT() {
       this.$router.push({
-          path: "/blindbox",
-        });
-    }
-  }
+        path: "/blindbox",
+      });
+    },
+  },
 };
 </script>
 <style scoped  lang="less" >
@@ -235,41 +308,175 @@ export default {
     padding: 0;
     margin: 0;
     width: 100%;
+    height: 100vh;
+    min-height: 960px;
+    position: relative;
+    background-size: cover;
+    .bannerm {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      .bannerlogo {
+        width: 315px;
+        height: 209px;
+        margin: 0 auto;
+        margin-bottom: 40px;
+      }
+      .bannertitle {
+        width: 870px;
+        height: 69px;
+        margin: 0 auto;
+        margin-bottom: 18px;
+      }
+      .navs {
+        display: flex;
+        width: 700px;
+        justify-content: space-between;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        img {
+          width: 26px;
+          height: 26px;
+          vertical-align: middle;
+          font-size: 24px;
+        }
+      }
+      .btnBox {
+        margin: 0 auto;
+        display: flex;
+        width: 640px;
+        justify-content: space-between;
+        img {
+          width: 253px;
+        }
+      }
+    }
   }
-  .map {
-    // margin-top: 50px;
-    .mapImg {
-      width: 100%;
+  .part2 {
+    padding: 100px 0;
+    .tittle {
+      width: 673px;
+      height: 80px;
+      margin: 0 auto 30px;
+      display: block;
     }
-    .info {
-      .title {
-        font-size: 16px;
-        font-weight: 800;
-        color: #70f4a5;
+    .partmain {
+      .boxflex {
+        align-items: center;
+        display: flex;
       }
-      img {
-        width: 100%;
-      }
-    }
-    .imgBox {
-      display: flex;
-      justify-content: center;
 
-      img {
-        display: inline-block;
-        padding: 0 30px;
-        width: 30%;
+      margin: 0 auto;
+      .left {
+        img {
+          width: 100%;
+        }
+      }
+      .right {
+        margin-left: 30px;
+        img {
+          width: 107px;
+          height: 32px;
+          vertical-align: middle;
+          margin-right: 10px;
+        }
+        .color {
+          color: rgba(112, 244, 165, 1);
+          text-decoration: underline;
+        }
+        p {
+          margin-top: 20px;
+          font-size: 14px;
+        }
       }
     }
   }
-  .titleH {
-    font-size: 16px;
-    font-weight: 800;
-    color: #70f4a5;
-    text-align: center;
-    margin: 50px 0;
-  }
+  .part3 {
+    padding: 60px 0;
+    .shubox {
+      width: 1280px;
+      height: 1px;
+      position: relative;
+      margin: auto;
+      .shu1 {
+        position: absolute;
+        left: 0;
+        top: -116px;
+        width: 118px;
+        height: 129px;
+      }
+      .shu2 {
+        position: absolute;
+        right: 0;
+        top: -116px;
+        width: 118px;
+        height: 129px;
+      }
+    }
+    .tittle {
+      width: 633px;
+      display: block;
+      margin: 0 auto;
+    }
+    .testp {
+      margin: 50px auto 0;
+      p {
+        text-align: center;
+        margin: 20px;
+      }
+    }
+    .imgpart3 {
+      margin: 64px auto 0;
+      width: 1280px;
 
+      overflow: scroll;
+      img {
+        width: 240px;
+        margin-right: 20px;
+        margin-bottom: 40px;
+      }
+      img:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .part4 {
+    padding: 60px 0;
+
+    .tittle {
+      width: 633px;
+      display: block;
+      margin: 0 auto;
+    }
+    .mianbox {
+      width: 1300px;
+      margin: 30px auto;
+    }
+    .items {
+      width: 227px;
+      height: 250px;
+      margin: 0 auto;
+      p {
+        padding: 20px 20px 30px 40px;
+        line-height: 14px;
+        font-size: 12px;
+      }
+    }
+    .bj3 {
+      background: url("../../assets/img/v1.png") no-repeat center;
+      background-size: cover;
+    }
+    .bj2 {
+      background: url("../../assets/img/v2.png") no-repeat center;
+      background-size: cover;
+    }
+    .bj1 {
+      background: url("../../assets/img/v3.png") no-repeat center;
+      background-size: cover;
+    }
+  }
   .xunzhang {
     position: relative;
     .home2 {
@@ -403,16 +610,6 @@ export default {
       display: block;
     }
   }
-  .hister {
-    img {
-      width: 100%;
-    }
-  }
-  .bili {
-    img {
-      width: 100%;
-    }
-  }
 }
 .foot {
   background: #1b2c22;
@@ -432,6 +629,11 @@ export default {
       padding: 10px;
     }
   }
+     .ptip{
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 10px;
+      }
   .footImg {
     text-align: right;
     img {
@@ -441,7 +643,7 @@ export default {
   }
 }
 .main {
-  img{
+  img {
     display: block;
   }
   .caintner {
@@ -475,12 +677,139 @@ export default {
     .footList {
       text-align: center;
       margin-bottom: 20px;
+      margin-top: 20px;
+     
     }
+  
     .footImg {
       text-align: center;
+      display: flex;
+      width: 60%;
+      margin: 0 auto;
+      justify-content: space-between;
       img {
         margin-right: 10px;
         width: 30px;
+      }
+    }
+    .intsra{
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+  }
+  .banner {
+    min-height: 100vh;
+    .bannerm {
+      .bannerlogo {
+        width: 157px;
+        height: 100px;
+      }
+      .bannertitle {
+        width: 70%;
+      }
+      .navs {
+        width: 100%;
+        margin-bottom: 150px;
+        font-size: 12px;
+        div {
+          display: flex;
+          margin-right: 10px;
+        }
+        img {
+          width: 15px;
+          height: 15px;
+        }
+      }
+      .btnBox {
+        width: 100%;
+        img {
+          width: 150px;
+        }
+      }
+    }
+  }
+  .caintner {
+    .part2 {
+      width: 100%;
+      padding: 60px 0;
+      .tittle {
+        width: 80%;
+      }
+      .partmain {
+        width: 90%;
+        .boxflex {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .right {
+          margin-left: 0;
+          .color {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+  .part3 {
+    width: 100%;
+    padding: 100px 0 100px;
+    .tittle {
+      width: 80%;
+    }
+
+    .shubox {
+      width: 100%;
+      .shu1 {
+        position: absolute;
+        transform: translate(-50%, 0);
+        top: -145px;
+        left: 50%;
+      }
+    }
+    .testp {
+      p {
+        text-align: left;
+      }
+    }
+    .imgpart3 {
+      margin: 0 auto 0;
+      width: 100%;
+      overflow: scroll;
+      float: left;
+
+      .scroll {
+        width: 1000px;
+      }
+      img {
+        width: 168px;
+        display: inline-block;
+      }
+    }
+  }
+  .part4 {
+    .tittle {
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+    }
+    .mianbox {
+      width: 100%;
+      margin: 30px auto;
+    }
+    .items {
+      width: 326px;
+      height: 360px;
+      margin-left: 0;
+      margin-bottom: 30px;
+      p {
+        padding: 20px 20px 30px 58px;
+        line-height: 19px;
+        font-size: 18px;
       }
     }
   }

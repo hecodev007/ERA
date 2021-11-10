@@ -65,8 +65,12 @@
               />
             </div>
           </div>
-
-          <div class="item">
+          <div class="heyue">
+            <span>Contract Address：</span>
+            <i>0c578…567qQ</i>
+            <img src="./assets/img/copy.png" alt="">
+          </div>
+          <div class="itemfiexd">
             <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
           </div>
         </div>
@@ -517,6 +521,31 @@ body {
   align-items: center;
   margin-right: 30px;
   text-align: right;
+}
+.box .heyue{
+font-size: 12px;
+} 
+.box .heyue span{
+  color: rgba(112, 244, 165, 1);
+} 
+.box .heyue i{
+  font-style: normal;
+} 
+.box .heyue img{
+  width: 20px;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+} 
+.box .itemfiexd{
+  position: fixed;
+top: 130px;
+}
+.box .itemfiexd img{
+display: block;
+width: 24px; 
+
+margin-bottom: 20px;
 }
 .navimg .luange {
   width: 24px;
