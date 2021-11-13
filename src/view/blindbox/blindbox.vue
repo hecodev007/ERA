@@ -192,7 +192,7 @@ export default {
       if (this.keycount > 6) {
         this.keycount = 1;
       }
-    }, 800);
+    }, 1000);
   },
   methods: {
     deepMerge(obj1, obj2) {
@@ -459,25 +459,25 @@ export default {
 }
 @keyframes identifier {
   0% {
-    -webkit-transform: scale(0.6);
-    -moz-transform:  scale(0.6);
-    -ms-transform:  scale(0.6);
-    -o-transform:  scale(0.6);
-    transform:  scale(0.6);
+    -webkit-transform: scale(0);
+    -moz-transform:  scale(0);
+    -ms-transform:  scale(0);
+    -o-transform:  scale(0);
+    transform:  scale(0);
   }
   50% {
-    -webkit-transform: scale(0.8);
-    -moz-transform: scale(0.8);
-    -ms-transform: scale(0.8);
-    -o-transform: scale(0.8);
-    transform: scale(0.8);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
   }
   100% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
-    transform: scale(0);
+    -webkit-transform: scale(0.2);
+    -moz-transform: scale(0.2);
+    -ms-transform: scale(0.2);
+    -o-transform: scale(0.2);
+    transform: scale(0.2);
   }
 }
 </style>
