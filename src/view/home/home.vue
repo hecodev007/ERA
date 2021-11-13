@@ -186,7 +186,9 @@
           </div>
         </el-col>
         <el-col :xs="24" :md="10" :lg="10" :xl="10">
-          <div class="left"><img src="@/assets/img/right5.png" alt="" /></div>
+          <div class="left">
+            <img src="@/assets/img/right5.png" alt="" @click="bigimg" />
+          </div>
         </el-col>
       </el-row>
       <div class="textmain">
@@ -232,7 +234,6 @@
                     src="@/assets/img/swiperLeft.png"
                     slot="button-prev"
                     class="swiper-button-prev swiperLeft"
-                 
                   />
                   <img
                     src="@/assets/img/swiperRight.png"
@@ -245,8 +246,8 @@
             <el-col :xs="24" :md="14" :lg="14" :xl="14">
               <div class="titl">Introduction</div>
 
-              <p class="instars" >
-                {{instars}}
+              <p class="instars">
+                {{ desr }}
               </p>
               <img
                 src="@/assets/img/btnn.png"
@@ -358,15 +359,20 @@
           <p class="intsra">Copyright xxx.beauty</p>
         </el-col>
       </el-row>
-      <div></div>
     </div>
+    <bigImg v-if="shows" :show="shows"  @getCancel="shows = false"></bigImg>
   </div>
 </template>
 <script>
+import bigImg from "./bigImg.vue";
 export default {
+  components: {
+    bigImg,
+  },
   data() {
     return {
       screenWidth: this.GLOBAL.clientWidth,
+      shows: false, //大图
       bannerbjIMg: "",
       part3bjIMg: "",
       part4bjIMg: "",
@@ -374,7 +380,6 @@ export default {
       part6bjIMg: "",
       btn: "@/assets/img/btnn.png",
       list: this.GLOBAL.list,
-      instars:"",
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
@@ -407,20 +412,26 @@ export default {
         //自动轮播
         //开启循环模式
         loop: true,
-        on: {
-          slideChange:()=>{ 
-            console.log(this.$refs.myswiper.swiper)
-
-          },
-        },
       },
-      activeIndex:1,
+      indexActiveswiper: 1,
+      desr: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
     };
   },
-  
+  computed: {
+    // 获取swiper实例
+    swiper() {
+      return this.$refs.myswiper.$swiper;
+    },
+  },
   mounted() {
     this.setDialogWidth();
-    console.log(this.screenWidth);
+
+    let that = this;
+    this.swiper.on("click", function () {
+      const clickedIndex = this.activeIndex;
+      // 这里的that是Vue的实例
+      that.goDetail(clickedIndex);
+    });
   },
   methods: {
     setDialogWidth() {
@@ -430,7 +441,6 @@ export default {
         this.part4bjIMg = require("@/assets/img/part4bj600.png");
         this.tilebanner = require("@/assets/img/bannertitle600.png");
         this.part6bjIMg = require("@/assets/img/part6bjIMg600.png");
-        console.log("222");
       } else {
         this.bannerbjIMg = require("@/assets/img/bannerbj.png");
         this.part3bjIMg = require("@/assets/img/vbj.png");
@@ -450,11 +460,28 @@ export default {
     gotop() {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
-    Homepage(){
-       this.$router.push({
+    Homepage() {
+      this.$router.push({
         path: "/homepage",
       });
-    }, 
+    },
+    //获取勋章详情
+    goDetail(v) {
+      let index = v;
+      if (v == 6) {
+        index = 1;
+        this.desr = this.list[index].info;
+      } else if (v == 7) {
+        this.desr = this.list[2].info;
+      } else {
+        index = v * 1 + 1;
+        this.desr = this.list[index].info;
+      }
+    },
+    bigimg() {
+      console.log("2")
+      this.shows= true;
+    },
   },
 };
 </script>

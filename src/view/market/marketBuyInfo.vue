@@ -33,12 +33,14 @@
               </div>
               <div v-if="souse=='my'">
                  <div class="mystaus" @click="auction">Cancel sale</div>
-                 <div class="link">NFT has been sold</div>
-                 <div class="bug">Repost the auction</div>
+                 <!-- 多按钮状态 -->
+                 <!-- <div class="link">NFT has been sold</div>
+                 <div class="bug">Repost the auction</div> -->
               </div>
                <div v-else>
                 <div class="staus">Connect wallet</div>
-                <div class="bug" >NFT Not collected</div> 
+                 <!-- 多按钮状态 -->
+                <!-- <div class="bug" >NFT Not collected</div>  -->
                </div>
               
               <div class="btn">
@@ -208,7 +210,7 @@ img {
         img {
           display: block;
           position: absolute;
-          width: 60%;
+          width: 76%;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);

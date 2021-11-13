@@ -74,7 +74,8 @@
     </div>
     <checkbox
       @getCancelclose="showcheck = false"
-      :showcheck.sync="showcheck"
+      :showcheck="showcheck"
+      v-if="showcheck"
     ></checkbox>
     <infoBindBox
       @getCancel="show = false"

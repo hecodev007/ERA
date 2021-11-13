@@ -1,5 +1,5 @@
 <template>
-  <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
+  <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
     <div class="caintners">
       <!-- <div class="topimg" v-if="this.screenWidth >= 600" >
         <img src="@/assets/img/bannerarrbig.png" alt class="banner"   />
@@ -14,7 +14,7 @@
               <div class="title">Angel valley Mining Pool</div>
               <div class="count tittleFont">23,456,231</div>
               <p class="yu">Remaining prize pool(DXCT) ≈ $6,170,505</p>
-              <img src="@/assets/img/logo.png" v-if="this.screenWidth < 600" class="logos" alt />
+         
             </div>
 
             <div class="rule">
@@ -67,19 +67,21 @@
                 :lg="6"
                 :xl="6"
                 :key="key"
-                v-for="(item,key) in list"
+                v-for="(item, key) in list"
               >
                 <div class="contentbox">
-                  <div :class="['boxtop' ]">
-                    <div class="lefts">Position HashRate：{{key+1}}</div>
+                  <div :class="['boxtop']">
+                    <div class="lefts">Position HashRate：{{ key + 1 }}</div>
+                  </div>
+                  <div class="imhgs">
+                    <img :src="item.icon" alt class="yuansu" />
                   </div>
 
-                  <img :src="item.icon" alt class="yuansu" />
                   <!-- <span>unlocked</span> -->
                   <span>Confirming…</span>
                   <!-- <span class="color">Has unlocked +6000 power</span> -->
                   <div class="info">
-                     <img src="@/assets/img/arrowbtn1ing.png" alt   /> 
+                    <img src="@/assets/img/arrowbtn1ing.png" alt />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
                   </div>
                 </div>
@@ -91,26 +93,26 @@
                 :lg="6"
                 :xl="6"
                 :key="key"
-                v-for="(item,key) in list"
+                v-for="(item, key) in list"
               >
                 <div class="contentbox">
-                  <div :class="['boxtop' ]">
-                    <div class="lefts">Position HashRate：{{key+1}}</div>
+                  <div :class="['boxtop']">
+                    <div class="lefts">Position HashRate：{{ key + 1 }}</div>
                   </div>
                   <!-- 两个状态图 -->
-                  <img :src="item.iconsamll" alt class="yuansu" />
-                  <!-- <img :src="item.icon" alt class="yuansu" /> -->
+                  <div class="imhgs">
+                    <img :src="item.iconsamll" alt class="yuansu" />
+                    <!-- <img :src="item.icon" alt class="yuansu" /> -->
+                  </div>
 
                   <!-- 三个状态 -->
                   <!-- <span>unlocked</span> -->
                   <!-- <span>Confirming…</span> -->
                   <span class="color">Has unlocked +6000 power</span>
 
-
                   <div class="info">
-                    
                     <!-- 对应三种状态的按钮状态 -->
-                    <img src="@/assets/img/arrowbtn1no.png" alt  /> 
+                    <img src="@/assets/img/arrowbtn1no.png" alt />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
 
                     <!-- <img src="@/assets/img/arrowbtn1ing.png" alt   /> 
@@ -128,19 +130,25 @@
                 :lg="6"
                 :xl="6"
                 :key="key"
-                v-for="(item,key) in list"
+                v-for="(item, key) in list"
               >
                 <div class="contentbox">
-                  <div :class="['boxtop' ]">
-                    <div class="lefts">Position HashRate：{{key+1}}</div>
+                  <div :class="['boxtop']">
+                    <div class="lefts">Position HashRate：{{ key + 1 }}</div>
                   </div>
 
-                  <img :src="item.icon" alt class="yuansu" />
+                  <div class="imhgs">
+                    <img :src="item.icon" alt class="yuansu" />
+                  </div>
                   <span>unlocked</span>
                   <!-- <span>Confirming…</span> -->
                   <!-- <span class="color">Has unlocked +6000 power</span> -->
-                  <div class="info"> 
-                    <img src="@/assets/img/arrowbtn1.png" alt  @click="openshowNFT(1)" />
+                  <div class="info">
+                    <img
+                      src="@/assets/img/arrowbtn1.png"
+                      alt
+                      @click="openshowNFT(1)"
+                    />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
                   </div>
                 </div>
@@ -160,11 +168,11 @@
       @getCancel="showarrowUp = false"
       :showarrowUp.sync="showarrowUp"
     ></arrowUpItem>-->
-       <NFTmedule
-        @getConfirmNFT="getConfirmNFT"
-        @getCancelNFT="showNFTs = false"
-        :showNFT.sync="showNFTs"
-        :routeQury="2"
+    <NFTmedule
+      @getConfirmNFT="getConfirmNFT"
+      @getCancelNFT="showNFTs = false"
+      :showNFT.sync="showNFTs"
+      :routeQury="2"
     ></NFTmedule>
   </div>
 </template>
@@ -176,12 +184,12 @@ import NFTmedule from "../../components/NFTmedule.vue";
 export default {
   components: {
     arrowItem,
-    NFTmedule
+    NFTmedule,
     // arrowUpItem
   },
   data() {
     return {
-      screenWidth: this.GLOBAL.clientWidth, 
+      screenWidth: this.GLOBAL.clientWidth,
       showarrowItem: false, //arrowItem
       showarrowUp: false,
       arrowbtn1: 1,
@@ -190,18 +198,16 @@ export default {
       list: [
         {
           bjimh: require("@/assets/img/xzBj1.png"),
-    icon: require("@/assets/img/xunzhaung1.png"),
-    iconsamll: require("@/assets/img/arrowIcon1.png"),
-    name: "Power Badge",
-    info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
-    level: 1,
-    countinfo: 1900,
+          icon: require("@/assets/img/xunzhaung1.png"),
+          iconsamll: require("@/assets/img/arrowIcon1.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
         },
-       
       ],
       // list:this.GLOBAL.list,//全局的list数据
-      showNFTs:false,
-
+      showNFTs: false,
     };
   },
   mounted() {
@@ -209,8 +215,7 @@ export default {
     console.log(this.screenWidth);
   },
   methods: {
-    setDialogWidth() {
-    },
+    setDialogWidth() {},
     getConfirmInfo() {},
     getConfirmUp() {},
     //取消算力值
@@ -221,14 +226,12 @@ export default {
     upslz() {
       this.showarrowUp = true;
     },
-    openshowNFT(v){ 
-      console.log(v)
-      this.showNFTs = true
+    openshowNFT(v) {
+      console.log(v);
+      this.showNFTs = true;
     },
-    getConfirmNFT(){
-
-    }
-  }
+    getConfirmNFT() {},
+  },
 };
 </script>
 <style scoped  lang="less">
@@ -325,10 +328,19 @@ export default {
         padding: 10px 0;
         margin: 0 0 20px 20px;
         font-size: 12px;
+        .imhgs {
+          width: 100%;
+          height: 100px;
+          position: relative;
+        }
         .yuansu {
-          width: 30%;
+          width: 65%;
           display: block;
-          margin: 5px auto;
+          /* margin: 5px auto; */
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
         }
         .info {
           display: flex;
@@ -380,8 +392,7 @@ export default {
     }
   }
 }
-.tittleFont{
-
+.tittleFont {
   font-family: "ProximaNova-Xbold.woff" !important;
 }
 .main {

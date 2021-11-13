@@ -1,12 +1,15 @@
 
 <template>
-  <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']" v-if="centerDialogVisible">
+  <div
+    :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']"
+    v-if="centerDialogVisible"
+  >
     <div class="maskmodule">
       <div class="modulemain" :style="{ width: dialogWidth }">
         <img src="@/assets/img/lihua.png" alt="" class="lihua" />
         <div class="top">
           <img src="@/assets/img/checktop.png" alt="" class="topp" />
-          <img src="@/assets/img/close.png" alt="" class="close" />
+          <img src="@/assets/img/close.png" alt="" class="closemodule" />
         </div>
         <span class="tips">You got a</span>
         <div class="imgs">
@@ -45,6 +48,10 @@ export default {
       } else {
         this.dialogWidth = 400 + "px";
       }
+    },
+    // 点击弹框下的关闭
+    closemodule(v) {
+      this.$emit("getCancelclose", v);
     },
   },
 };
@@ -125,21 +132,21 @@ export default {
     }
   }
 }
-.main{
-  .maskmodule .modulemain .imgs{
-      height: 300px;
+.main {
+  .maskmodule .modulemain .imgs {
+    height: 300px;
   }
-   .maskmodule .modulemain .top .topp  {
+  .maskmodule .modulemain .top .topp {
     width: 109%;
     position: absolute;
     top: -27px;
     left: -5%;
-   }
-   .maskmodule .modulemain .top .close  {
+  }
+  .maskmodule .modulemain .top .close {
     width: 25px;
     position: absolute;
     top: 18px;
     right: 5%;
-   }
+  }
 }
 </style>

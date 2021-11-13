@@ -1,9 +1,9 @@
 <template>
-  <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
+  <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
     <div class="caintner">
       <div class="headerMarket">
         <div class="nav">
-         {{souse=="my"?"My Nft":"拍賣 >"}} 
+          {{ souse == "my" ? "My Nft" : "Auction >" }}
           <span class="color">NFT name（ID:002101）</span>
         </div>
         <div class="goback" @click="goback">
@@ -32,17 +32,19 @@
                   <p>238,647,324</p>
                 </div>
               </div>
-              <div v-if="souse=='my'">
-                 <div class="mystaus" @click="auction">Cancel auction</div>
-                 <div class="link">NFT has been auctioned</div>
-                 <div class="bug">Repost the auction</div>
+              <div v-if="souse == 'my'">
+                <div class="mystaus" @click="auction">Cancel auction</div>
+                <!-- 多按钮状态 -->
+                <!-- <div class="link">NFT has been auctioned</div>
+                 <div class="bug">Repost the auction</div> -->
               </div>
-               <div v-else>
+              <div v-else>
                 <div class="link">NFT has been claimed</div>
-                <div class="bug" @click="submitBuy">Bid now (price increase 10%)</div>
+                <!-- 多按钮状态 -->
+                <!-- <div class="bug" @click="submitBuy">Bid now (price increase 10%)</div>
                 <div class="bug" >NFT Not collected</div>
-                <div class="staus">Connect wallet</div>
-               </div>
+                <div class="staus">Connect wallet</div> -->
+              </div>
               <div class="tips">Rebate from last bid 21,780,000 ERA</div>
 
               <div class="btn">
@@ -92,10 +94,14 @@
               </div>
               <div class="dataTB">
                 <div class="tbHeaderTB">
-                  <span class="wid1" v-if="this.screenWidth >= 600">Wallet address</span>
+                  <span class="wid1" v-if="this.screenWidth >= 600"
+                    >Wallet address</span
+                  >
                   <span class="wid2">Hash</span>
                   <span class="wid3">Auction Price (AVS)</span>
-                  <span class="wid4" v-if="this.screenWidth >= 600">Auction time</span>
+                  <span class="wid4" v-if="this.screenWidth >= 600"
+                    >Auction time</span
+                  >
                   <span class="wid5">Rebate (?)</span>
                   <span class="wid6" v-if="this.screenWidth >= 600">state</span>
                 </div>
@@ -105,12 +111,28 @@
                     <p class="textNO">暫無數據</p>
                   </div>
                   <div class="item">
-                    <span class="wid1" v-if="this.screenWidth >= 600">1112313213123123121</span>
+                    <span class="wid1" v-if="this.screenWidth >= 600"
+                      >1112313213123123121</span
+                    >
                     <span class="wid2">13jh…783123sa</span>
                     <span class="colo2 wid3 tittleFont">10,000</span>
                     <span class="wid4">20121.10.02 16:23:43</span>
-                    <span class="colo2 wid5 tittleFont" v-if="this.screenWidth >= 600">238,646,124</span>
-                    <span class="wid6" v-if="this.screenWidth >= 600">拍賣中</span>
+                    <span
+                      class="colo2 wid5 tittleFont"
+                      v-if="this.screenWidth >= 600"
+                      >238,646,124</span
+                    >
+                    <span class="wid6 color" v-if="this.screenWidth >= 600"
+                      >Deal done</span
+                    >
+                    <!-- 多状态 -->
+                     <!-- <span class="wid6" v-if="this.screenWidth >= 600"
+                      >In auction</span
+                    > -->
+                    <!--<span class="wid6" v-if="this.screenWidth >= 600"
+                      >Missed</span
+                    > -->
+                    
                   </div>
                 </div>
               </div>
@@ -119,21 +141,54 @@
         </el-row>
       </div>
       <div class="rule">
-        <h6>拍賣規則</h6>
+        <h6>Auction Rules</h6>
         <ul>
-          <li>1.当倒计时不到1小时时，每次出价后倒计时将增加10分钟，最高倒计时可以增加到1小时；</li>
-          <li>2.每次出价将提高10%的固定价格。倒计时结束后，拍卖品将由最后一个投标人获得；</li>
-          <li>3.20%的价格上涨是由最后一个投标人获得的，80%是拍卖出版商的收入。</li>
-          <li>4.该平台将收取20%的投标佣金作为服务费，其中40%将捐给NFT采矿池，其中50%将转换为$YOOSHI并烧毁，其中10%将发送给开发人员。</li>
-          <li>5.拍卖成功后，该平台将收取出版商利润的3%作为服务费。其中，40%的人进入YooShi NFT农业池，50%将兑换成$YOOSHI并烧毁，10%将是开发商的收入。</li>
-          <li>6.拍卖结束后，拍卖出版商可以获得拍卖NFT的利润，或者在拍卖失败的情况下获得NFT。注：投标人收到NFT后，拍卖出版商会自动收到收益。</li>
+          <li>
+            1. When the countdown is less than 1 hour, each bid will increase by
+            10 minutes, and the maximum increase can be 1 hour;
+          </li>
+          <li>
+            2. A fixed price increase of 10% for each auction, after the
+            countdown ends, the auction item will be obtained by the last
+            bidder;
+          </li>
+          <li>
+            3. 20% of the premium is obtained by the previous bidder, and 80% is
+            the income of the auction publisher.
+          </li>
+          <li>
+            4. After the auction is successful, the platform will charge 5% of
+            the publisher's revenue as a service fee. Among them, 40% enter the
+            NFT mining pool, 50% Swap into ANS tokens enter the repurchase
+            wallet, and 10% of the developer's income.
+          </li>
+          <li>
+            5. After the auction is over, the auction publisher can go to the
+            finished lot page to receive the proceeds from the auction NFT or
+            receive the NFT if the auction is unsuccessful. Note: After the
+            bidder receives the NFT, the auction publisher automatically
+            receives the proceeds.
+          </li>
         </ul>
       </div>
     </div>
-    <buymarket @getConfirmear="getConfirmear" @getCancel="showBuy = false" :showBuy.sync="showBuy"></buymarket>
+    <buymarket
+      @getConfirmear="getConfirmear"
+      @getCancel="showBuy = false"
+      :showBuy.sync="showBuy"
+    ></buymarket>
 
-    <marketPMList @getConfirmInfo="getConfirmInfo" @getCancel="show = false" :show.sync="show"></marketPMList>
-    <auction @getCancelNFT="getCancelNFT" @getConfirmshowauction="getConfirmshowauction" @getCancel="showauction = false" :showauction.sync="showauction"></auction>
+    <marketPMList
+      @getConfirmInfo="getConfirmInfo"
+      @getCancel="show = false"
+      :show.sync="show"
+    ></marketPMList>
+    <auction
+      @getCancelNFT="getCancelNFT"
+      @getConfirmshowauction="getConfirmshowauction"
+      @getCancel="showauction = false"
+      :showauction.sync="showauction"
+    ></auction>
   </div>
 </template>
 <script>
@@ -146,28 +201,26 @@ export default {
   components: {
     marketPMList,
     buymarket,
-    auction
+    auction,
   },
   data() {
     return {
-      screenWidth: this.GLOBAL.clientWidth, 
+      screenWidth: this.GLOBAL.clientWidth,
       activeNav: 1,
       show: false,
       showBuy: false,
-      actives:null,//当前的id
-      souse:"",//来源，区分我的，市场
-      showauction:false,
+      actives: null, //当前的id
+      souse: "", //来源，区分我的，市场
+      showauction: false,
     };
   },
-  mounted() { 
+  mounted() {
     console.log(this.screenWidth);
-   this.actives =  this.$route.query.actives
-   this.souse = this.$route.query.souse
+    this.actives = this.$route.query.actives;
+    this.souse = this.$route.query.souse;
   },
   methods: {
-  getConfirmear(){
-
-  },
+    getConfirmear() {},
     getConfirmInfo(v) {
       console.log(v);
     },
@@ -178,16 +231,14 @@ export default {
       this.$router.go(-1);
     },
     //Cancel auction
-    auction(){
-      this.showauction = true
+    auction() {
+      this.showauction = true;
     },
-    getConfirmshowauction(){
-
+    getConfirmshowauction() {},
+    getCancelNFT() {
+      this.showauction = false;
     },
-    getCancelNFT(){
-      this.showauction = false
-    }
-  }
+  },
 };
 </script>
 <style scoped  lang="less">
@@ -259,7 +310,7 @@ img {
         img {
           display: block;
           position: absolute;
-          width: 60%;
+          width: 76%;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
@@ -308,8 +359,8 @@ img {
           color: #fff;
           text-align: center;
         }
-        .mystaus{
-           background: url(../../assets/img/marketmybj.png) no-repeat center;
+        .mystaus {
+          background: url(../../assets/img/marketmybj.png) no-repeat center;
           background-size: contain;
           line-height: 43px;
           height: 43px;
@@ -375,23 +426,21 @@ img {
             span {
             }
           }
-          .tbody { 
-              .dataNo {
-                text-align: center;
-                padding: 30px;
-                img {
-                  margin: 20px auto;
-               
-                }
-                .textNO {
-                  line-height: 20px;
-                  font-size: 16px;
-                  padding: 0;
-                  margin: 0;
-                }
+          .tbody {
+            .dataNo {
+              text-align: center;
+              padding: 30px;
+              img {
+                margin: 20px auto;
               }
-              
-           
+              .textNO {
+                line-height: 20px;
+                font-size: 16px;
+                padding: 0;
+                margin: 0;
+              }
+            }
+
             .item {
               display: flex;
               justify-content: space-between;
@@ -428,10 +477,9 @@ img {
       }
     }
   }
-   .info .table .dataTB .colo2 {
+  .info .table .dataTB .colo2 {
     color: rgba(112, 244, 165, 1);
   }
-   
 }
 .main {
   .caintner .info {
@@ -450,13 +498,13 @@ img {
       width: 100%;
     }
   }
-   .info .table .dataTB .wid3 {
+  .info .table .dataTB .wid3 {
     text-align: center;
   }
-   .info .table .dataTB .colo2 {
+  .info .table .dataTB .colo2 {
     color: rgba(112, 244, 165, 1);
   }
-   .info .table .dataTB .wid4 {
+  .info .table .dataTB .wid4 {
     color: rgba(112, 244, 165, 1);
   }
 }
@@ -476,6 +524,9 @@ img {
   width: 77px;
 }
 .wid6 {
-  width: 42px;
+  width: 57px;
+}
+.wid6.color{
+ color: rgba(112, 244, 165, 1)
 }
 </style>
