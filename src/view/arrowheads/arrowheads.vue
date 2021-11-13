@@ -13,7 +13,7 @@
             <div class="pool">
               <div class="title">Angel valley Mining Pool</div>
               <div class="count tittleFont">23,456,231</div>
-              <p class="yu">Remaining prize pool(DXCT) ≈ $6,170,505</p>
+              <p class="yu">Remaining prize pool(ANST) ≈ $6,170,505</p>
          
             </div>
 
@@ -29,11 +29,11 @@
                 </div>
                 <div>
                   <span class="tittleFont">13,253,571</span>
-                  <p>Total Staked Tokens(DXCT) ≈ $9,201,761</p>
+                  <p>Total Staked Tokens(ANST) ≈ $9,201,761</p>
                 </div>
                 <div>
                   <span class="tittleFont">13,253,571</span>
-                  <p>(DXCT)≈$0</p>
+                  <p>(ANST)≈$0</p>
                 </div>
               </div>
               <div class="poolRight">
@@ -47,7 +47,7 @@
                 </div>
                 <div>
                   <span class="tittleFont">13,253,571</span>
-                  <p>My Staked Tokens(DXCT)≈ $0</p>
+                  <p>My Staked Tokens(ANST)≈ $0</p>
                 </div>
                 <div class>
                   <img src="@/assets/img/harvest.png" alt />

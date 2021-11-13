@@ -15,7 +15,7 @@
             <span class="number">0.00</span>
             <div class="tip">
               <span>max</span>
-              <p>DXCT/BUSD</p>
+              <p>ANST/BUSD</p>
             </div>
           </div>
         </div>
