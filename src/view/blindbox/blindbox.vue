@@ -33,9 +33,9 @@
 
         <div class="topRi" v-for="(item, index) in list" :key="index">
           <div class="v1"  v-if="keycount==index">
-            <img :src="item.icon" alt />
-            <div class="mask">?</div>
+            <img :src="item.icon" alt /> 
           </div>
+          <div class="mask" v-if="keycount==index">?</div>
         </div>
       </div>
       <div class="button600" v-if="this.screenWidth < 600">
@@ -424,13 +424,9 @@ export default {
         text-align: center;
         width: 100%;
         img {
-          width: 60%;
+          width: 80%;
         }
-        div {
-          top: 0;
-          left: 50%;
-          transform: translate(-50%, 0);
-        }
+         
       }
     }
 
