@@ -20,9 +20,9 @@
               class="button"
               :style="`background: url(${btnbjsss}) no-repeat center;background-size: cover;`"
             >
-              <span><img src="../../assets/img/chuizi.png" alt="" /> Mint</span>
-              <!--  <span>Approve</span>
-               <span>Connect wallet</span> -->
+              <span>Connect wallet</span>
+              <!-- 两个状态按钮 -->
+              <!-- <span><img src="../../assets/img/chuizi.png" alt="" /> Mint</span> -->
             </div>
             <div class="count">
               <img src="../../assets/img/iconInfo.png" alt />
@@ -32,10 +32,10 @@
         </div>
 
         <div class="topRi" v-for="(item, index) in list" :key="index">
-          <div class="v1"  v-if="keycount==index">
-            <img :src="item.icon" alt /> 
+          <div class="v1" v-if="keycount == index">
+            <img :src="item.icon" alt />
           </div>
-          <div class="mask" v-if="keycount==index">?</div>
+          <div class="mask" v-if="keycount == index">?</div>
         </div>
       </div>
       <div class="button600" v-if="this.screenWidth < 600">
@@ -319,7 +319,7 @@ export default {
         height: 250px;
         position: absolute;
         .mask {
-          position: absolute; 
+          position: absolute;
           width: 100%;
           height: 100%;
           line-height: 250px;
@@ -426,7 +426,6 @@ export default {
         img {
           width: 80%;
         }
-         
       }
     }
 
@@ -460,10 +459,10 @@ export default {
 @keyframes identifier {
   0% {
     -webkit-transform: scale(0.2);
-    -moz-transform:  scale(0.2);
-    -ms-transform:  scale(0.2);
-    -o-transform:  scale(0.2);
-    transform:  scale(0.2);
+    -moz-transform: scale(0.2);
+    -ms-transform: scale(0.2);
+    -o-transform: scale(0.2);
+    transform: scale(0.2);
     opacity: 0.5;
   }
   50% {
