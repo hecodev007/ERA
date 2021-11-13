@@ -30,8 +30,12 @@
             </div>
           </div>
         </div>
-        <div class="topRi">
-          <img src="../../assets/img/mangheicon.png" alt />
+
+        <div class="topRi" v-for="(item, index) in list" :key="index">
+          <div class="v1"  v-if="keycount==index">
+            <img :src="item.icon" alt />
+            <div class="mask">?</div>
+          </div>
         </div>
       </div>
       <div class="button600" v-if="this.screenWidth < 600">
@@ -104,6 +108,7 @@ export default {
       list: this.GLOBAL.list,
       itemData: {},
       btnbjsss: require("@/assets/img/btnbjsss.png"),
+      keycount: 1, //轮播图
       list2: {
         1: {
           count: 0,
@@ -181,6 +186,13 @@ export default {
           type: "error",
         });
       });
+
+    setInterval(() => {
+      this.keycount++;
+      if (this.keycount > 6) {
+        this.keycount = 1;
+      }
+    }, 800);
   },
   methods: {
     deepMerge(obj1, obj2) {
@@ -244,6 +256,7 @@ export default {
       min-height: 300px;
       justify-content: space-between;
       align-items: center;
+      position: relative;
       .topLe {
         width: 65%;
         .instructions {
@@ -301,14 +314,30 @@ export default {
         }
       }
       .topRi {
+        right: 0;
         width: 35%;
-        text-align: right;
-        position: relative;
+        height: 250px;
+        position: absolute;
+        .mask {
+          position: absolute; 
+          width: 100%;
+          height: 100%;
+          line-height: 250px;
+          left: 50%;
+          top: 50%;
+          text-align: center;
+          transform: translate(-50%, -50%);
+        }
         img {
-          width: 70%;
+          width: 100%;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          text-align: center;
+          transform: translate(-50%, -50%);
         }
         div {
-          width: 70%;
+          width: 100%;
           background: rgba(19, 29, 23, 0.8);
           height: 100%;
           position: absolute;
@@ -423,6 +452,36 @@ export default {
         margin-right: 10px;
       }
     }
+  }
+}
+.v1 {
+  top: 0;
+  position: relative;
+  left: 0;
+  animation: identifier 1s infinite;
+  -webkit-animation: identifier 1s infinite;
+}
+@keyframes identifier {
+  0% {
+    -webkit-transform: scale(0.6);
+    -moz-transform:  scale(0.6);
+    -ms-transform:  scale(0.6);
+    -o-transform:  scale(0.6);
+    transform:  scale(0.6);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
   }
 }
 </style>
