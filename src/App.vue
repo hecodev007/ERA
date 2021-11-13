@@ -268,6 +268,7 @@ export default {
             type: 'success'
           });
           this.show = !this.show;
+          this.mypackage=true
         })
         .catch((err) => {
           // this.$toast("connect faild" + err, "error");

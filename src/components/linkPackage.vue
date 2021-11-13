@@ -3,13 +3,13 @@
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible"   :width="dialogWidth" center>
       <div class="main">
         <div class="headerTop tittleFont">
-          連結到錢包
+          Wallet Connect
           <img src="../assets/img/close.png" alt class="close" @click="closemodule" />
         </div>
         <div class="list">
           <div :class="['item',active==0? 'active':'']" @click="check(0)">
             <img src="../assets/img/MetamaskLogo.png" alt />
-            <span>元面具</span>
+            <span>Metamask</span>
           </div>
           <div :class="['item',active==1? 'active':'']" @click="check(1)">
             <img src="../assets/img/WalletConnect.png" alt />
