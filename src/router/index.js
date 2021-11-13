@@ -25,6 +25,11 @@ export default new Router({
       component: resolve => require(['../view/home/home.vue'], resolve),
     },
     {
+      path: '/homepage',
+      name: 'Homepage',
+      component: resolve => require(['../view/home/homepage.vue'], resolve),
+    },
+    {
       path: '/blindbox',
       name: 'Blindbox',
       component: resolve => require(['../view/blindbox/blindbox'], resolve),

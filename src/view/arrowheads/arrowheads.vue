@@ -76,12 +76,71 @@
 
                   <img :src="item.icon" alt class="yuansu" />
                   <!-- <span>unlocked</span> -->
+                  <span>Confirming…</span>
+                  <!-- <span class="color">Has unlocked +6000 power</span> -->
+                  <div class="info">
+                     <img src="@/assets/img/arrowbtn1ing.png" alt   /> 
+                    <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
+                  </div>
+                </div>
+              </el-col>
+              <el-col
+                :xs="12"
+                :sm="6"
+                :md="6"
+                :lg="6"
+                :xl="6"
+                :key="key"
+                v-for="(item,key) in list"
+              >
+                <div class="contentbox">
+                  <div :class="['boxtop' ]">
+                    <div class="lefts">Position HashRate：{{key+1}}</div>
+                  </div>
+                  <!-- 两个状态图 -->
+                  <img :src="item.iconsamll" alt class="yuansu" />
+                  <!-- <img :src="item.icon" alt class="yuansu" /> -->
+
+                  <!-- 三个状态 -->
+                  <!-- <span>unlocked</span> -->
                   <!-- <span>Confirming…</span> -->
                   <span class="color">Has unlocked +6000 power</span>
+
+
                   <div class="info">
-                    <img src="@/assets/img/arrowbtn1.png" alt v-if="arrowbtn1==1" @click="openshowNFT(1)"/>
-                    <img src="@/assets/img/arrowbtn1no.png" alt v-if="arrowbtn1==2" />
-                    <img src="@/assets/img/arrowbtn1no2.png" alt v-if="arrowbtn1==3" />
+                    
+                    <!-- 对应三种状态的按钮状态 -->
+                    <img src="@/assets/img/arrowbtn1no.png" alt  /> 
+                    <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
+
+                    <!-- <img src="@/assets/img/arrowbtn1ing.png" alt   /> 
+                    <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
+
+                     <img src="@/assets/img/arrowbtn1.png" alt  @click="openshowNFT(1)" />
+                    <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" /> -->
+                  </div>
+                </div>
+              </el-col>
+              <el-col
+                :xs="12"
+                :sm="6"
+                :md="6"
+                :lg="6"
+                :xl="6"
+                :key="key"
+                v-for="(item,key) in list"
+              >
+                <div class="contentbox">
+                  <div :class="['boxtop' ]">
+                    <div class="lefts">Position HashRate：{{key+1}}</div>
+                  </div>
+
+                  <img :src="item.icon" alt class="yuansu" />
+                  <span>unlocked</span>
+                  <!-- <span>Confirming…</span> -->
+                  <!-- <span class="color">Has unlocked +6000 power</span> -->
+                  <div class="info"> 
+                    <img src="@/assets/img/arrowbtn1.png" alt  @click="openshowNFT(1)" />
                     <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
                   </div>
                 </div>
@@ -131,61 +190,16 @@ export default {
       list: [
         {
           bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon1.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
+    icon: require("@/assets/img/xunzhaung1.png"),
+    iconsamll: require("@/assets/img/arrowIcon1.png"),
+    name: "Power Badge",
+    info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+    level: 1,
+    countinfo: 1900,
         },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon2.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon3.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon4.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon5.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon6.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon7.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        },
-        {
-          bjimh: require("@/assets/img/xzBj1.png"),
-          icon: require("@/assets/img/arrowIcon8.png"),
-          bei: 100,
-          have: 20,
-          name: "大地原石勛章"
-        }
+       
       ],
+      // list:this.GLOBAL.list,//全局的list数据
       showNFTs:false,
 
     };

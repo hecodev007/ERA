@@ -31,18 +31,18 @@
             <div class="navRight" v-if="activeNav==1">
               <el-dropdown trigger="click">
                 <span class="el-dropdown-link">
-                  拍賣中
+                  In auction
                   <!-- <img src="" alt=""> -->
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>拍賣中</el-dropdown-item>
-                  <el-dropdown-item>已结束</el-dropdown-item>
+                  <el-dropdown-item>In auction</el-dropdown-item>
+                  <el-dropdown-item>Over</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               <el-dropdown trigger="click">
                 <span class="el-dropdown-link">
-                  最新出價
+                  Newest bid
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -86,7 +86,7 @@
             <div class="item" @click="clkItem">
               <div class="imgItem">
                  <div>
-                  <span>100倍</span>
+                  <span>100X</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
                 <p>大地原石勛章 </p>
@@ -94,14 +94,14 @@
               </div>
               <div class="infoItme">
                 <div class="info">
-                  <span>最新出價</span>
+                  <span>Newest bid</span>
                   <span class="weight">
                     <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
                     333,234,567,676
                   </span>
                 </div>
                 <div class="info" v-if="activeNav==1">
-                  <span>剩餘時間</span>
+                  <span>Time left</span>
                   <span class="weight">12:12:12</span>
                 </div>
               </div>
@@ -111,7 +111,7 @@
             <div class="item" @click="clkItem">
               <div class="imgItem">
                  <div>
-                  <span>100倍</span>
+                  <span>100X</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
                 <p>大地原石勛章 </p>
@@ -119,44 +119,20 @@
               </div>
               <div class="infoItme">
                 <div class="info">
-                  <span>最新出價</span>
+                  <span>Newest bid</span>
                   <span class="weight">
                     <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
                     333,234,567,676
                   </span>
                 </div>
                 <div class="info" v-if="activeNav==1">
-                  <span>剩餘時間</span>
+                  <span>Time left</span>
                   <span class="weight">12:12:12</span>
                 </div>
               </div>
             </div>
           </el-col>
-          <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
-            <div class="item" @click="clkItem">
-              <div class="imgItem">
-                 <div>
-                  <span>100倍</span>
-                </div>
-                <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                <p>Spring Water Glass Medal</p>
-                <p>(ID:002101)</p>
-              </div>
-              <div class="infoItme">
-                <div class="info">
-                  <span>最新出價</span>
-                  <span class="weight">
-                    <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
-                    333,234,567,676
-                  </span>
-                </div>
-                <div class="info" v-if="activeNav==1">
-                  <span>剩餘時間</span>
-                  <span class="weight">12:12:12</span>
-                </div>
-              </div>
-            </div>
-          </el-col>
+         
         </el-row>
       </div>
     </div>
@@ -295,9 +271,9 @@ export default {
             }
           }
           .xz {
-            width: 40%;
+            width: 70%;
             display: block;
-            margin: 10px auto 30px;
+            margin: 10px auto ;
           }
           p {
             text-align: center;

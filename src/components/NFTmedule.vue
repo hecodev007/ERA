@@ -21,6 +21,7 @@
               <div :class="activeOption==1?'activeTab':''"  @click="activeTab(1)">ALL<span>11</span></div>
                 <div :class="activeOption==2?'activeTab':''"  @click="activeTab(2)">Auction<span>11</span></div>
                 <div :class="activeOption==3?'activeTab':''" @click="activeTab(3)">Sell<span>11</span></div>
+                <div :class="activeOption==4?'activeTab':''" @click="activeTab(4)">Stake<span>11</span></div>
             </div>
             <div class="list">
               <div class="tbHeader">
@@ -40,22 +41,22 @@
                   </div>
                   <div class="width2">200</div>
                   <div :class="['width3',dialogWidth=='90%'?'width3active':'']">
-                    <img src="../assets/img/paimai.png" alt @click="check(1)" v-if="routeQurydata==1 && routeQuryDetail==1" />
-                    <img src="../assets/img/sell.png" alt @click="checksell(2)" v-if="routeQuryDetail==1" />
-
+                    <img src="../assets/img/paimai.png" alt @click="check(1)" />
+                    <img src="../assets/img/sell.png" alt @click="checksell(2)"  />
+<!-- 
                     <img src="../assets/img/shichang.png" alt @click="checkDetail(1)" v-if="routeQuryDetail==2" />
-                    <img src="../assets/img/sellD.png" alt @click="checkDetail(2)" v-if="routeQuryDetail==2" />
+                    <img src="../assets/img/sellD.png" alt @click="checkDetail(2)" v-if="routeQuryDetail==2" /> -->
                   </div>
                 </div>
-                <div class="item">
+                 <div class="item">
                   <div :class="['width1',dialogWidth=='90%'?'width1active':'']">
                     <img src="../assets/img/xunzhaung1.png" alt />
                     <p>泉水琉璃勛章</p>
                   </div>
                   <div class="width2">200</div>
                   <div :class="['width3',dialogWidth=='90%'?'width3active':'']">
-                    <img src="../assets/img/markeD.png" alt @click="checkDetail(1)"   />
-                    <img src="../assets/img/sellD.png" alt @click="checkDetail(2)"   />
+                    
+                    <img src="../assets/img/sellD.png" alt @click="checkDetail(2)"  v-if="routeQuryDetail==2"  />
                   </div>
                 </div>
               </div>
@@ -160,7 +161,7 @@ export default {
       time: "1",
       routeQurydata:this.routeQury,
       activeOption:1,
-      routeQuryDetail:1,//详情 
+      routeQuryDetail:2,//详情 
     };
   },
   watch: {

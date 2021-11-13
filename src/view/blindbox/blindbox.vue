@@ -1,7 +1,8 @@
 <template>
   <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
     <div class="intraduse" v-if="this.screenWidth < 600">
-      It takes 0.3BNB to cast a blind box, including 6 randomly generated treasures of different levels. Good luck~
+      It takes 0.3BNB to cast a blind box, including 6 randomly generated
+      treasures of different levels. Good luck~
     </div>
 
     <div class="cainter">
@@ -10,12 +11,18 @@
           <div class="instructions">
             <img src="../../assets/img/logo.png" alt />
             <span
-              >It takes 0.3BNB to cast a blind box, including 6 randomly generated treasures of different levels. Good luck~</span
+              >It takes 0.3BNB to cast a blind box, including 6 randomly
+              generated treasures of different levels. Good luck~</span
             >
           </div>
           <div class="meth">
-            <div class="button">
-              <img src="../../assets/img/btnns.png" alt @click="goMint" />
+            <div
+              class="button"
+              :style="`background: url(${btnbjsss}) no-repeat center;background-size: cover;`"
+            >
+              <span><img src="../../assets/img/chuizi.png" alt="" /> Mint</span>
+              <!--  <span>Approve</span>
+               <span>Connect wallet</span> -->
             </div>
             <div class="count">
               <img src="../../assets/img/iconInfo.png" alt />
@@ -25,7 +32,6 @@
         </div>
         <div class="topRi">
           <img src="../../assets/img/mangheicon.png" alt />
-          
         </div>
       </div>
       <div class="button600" v-if="this.screenWidth < 600">
@@ -45,137 +51,148 @@
             :xl="8"
             :key="key"
             v-for="(item, key) in myNFTs"
-           
           >
             <div
-             v-if="key<=6"
+              v-if="key <= 6"
               class="contentbox"
-              :style="`background: url(${item.bjimh}) no-repeat center;background-size: contain;`"
+              :style="`background-image: url(${item.bjimh});background-size: contain;`"
               @click="minting(item)"
-              >
-            <div class="info">
+            >
+              <!-- 未获得nft时，展示图为“暗”  div为蒙层 -->
+              <div class="maskContentbox"></div>
+              <div class="info">
                 <span v-if="item.power">{{ item.power }}X</span>
                 <div v-if="item.count">Hold：X{{ item.count }}</div>
               </div>
               <img :src="item.icon" alt />
               <!-- <p>Token:{{key}}</p> -->
-              <p>{{item.name}}</p>
+              <p>{{ item.name }}</p>
             </div>
           </el-col>
         </el-row>
       </div>
     </div>
-    <infoBindBox @getCancel="show = false" :show.sync="show" :itemData="itemData"></infoBindBox>
+    <checkbox
+      @getCancelclose="showcheck = false"
+      :showcheck.sync="showcheck"
+    ></checkbox>
+    <infoBindBox
+      @getCancel="show = false"
+      :show.sync="show"
+      :itemData="itemData"
+    ></infoBindBox>
   </div>
 </template>
 <script>
 import infoBindBox from "./infoBindBox.vue";
 import { mint, myAllNFT } from "@/assets/js/web3.js";
+import checkbox from "./checkbox.vue";
 
 export default {
   components: {
     infoBindBox,
+    checkbox,
   },
   data() {
     return {
       screenWidth: this.GLOBAL.clientWidth,
       show: false,
+      showcheck: false,
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
-     list:this.GLOBAL.list,
-     itemData:{},
-      list2:{
-    "1": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "1",
-        "name": "1",
-        "power": "1000",
-        "res": "1"
-    },
-    "2": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "2",
-        "name": "2",
-        "power": "2500",
-        "res": "res"
-    },
-    "3": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "4",
-        "name": "4",
-        "power": "90000",
-        "res": "res"
-    },
-    "4": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "3",
-        "name": "3",
-        "power": "6500",
-        "res": "res"
-    },
-    "5": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "4",
-        "name": "4",
-        "power": "35000",
-        "res": "res"
-    },
-    "6": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "5",
-        "name": "5",
-        "power": "14500",
-        "res": "res"
-    },
-    "7": {
-        "count": 0,
-        "author": "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
-        "level": "4",
-        "name": "4",
-        "power": "35000",
-        "res": "res"
-    }
-}
+      list: this.GLOBAL.list,
+      itemData: {},
+      btnbjsss: require("@/assets/img/btnbjsss.png"),
+      list2: {
+        1: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "1",
+          name: "1",
+          power: "1000",
+          res: "1",
+        },
+        2: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "2",
+          name: "2",
+          power: "2500",
+          res: "res",
+        },
+        3: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "4",
+          name: "4",
+          power: "90000",
+          res: "res",
+        },
+        4: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "3",
+          name: "3",
+          power: "6500",
+          res: "res",
+        },
+        5: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "4",
+          name: "4",
+          power: "35000",
+          res: "res",
+        },
+        6: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "5",
+          name: "5",
+          power: "14500",
+          res: "res",
+        },
+        7: {
+          count: 0,
+          author: "0xa38433265062F1F73c0A90F2FEa408f2Efd1a569",
+          level: "4",
+          name: "4",
+          power: "35000",
+          res: "res",
+        },
+      },
     };
   },
   mounted() {
-    this.myNFTs =this.list
-//  this.myNFTs = this.deepMerge(this.list2,this.list);
-//     console.log( this.myNFTs)
+    this.myNFTs = this.list;
+    //  this.myNFTs = this.deepMerge(this.list2,this.list);
+    //     console.log( this.myNFTs)
     myAllNFT()
       .then((nfts) => {
-        console.log("mynfts",nfts)
-        this.myNFTs = this.deepMerge(nfts,this.list); 
-        
+        console.log("mynfts", nfts);
+        this.myNFTs = this.deepMerge(nfts, this.list);
       })
       .catch((err) => {
-          // this.$toast(err, "error");
-           this.$notify({
-            title: 'error',
-            message: err,
-            type: 'error'
-          });
+        // this.$toast(err, "error");
+        this.$notify({
+          title: "error",
+          message: err,
+          type: "error",
+        });
       });
   },
   methods: {
-
-  deepMerge(obj1, obj2) {
-          let key;
-          for (key in obj2) {
-            // 如果target(也就是obj1[key])存在，且是对象的话再去调用deepMerge，否则就是obj1[key]里面没这个对象，需要与obj2[key]合并
-            obj1[key] = obj1[key] && obj1[key].toString() === "[object Object]"
-              ? this.deepMerge(obj1[key], obj2[key])
-              : (obj1[key] = obj2[key]);
-          }
-          return obj1;
-        },
-
+    deepMerge(obj1, obj2) {
+      let key;
+      for (key in obj2) {
+        // 如果target(也就是obj1[key])存在，且是对象的话再去调用deepMerge，否则就是obj1[key]里面没这个对象，需要与obj2[key]合并
+        obj1[key] =
+          obj1[key] && obj1[key].toString() === "[object Object]"
+            ? this.deepMerge(obj1[key], obj2[key])
+            : (obj1[key] = obj2[key]);
+      }
+      return obj1;
+    },
 
     goMint() {
       // mint(nftName,level,power,res,author)nftName 可以传空 level 等级 1-5 power[1000,2500,6500,14500,35000,90000] res 随便 author 随便
@@ -189,23 +206,23 @@ export default {
           // this.$toast("send success，Hash" + hash, "success");
 
           this.$notify({
-            title: 'success',
+            title: "success",
             message: "send success，Hash",
-            type: 'success'
+            type: "success",
           });
         })
         .catch((err) => {
           // this.$toast("mint failed" + err, "error");
-           this.$notify({
-            title: 'error',
+          this.$notify({
+            title: "error",
             message: "mint failed",
-            type: 'error'
+            type: "error",
           });
         });
     },
-    minting(v){
-      this.show = true
-      this.itemData = v
+    minting(v) {
+      this.show = true;
+      this.itemData = v;
     },
   },
 };
@@ -249,9 +266,20 @@ export default {
           align-items: center;
           justify-content: space-between;
           .button {
-            max-width: 320px;
+            width: 425px;
+            height: 110px;
+            line-height: 110px;
+            font-size: 30px;
+            text-align: center;
+            color: rgba(19, 29, 23, 1);
+            font-weight: 900;
+            span {
+              text-align: center;
+            }
             img {
-              width: 100%;
+              width: 40px;
+              vertical-align: middle;
+              margin-right: 10px;
             }
           }
           .count {
@@ -259,7 +287,7 @@ export default {
             width: 50%;
             align-items: center;
             margin-left: 20px;
-                justify-content: center;
+            justify-content: center;
 
             img {
               width: 47px;
@@ -298,12 +326,24 @@ export default {
       }
     }
     .contentbox {
-     text-align: center;
-    width: 80%;
-    margin: 0 auto;
-    /* background-size: cover; */
-    padding: 10%;
-    margin: 5% auto;
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 10%;
+      margin: 5% auto;
+
+      position: relative;
+      .maskContentbox {
+        background-color: rgba(19, 29, 23, 0.7);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
       .info {
         display: flex;
         justify-content: space-between;
@@ -379,7 +419,7 @@ export default {
 
       img {
         width: 30px;
-        margin-right: 10px; 
+        margin-right: 10px;
       }
     }
   }

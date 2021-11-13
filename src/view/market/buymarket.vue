@@ -3,22 +3,22 @@
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
       <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
         <div class="headerTop">
-          確認購買
+          Auction confirmation
           <img src="../../assets/img/close.png" alt class="close" @click="closemodule" />
         </div>
         <div class="moduleMain">
           <div class="boxBtn">
-            <img src="../../assets/img/buyMera.png" alt @click="getConfirmear" />
+            <img src="../../assets/img/ans.png" alt @click="getConfirmear" />
             <img src="../../assets/img/buyMbnb.png" alt @click="getConfirmbnb" />
           </div>
           <p>238,647,324</p>
-          <div class="tips">价格（BNB）≈ 763美元</div>
+          <div class="tips">Price (ANS)≈ $ 816</div>
            <img @click="submitok" v-if="isMoney" src="../../assets/img/arrowUp.png" alt class="bugMBtn" />
          
           <img  src="../../assets/img/bugMBtn.png" v-if="!isMoney" alt class="bugMBtn" />
           <div class="text">
-            <span class="color">購買 $ ERA</span>
-            <span>平衡：0.0000 ERA</span>
+            <span class="color">Purchase $ ANSA</span>
+            <span>balance：0.0000 ANS</span>
           </div>
         </div>
       </div>

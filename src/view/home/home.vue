@@ -40,12 +40,16 @@
         <div class="partmain">
           <el-row class="boxflex">
             <el-col :xs="24" :md="14" :lg="14" :xl="14">
-              <div class="left"><img src="@/assets/img/vido.png" alt="" /></div>
+              <div class="left">
+                <img src="@/assets/img/topleft.png" alt="" class="topleft" />
+                <img src="@/assets/img/vido.png" alt="" />
+              </div>
             </el-col>
             <el-col :xs="24" :md="10" :lg="10" :xl="10">
               <div class="right">
                 <div class="color">
                   <img src="@/assets/img/vidoicon.png" alt="" /><span
+                    @click="gohttp"
                     >https://youtube/AngelValley</span
                   >
                 </div>
@@ -68,7 +72,7 @@
     </div>
     <div
       class="part3"
-      :style="`background: url(${part3bjIMg}) no-repeat center;backgroundSize: cover;`"
+      :style="`background-image: url(${part3bjIMg}) ;background-size: cover;`"
     >
       <div class="shubox">
         <img src="@/assets/img/shu.png" alt="" class="shu1" />
@@ -105,12 +109,8 @@
         </div>
       </div>
     </div>
-    <div
-      class="part4"
-      :style="`background: url(${part4bjIMg}) no-repeat bottom;    background-size: cover;`"
-      style="background-size: cover"
-    >
-      <img src="@/assets/img/tittle2.png" alt="" class="tittle" />
+    <div class="part4" :style="`background-image: url(${part4bjIMg}) ;   `">
+      <img src="@/assets/img/tittle4.png" alt="" class="tittle" />
       <div class="mianbox">
         <el-row>
           <el-col :xs="24" :md="8" :lg="8" :xl="8">
@@ -143,28 +143,96 @@
         </el-row>
       </div>
     </div>
+    <div class="part5">
+      <img src="@/assets/img/tittle5.png" alt="" class="tittle" />
+      <div class="mianpart5">
+        <div class="top">
+          <img src="@/assets/img/money.png" alt="" />
+          <span>Total Supply: 270,000,000</span>
+        </div>
+        <img src="@/assets/img/data4.png" class="datas" alt="" />
+        <p>
+          <span>Contract Address：</span>
+          <i
+            >0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ
+            <img src="@/assets/img/copy.png" alt=""
+          /></i>
+        </p>
+      </div>
+    </div>
 
-    <div class="xunzhang">
-      <!-- <div :class="this.screenWidth < 600?'':'swipers'">
+    <div class="part6" :style="`background-image: url(${part6bjIMg}) ;   `">
+      <img src="@/assets/img/tittle6.png" alt="" class="tittle" />
+      <el-row class="boxflex">
+        <el-col :xs="24" :md="14" :lg="14" :xl="14">
+          <div class="right">
+            <p>
+              Our vision is to designed with fun and fascinating gaming plot to
+              bring game players a good gaming experience.
+            </p>
+
+            <p>
+              Build a game based on the Play To Earn economic system to help
+              thousands of low-income people around the world achieve income
+              growth in the virtual world.
+            </p>
+
+            <p>
+              Land plots in Angel Village will be sold to the early community
+              members. These NFT properties will be located in prime areas of
+              Angel Village and will also include exclusive land items,and other
+              benefits
+            </p>
+          </div>
+        </el-col>
+        <el-col :xs="24" :md="10" :lg="10" :xl="10">
+          <div class="left"><img src="@/assets/img/right5.png" alt="" /></div>
+        </el-col>
+      </el-row>
+      <div class="textmain">
+        <img src="@/assets/img/part6icon.png" alt="" />
+        <p>
+          The first 1,969 Angel NFTs generated will become the rarest Angel to
+          exist. These limited edition “Seed Angel” will feature exclusive body
+          parts, low ID numbers, ‘seed’ meta tag,and more. Additionally, Seed
+          Angel NFT owners will receive extra airdrop rewards and will have
+          access to VIP events such as pre-launch breeding, beta gameplay, and
+          much more.
+        </p>
+        <p>
+          The Angel Valley Adventurers’ Guild collected some gems in an attempt
+          to find out the source of these strange reactions. For fear of the
+          instability of the gems and causing harm, a technician in the guild
+          used some metal materials that can shield the reaction of external
+          elements to wrap them, but due to At present, the scientific research
+          level of Angel Valley is still unable to crack the secrets of gems,
+          and it is decided to give some of the "sealed" gems to qualified
+          adventurers for safekeeping. In this way, the wizard gem badges began
+          to circulate in the world of adventurers.
+        </p>
+      </div>
+      <div class="xunzhang">
+        <div :class="this.screenWidth < 600 ? '' : 'swipers'">
           <el-row>
             <el-col :xs="24" :md="10" :lg="10" :xl="10">
               <div class="left">
-                <swiper :options="swiperOption">
+                <swiper :options="swiperOption" ref="myswiper">
                   <swiper-slide
                     class="swiper-slide"
-                    v-for="(item,index) in list"
+                    v-for="(item, index) in list"
                     :key="index"
                   >
                     <div class="itemMain">
                       <img :src="item.bjimh" class="itemMainbj" alt />
                       <img :src="item.icon" class="xz" alt />
-                  <p> {{item.name}}</p>
+                      <p>{{ item.name }}</p>
                     </div>
                   </swiper-slide>
                   <img
                     src="@/assets/img/swiperLeft.png"
                     slot="button-prev"
                     class="swiper-button-prev swiperLeft"
+                 
                   />
                   <img
                     src="@/assets/img/swiperRight.png"
@@ -174,16 +242,86 @@
                 </swiper>
               </div>
             </el-col>
-            <el-col :xs="24" :md="12" :lg="12" :xl="12">
-             <img :src="home2" alt class="home2" />
+            <el-col :xs="24" :md="14" :lg="14" :xl="14">
+              <div class="titl">Introduction</div>
+
+              <p class="instars" >
+                {{instars}}
+              </p>
+              <img
+                src="@/assets/img/btnn.png"
+                alt
+                class="btnn"
+                @click="goNFT"
+              />
             </el-col>
           </el-row>
-        </div> -->
-
-      <!-- <p>
-          <img :src="btn" alt :class="this.screenWidth < 600?'btns':'btnns'" />
-        </p>-->
+        </div>
+      </div>
     </div>
+
+    <div class="part7">
+      <img src="@/assets/img/tittle6.png" alt="" class="tittle" />
+      <div class="mainpart7">
+        <el-row>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in1.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in2.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in3.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in4.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in5.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in6.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in7.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in8.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in9.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in10.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in11.png" alt="" />
+          </el-col>
+          <el-col :xs="8" :md="4" :lg="4" :xl="4">
+            <img src="@/assets/img/in12.png" alt="" />
+          </el-col>
+        </el-row>
+      </div>
+      <img src="@/assets/img/bottonlogo.png" class="bottonlogo" alt="" />
+      <div class="boxflex">
+        <div class="item">
+          <img src="@/assets/img/iconbotton1.png" alt="" />
+          <span>Twitter</span>
+        </div>
+        <div class="item">
+          <img src="@/assets/img/iconbotton2.png" alt="" />
+          <span>Telegram International</span>
+        </div>
+        <div class="item">
+          <img src="@/assets/img/iconbotton2.png" alt="" />
+          <div>
+            <span>Telegram Chinese</span>
+            <span>Exchange Group</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="btnhome" @click="goNFT">
       <img :src="btn" alt :class="this.screenWidth < 600 ? 'btns' : 'btnns'" />
     </div>
@@ -191,27 +329,33 @@
     <div class="foot">
       <el-row :class="[this.screenWidth >= 600 ? 'flex' : '']">
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-          <div class="footLogo">
+          <div class="footLogo" @click="gotop">
             <img src="../../assets/img/logo.png" alt="logo" />
           </div>
         </el-col>
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <div class="footList">
-            <span>About</span>
-            <span>NFT</span>
-            <span>Route map </span>
-            <span>FAQ</span>
-            <span>Team</span>
+            <span @click="goNFT">NFT</span>
+            <span @click="Homepage">Route map </span>
           </div>
-          <p class="ptip" v-if="this.screenWidth >= 600">Copyright     xxx.beauty</p>
+          <p class="ptip" v-if="this.screenWidth >= 600">
+            Copyright xxx.beauty
+          </p>
         </el-col>
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <div class="footImg">
             <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
           </div>
         </el-col>
-         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8" v-if="this.screenWidth < 600">
-            <p class="intsra">Copyright     xxx.beauty</p>
+        <el-col
+          :xs="24"
+          :sm="8"
+          :md="8"
+          :lg="8"
+          :xl="8"
+          v-if="this.screenWidth < 600"
+        >
+          <p class="intsra">Copyright xxx.beauty</p>
         </el-col>
       </el-row>
       <div></div>
@@ -226,8 +370,11 @@ export default {
       bannerbjIMg: "",
       part3bjIMg: "",
       part4bjIMg: "",
+      tilebanner: "",
+      part6bjIMg: "",
       btn: "@/assets/img/btnn.png",
       list: this.GLOBAL.list,
+      instars:"",
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
@@ -258,16 +405,19 @@ export default {
           prevEl: ".swiper-button-prev",
         },
         //自动轮播
-        // autoplay: {
-        //   delay: 2000,
-        //   //当用户滑动图片后继续自动轮播
-        //   disableOnInteraction: false
-        // },
         //开启循环模式
         loop: true,
+        on: {
+          slideChange:()=>{ 
+            console.log(this.$refs.myswiper.swiper)
+
+          },
+        },
       },
+      activeIndex:1,
     };
   },
+  
   mounted() {
     this.setDialogWidth();
     console.log(this.screenWidth);
@@ -279,12 +429,14 @@ export default {
         this.part3bjIMg = require("@/assets/img/vbj600.png");
         this.part4bjIMg = require("@/assets/img/part4bj600.png");
         this.tilebanner = require("@/assets/img/bannertitle600.png");
+        this.part6bjIMg = require("@/assets/img/part6bjIMg600.png");
         console.log("222");
       } else {
         this.bannerbjIMg = require("@/assets/img/bannerbj.png");
         this.part3bjIMg = require("@/assets/img/vbj.png");
         this.part4bjIMg = require("@/assets/img/part4bj.png");
         this.tilebanner = require("@/assets/img/bannertitle.png");
+        this.part6bjIMg = require("@/assets/img/part6bjIMg.png");
       }
     },
     goNFT() {
@@ -292,6 +444,17 @@ export default {
         path: "/blindbox",
       });
     },
+    gohttp() {
+      window.location.href = "https://youtube/AngelValley";
+    },
+    gotop() {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    },
+    Homepage(){
+       this.$router.push({
+        path: "/homepage",
+      });
+    }, 
   },
 };
 </script>
@@ -334,7 +497,7 @@ export default {
         display: flex;
         width: 700px;
         justify-content: space-between;
-        margin: 0 auto;
+        // margin: 0 auto;
         margin-bottom: 50px;
         img {
           width: 26px;
@@ -370,8 +533,16 @@ export default {
 
       margin: 0 auto;
       .left {
+        position: relative;
         img {
           width: 100%;
+        }
+
+        .topleft {
+          position: absolute;
+          width: 40%;
+          left: -20px;
+          top: -40px;
         }
       }
       .right {
@@ -396,7 +567,7 @@ export default {
   .part3 {
     padding: 60px 0;
     .shubox {
-      width: 1280px;
+      width: 80%;
       height: 1px;
       position: relative;
       margin: auto;
@@ -429,12 +600,14 @@ export default {
     }
     .imgpart3 {
       margin: 64px auto 0;
-      width: 1280px;
+      max-width: 1280px;
+      width: 80%;
+      overflow: scroll;
 
       overflow: scroll;
       img {
-        width: 240px;
-        margin-right: 20px;
+        width: 20%;
+        // margin-right: 20px;
         margin-bottom: 40px;
       }
       img:last-child {
@@ -443,12 +616,13 @@ export default {
     }
   }
   .part4 {
-    padding: 60px 0;
-
+    padding: 80px 0;
+    background-size: cover;
     .tittle {
       width: 633px;
       display: block;
-      margin: 0 auto;
+      margin: auto;
+      margin: 30px auto 50px;
     }
     .mianbox {
       width: 1300px;
@@ -477,18 +651,98 @@ export default {
       background-size: cover;
     }
   }
+
+  .part5 {
+    .tittle {
+      width: 633px;
+      display: block;
+
+      margin: 30px auto 50px;
+    }
+    .mianpart5 {
+      max-width: 1200px;
+      // height: 626px;
+      padding: 75px 0;
+      margin: 0 auto;
+      text-align: center;
+      background-size: contain;
+      background-image: url("../../assets/img/databj4.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 125px;
+          margin-right: 20px;
+        }
+        span {
+          font-size: 20px;
+          font-weight: 900;
+          color: #70f4a5;
+        }
+      }
+      .datas {
+        width: 60%;
+        margin: 0 auto;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span {
+          color: rgba(112, 244, 165, 1);
+        }
+        img {
+          margin-left: 10px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+  .part6 {
+    padding: 0 10%;
+    .tittle {
+      width: 633px;
+      display: block;
+      padding-top: 30px;
+      margin: 0 auto 50px;
+    }
+    .right {
+      p {
+        margin-bottom: 20px;
+      }
+    }
+    .boxflex {
+      display: flex;
+      align-items: center;
+      .left {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .textmain {
+      img {
+        width: 120px;
+        margin-bottom: 20px;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
   .xunzhang {
     position: relative;
+    padding-bottom: 70px;
     .home2 {
       width: 100%;
     }
     .swipers {
-      position: absolute;
-
-      width: 100%;
-      top: 50%;
-      right: 0;
-      transform: translate(0, -50%);
     }
     .left {
       text-align: center;
@@ -519,7 +773,7 @@ export default {
           transform: translate(-50%, -50%);
         }
         .xz {
-          width: 60%;
+          width: 70%;
           position: absolute;
           top: 40%;
           left: 50%;
@@ -545,7 +799,25 @@ export default {
         transform: translate(-50%, 0);
       }
     }
-
+    .titl {
+      font-size: 18px;
+      font-weight: normal;
+      color: #70f4a5;
+      font-weight: 900;
+      margin: 20px 0;
+    }
+    .instars {
+      min-height: 80px;
+      background: #131d17;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .btnn {
+      width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
     // .right {
     //   margin-left: 30px;
     //   .info {
@@ -603,6 +875,45 @@ export default {
     //   }
     // }
   }
+  .part7 {
+    padding: 40px;
+    .tittle {
+      width: 633px;
+      display: block;
+      padding: 30px 0;
+      margin: 0 auto;
+    }
+    .mainpart7 {
+      padding: 0 10%;
+      img {
+        width: 80%;
+        margin-bottom: 30px;
+      }
+    }
+    .bottonlogo {
+      width: 200px;
+      margin: 0 auto 30px;
+      display: block;
+    }
+    .boxflex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .item {
+        display: flex;
+        align-items: center;
+        width: 200px;
+        img {
+          width: 40px;
+          margin-right: 5px;
+        }
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+
   .btnhome {
     img {
       width: 40%;
@@ -627,13 +938,14 @@ export default {
     text-align: center;
     span {
       padding: 10px;
+      cursor: pointer;
     }
   }
-     .ptip{
-        margin: 0 auto;
-        text-align: center;
-        margin-top: 10px;
-      }
+  .ptip {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+  }
   .footImg {
     text-align: right;
     img {
@@ -678,9 +990,8 @@ export default {
       text-align: center;
       margin-bottom: 20px;
       margin-top: 20px;
-     
     }
-  
+
     .footImg {
       text-align: center;
       display: flex;
@@ -692,7 +1003,7 @@ export default {
         width: 30px;
       }
     }
-    .intsra{
+    .intsra {
       margin-top: 20px;
       font-size: 12px;
       color: #666;
@@ -711,6 +1022,7 @@ export default {
       }
       .navs {
         width: 100%;
+        margin: 0 auto;
         margin-bottom: 150px;
         font-size: 12px;
         div {
@@ -792,6 +1104,9 @@ export default {
     }
   }
   .part4 {
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
     .tittle {
       width: 80%;
       display: block;
@@ -810,6 +1125,91 @@ export default {
         padding: 20px 20px 30px 58px;
         line-height: 19px;
         font-size: 18px;
+      }
+    }
+  }
+  .part5 {
+    position: relative;
+    padding-bottom: 80px;
+    .tittle {
+      width: 80%;
+      display: block;
+      margin: 10px auto 20px;
+    }
+    .mianpart5 {
+      width: 90%;
+      padding: 22px 0;
+      .top {
+        img {
+          width: 25px;
+          margin-right: 20px;
+        }
+        span {
+          font-size: 12px;
+          font-weight: 900;
+          color: #70f4a5;
+        }
+      }
+      .datas {
+        width: 80%;
+        margin: 11px auto 0;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* margin-top: 30px; */
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        bottom: 0px;
+        font-size: 12px;
+        transform: translate(-50%, 0);
+        span {
+          display: block;
+        }
+        i {
+          font-style: normal;
+          font-size: 12px;
+          img {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 2px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+  .part6 {
+    margin-top: 20px;
+    .tittle {
+      width: 100%;
+    }
+    .boxflex {
+      display: block;
+    }
+    .xunzhang .left .itemMain {
+      height: 210px;
+    }
+  }
+  .part7 {
+    padding: 40px 10px;
+    .tittle {
+      width: 90%;
+    }
+    .mainpart7 {
+      padding: 0;
+      img {
+        width: 90%;
+        margin: 0 auto 20px;
+      }
+    }
+    .boxflex {
+      img {
+        width: 20px;
       }
     }
   }
