@@ -43,6 +43,7 @@ export default {
   watch: {
       show(val) {
         this.centerDialogVisible = val;
+        this.setDialogWidth();
       }
     },
   created() {

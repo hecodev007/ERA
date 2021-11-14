@@ -55,10 +55,10 @@
                 <span>Opeartion</span>
               </div>
               <div class="tbody">
-                <div class="dataNo">
+                <!-- <div class="dataNo">
                   <img src="../assets/img/nodata.png" alt />
                   <p class="textNO">暫無數據</p>
-                </div>
+                </div> -->
                 <div class="item">
                   <div
                     :class="[
@@ -234,6 +234,7 @@ export default {
   watch: {
     showNFT(val) {
       this.centerDialogVisible = val;
+       this.setDialogWidth();
     },
     routeQury(val) {
       this.routeQurydata = val;

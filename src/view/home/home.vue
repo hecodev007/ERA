@@ -1204,6 +1204,7 @@ if (this.$route.query.id) {
         width: 100%;
         img {
           width: 150px;
+          height: 77px;
         }
       }
     }

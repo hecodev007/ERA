@@ -60,32 +60,7 @@
         <el-col :xs="24" :sm="16" :md="16" :lg="16" :xl="16">
           <div class="right">
             <el-row>
-              <el-col
-                :xs="12"
-                :sm="6"
-                :md="6"
-                :lg="6"
-                :xl="6"
-                :key="key"
-                v-for="(item, key) in list"
-              >
-                <div class="contentbox">
-                  <div :class="['boxtop']">
-                    <div class="lefts">Position HashRate：{{ key + 1 }}</div>
-                  </div>
-                  <div class="imhgs">
-                    <img :src="item.icon" alt class="yuansu" />
-                  </div>
-
-                  <!-- <span>unlocked</span> -->
-                  <span>Confirming…</span>
-                  <!-- <span class="color">Has unlocked +6000 power</span> -->
-                  <div class="info">
-                    <img src="@/assets/img/arrowbtn1ing.png" alt />
-                    <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
-                  </div>
-                </div>
-              </el-col>
+         
               <el-col
                 :xs="12"
                 :sm="6"
@@ -123,36 +98,7 @@
                   </div>
                 </div>
               </el-col>
-              <el-col
-                :xs="12"
-                :sm="6"
-                :md="6"
-                :lg="6"
-                :xl="6"
-                :key="key"
-                v-for="(item, key) in list"
-              >
-                <div class="contentbox">
-                  <div :class="['boxtop']">
-                    <div class="lefts">Position HashRate：{{ key + 1 }}</div>
-                  </div>
-
-                  <div class="imhgs">
-                    <img :src="item.icon" alt class="yuansu" />
-                  </div>
-                  <span>unlocked</span>
-                  <!-- <span>Confirming…</span> -->
-                  <!-- <span class="color">Has unlocked +6000 power</span> -->
-                  <div class="info">
-                    <img
-                      src="@/assets/img/arrowbtn1.png"
-                      alt
-                      @click="openshowNFT(1)"
-                    />
-                    <img src="@/assets/img/arrowbtn2.png" alt @click="qxslz" />
-                  </div>
-                </div>
-              </el-col>
+              
             </el-row>
           </div>
         </el-col>
@@ -200,6 +146,69 @@ export default {
           bjimh: require("@/assets/img/xzBj1.png"),
           icon: require("@/assets/img/xunzhaung1.png"),
           iconsamll: require("@/assets/img/arrowIcon1.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj2.png"),
+          icon: require("@/assets/img/xunzhaung2.png"),
+          iconsamll: require("@/assets/img/arrowIcon2.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj3.png"),
+          icon: require("@/assets/img/xunzhaung3.png"),
+          iconsamll: require("@/assets/img/arrowIcon3.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj4.png"),
+          icon: require("@/assets/img/xunzhaung4.png"),
+          iconsamll: require("@/assets/img/arrowIcon4.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj5.png"),
+          icon: require("@/assets/img/xunzhaung5.png"),
+          iconsamll: require("@/assets/img/arrowIcon5.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj6.png"),
+          icon: require("@/assets/img/xunzhaung6.png"),
+          iconsamll: require("@/assets/img/arrowIcon6.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj6.png"),
+          icon: require("@/assets/img/xunzhaung6.png"),
+          iconsamll: require("@/assets/img/arrowIcon7.png"),
+          name: "Power Badge",
+          info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
+          level: 1,
+          countinfo: 1900,
+        },
+         {
+          bjimh: require("@/assets/img/xzBj6.png"),
+          icon: require("@/assets/img/xunzhaung6.png"),
+          iconsamll: require("@/assets/img/arrowIcon8.png"),
           name: "Power Badge",
           info: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
           level: 1,
@@ -269,10 +278,12 @@ export default {
         padding: 10px 0;
         .title {
           font-size: 24px;
+          margin-bottom: 10px;
         }
 
         .count {
           font-size: 40px;
+           margin-bottom: 10px;
         }
       }
       .rule {
@@ -281,6 +292,7 @@ export default {
         background: #26352c;
         border-radius: 16px;
         padding: 12px;
+         margin-top: 20px;
         p {
           margin: 0;
         }
@@ -294,7 +306,7 @@ export default {
             font-weight: 800;
           }
           div {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
           }
         }
 
@@ -309,7 +321,7 @@ export default {
             color: #70f4a5;
           }
           div {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
           }
           img {
             width: 60%;
