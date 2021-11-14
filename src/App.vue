@@ -521,6 +521,7 @@ body {
   background: 0 !important;
   color: #fff !important;
   font-family: "ProximaNova-Xbold.woff";
+  transition:none!important;
 }
 
 .header .el-menu--horizontal > .el-menu-item {

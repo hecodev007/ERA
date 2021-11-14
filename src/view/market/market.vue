@@ -271,7 +271,7 @@ export default {
             }
           }
           .xz {
-            width: 70%;
+            width: 100%;
             display: block;
             margin: 10px auto ;
           }

@@ -41,8 +41,9 @@
           <el-row class="boxflex">
             <el-col :xs="24" :md="14" :lg="14" :xl="14">
               <div class="left">
-                <img src="@/assets/img/topleft.png" alt="" class="topleft" />
                 <img src="@/assets/img/vido.png" alt="" />
+                <img src="@/assets/img/vidoimg.png" alt="" class="vidoimg" />
+                <img src="@/assets/img/topleft.png" alt="" class="topleft" />
               </div>
             </el-col>
             <el-col :xs="24" :md="10" :lg="10" :xl="10">
@@ -154,7 +155,6 @@
         <p>
           <span>Contract Address：</span>
 
-          <!-- <input type="text" v-model="test" style="display:none"> -->
           <i
             >0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ
             <img src="@/assets/img/copy.png" alt="" @click="copyCode()"
@@ -313,8 +313,13 @@
           :key="key"
           @mouseenter="enterbottom(key)"
         >
-          <img :src="item.img" alt="" v-if="item.mouse"/>
-          <img :src="item.imgHover" v-if="!item.mouse" alt="" @mouseout="outbottom(key)"/>
+          <img :src="item.img" alt="" v-if="item.mouse" />
+          <img
+            :src="item.imgHover"
+            v-if="!item.mouse"
+            alt=""
+            @mouseout="outbottom(key)"
+          />
           <span v-if="!item.span2">{{ item.span }}</span>
           <div v-if="item.span2">
             <span>{{ item.span }}</span>
@@ -392,7 +397,7 @@ export default {
       tilebanner: "",
       part6bjIMg: "",
       btn: "@/assets/img/btnn.png",
-      list: this.GLOBAL.list, 
+      list: this.GLOBAL.list,
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
@@ -454,7 +459,7 @@ export default {
         //开启循环模式
         loop: true,
       },
-      test:"0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ",
+      test: "0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ",
       indexActiveswiper: 1,
       desr: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
     };
@@ -506,7 +511,7 @@ export default {
         }
       }
     },
-     out() {
+    out() {
       for (let index = 0; index < this.navImgbottom.length; index++) {
         this.navImgbottom[index].mouse = true;
       }
@@ -526,21 +531,20 @@ export default {
         this.navImg[index].mouse = true;
       }
     },
-     copyCode(data) {
-      
+    copyCode(data) {
       //创建一个input元素
-      let input = document.createElement('input') 
+      let input = document.createElement("input");
       //给input的内容复制
-      input.value = this.test   
+      input.value = this.test;
       // 在body里面插入这个元素
-      document.body.appendChild(input)   
+      document.body.appendChild(input);
       // 选中input里面内容
-      input.select()  
+      input.select();
       //执行document里面的复制方法
-      document.execCommand("Copy") 
+      document.execCommand("Copy");
       // 复制之后移除这个元素
-      document.body.removeChild(input)
-  
+      document.body.removeChild(input);
+
       this.$notify({
         title: "success",
         message: "已复制到剪切板",
@@ -596,7 +600,7 @@ export default {
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-
+    background-position: center;
     .bannerm {
       position: absolute;
       transform: translate(-50%, -50%);
@@ -659,7 +663,13 @@ export default {
         img {
           width: 100%;
         }
-
+        .vidoimg {
+          position: absolute;
+          width: 84%;
+          left: 50%;
+          transform: translate(-50%, 0);
+          top: 9%;
+        }
         .topleft {
           position: absolute;
           width: 40%;
@@ -798,7 +808,6 @@ export default {
         img {
           width: 125px;
           margin-right: 20px;
-
         }
         span {
           font-size: 20px;
@@ -907,12 +916,12 @@ export default {
         }
       }
       .swiperLeft {
-            width: 33px;
-    height: 30px;
+        width: 33px;
+        height: 30px;
       }
       .swiperRight {
-            width: 33px;
-    height: 30px;
+        width: 33px;
+        height: 30px;
       }
     }
     p {
@@ -1093,12 +1102,12 @@ export default {
   .pcmain .xunzhang .swipers {
     position: relative;
   }
-.xunzhang .left .swiperLeft{
-  left: 0px;
-}
-.xunzhang .left .swiperRight{
-  right: 0;
-}
+  .xunzhang .left .swiperLeft {
+    left: 0px;
+  }
+  .xunzhang .left .swiperRight {
+    right: 0;
+  }
   .btnxzs {
     width: 100%;
   }
