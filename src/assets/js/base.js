@@ -14,10 +14,6 @@ let bscTestnet = {
         symbol: 'tBNB', // 2-6 characters long
         decimals: 18,
     },
-    web3:null,
-    contract:null,
-    account:null,
-    accounts:null,
 };
 
 
