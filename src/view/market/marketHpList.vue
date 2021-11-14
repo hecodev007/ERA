@@ -26,12 +26,12 @@
               <div class="navRight">
                 <el-dropdown trigger="click">
                   <span class="el-dropdown-link">
-                    拍賣歷史
+                    Bid history
                     <i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                   <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>拍賣中</el-dropdown-item>
-                    <el-dropdown-item>已结束</el-dropdown-item>
+                    <el-dropdown-item>n Auction</el-dropdown-item>
+                    <el-dropdown-item>Ended</el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
               </div>
@@ -41,10 +41,10 @@
         <div class="list" v-if="this.screenWidth >= 600">
           <div class="tbHeader">
             <span class="windthFixd">NFT</span>
-            <span>價格(ERA)</span>
-            <span>時間</span>
-            <span>狀態</span>
-            <span class="windthFixd3">操作</span>
+            <span>Price(ERA)</span>
+            <span>time</span>
+            <span>Status</span>
+            <span class="windthFixd3">Operate</span>
           </div>
           <div class="tbody">
             <div class="dataNo" v-if="list.length=0">
@@ -55,13 +55,13 @@
               <div class="width1">
                 <img src="../../assets/img/xunzhaung1.png" alt />
                 <p>
-                  <span>泉水琉璃勛章</span>
+                  <span>Power Badge</span>
                   <span>（#002102）</span>
                 </p>
               </div>
               <div class="width2 color tittleFont">200</div> 
               <div class="width2 color tittleFont">200</div>
-              <div class="width2">交易中</div>
+              <div class="width2">Auction</div>
               <div class="width3">
                 <img src="../../assets/img/detail.png" alt />
               </div>

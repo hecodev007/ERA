@@ -78,14 +78,34 @@
         </el-row>
       </div>
       <div class="rule">
-        <h6>拍賣規則</h6>
+         <h6>Auction Rules</h6>
         <ul>
-          <li>1.当倒计时不到1小时时，每次出价后倒计时将增加10分钟，最高倒计时可以增加到1小时；</li>
-          <li>2.每次出价将提高10%的固定价格。倒计时结束后，拍卖品将由最后一个投标人获得；</li>
-          <li>3.20%的价格上涨是由最后一个投标人获得的，80%是拍卖出版商的收入。</li>
-          <li>4.该平台将收取20%的投标佣金作为服务费，其中40%将捐给NFT采矿池，其中50%将转换为$YOOSHI并烧毁，其中10%将发送给开发人员。</li>
-          <li>5.拍卖成功后，该平台将收取出版商利润的3%作为服务费。其中，40%的人进入YooShi NFT农业池，50%将兑换成$YOOSHI并烧毁，10%将是开发商的收入。</li>
-          <li>6.拍卖结束后，拍卖出版商可以获得拍卖NFT的利润，或者在拍卖失败的情况下获得NFT。注：投标人收到NFT后，拍卖出版商会自动收到收益。</li>
+          <li>
+            1. When the countdown is less than 1 hour, each bid will increase by
+            10 minutes, and the maximum increase can be 1 hour;
+          </li>
+          <li>
+            2. A fixed price increase of 10% for each auction, after the
+            countdown ends, the auction item will be obtained by the last
+            bidder;
+          </li>
+          <li>
+            3. 20% of the premium is obtained by the previous bidder, and 80% is
+            the income of the auction publisher.
+          </li>
+          <li>
+            4. After the auction is successful, the platform will charge 5% of
+            the publisher's revenue as a service fee. Among them, 40% enter the
+            NFT mining pool, 50% Swap into ANS tokens enter the repurchase
+            wallet, and 10% of the developer's income.
+          </li>
+          <li>
+            5. After the auction is over, the auction publisher can go to the
+            finished lot page to receive the proceeds from the auction NFT or
+            receive the NFT if the auction is unsuccessful. Note: After the
+            bidder receives the NFT, the auction publisher automatically
+            receives the proceeds.
+          </li>
         </ul>
       </div>
     </div>

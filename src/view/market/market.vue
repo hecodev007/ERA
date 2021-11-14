@@ -46,11 +46,11 @@
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>最新出价</el-dropdown-item>
-                  <el-dropdown-item>最新发布</el-dropdown-item>
-                  <el-dropdown-item>时间结束</el-dropdown-item>
-                  <el-dropdown-item>最低价格</el-dropdown-item>
-                  <el-dropdown-item>最高价格</el-dropdown-item>
+                  <el-dropdown-item>Latest Bid</el-dropdown-item>
+                  <el-dropdown-item>Latest Release</el-dropdown-item>
+                  <el-dropdown-item>End Time</el-dropdown-item>
+                  <el-dropdown-item>Lowest Price</el-dropdown-item>
+                  <el-dropdown-item>Highest Price</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               <div class="history" @click="history">
@@ -60,14 +60,14 @@
             <div class="navRight wids" v-if="activeNav==2">
               <el-dropdown trigger="click">
                 <span class="el-dropdown-link">
-                  最新銷售
+                  Latest Bid
                   <!-- <img src="" alt=""> -->
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>最新銷售</el-dropdown-item>
-                  <el-dropdown-item>最低价格</el-dropdown-item>
-                  <el-dropdown-item>最高价格</el-dropdown-item>
+                  <el-dropdown-item>Latest Bid</el-dropdown-item>
+                  <el-dropdown-item>Lowest Price</el-dropdown-item>
+                  <el-dropdown-item>Highest Price</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
 
@@ -89,7 +89,7 @@
                   <span>100X</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                <p>大地原石勛章 </p>
+                <p>Power Badge </p>
                 <p>(ID:002101)</p>
               </div>
               <div class="infoItme">
@@ -114,7 +114,7 @@
                   <span>100X</span>
                 </div>
                 <img src="@/assets/img/xunzhaung1.png" class="xz" alt />
-                <p>大地原石勛章 </p>
+                <p>Power Badge </p>
                 <p>(ID:002101)</p>
               </div>
               <div class="infoItme">
