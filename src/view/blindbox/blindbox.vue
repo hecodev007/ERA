@@ -86,6 +86,12 @@
       :show.sync="show"
       :itemData="itemData"
     ></infoBindBox>
+    <linkPackage
+      @getConfirm="getConfirmCheck"
+      @getCancel="showpage = false"
+      :show.sync="showpage"
+    ></linkPackage>
+
   </div>
 </template>
 <script>
@@ -105,6 +111,7 @@ export default {
       screenWidth: this.GLOBAL.clientWidth,
       show: false,
       showcheck: false,
+      showpage:false,
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
       list: this.GLOBAL.list,
@@ -324,6 +331,10 @@ export default {
     minting(v) {
       this.show = true;
       this.itemData = v;
+    },
+    //链接钱包
+    getConfirmCheck(){
+      
     },
   },
 };

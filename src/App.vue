@@ -68,15 +68,24 @@
           </div>
           <div class="heyue">
             <span>Contract Address：</span>
-            <i>{{address}}</i>
-            <img src="./assets/img/copy.png" alt="">
+            <i>0c578…567qQ</i>
+            <input
+              type="text"
+              v-model="textss"
+              style="display: none"
+              id="form_tone"
+            />
+            <img src="./assets/img/copy.png" alt="" @click="copyCode" />
           </div>
           <div class="itemfiexd">
             <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
           </div>
         </div>
         <!-- 小屏幕展示 -->
-        <div class="topbanner" v-if="Object.keys(rightNavItems).length === 0 ? false : true">
+        <div
+          class="topbanner"
+          v-if="Object.keys(rightNavItems).length === 0 ? false : true"
+        >
           <div class="navimgList">
             <img src="./assets/img/en.png" alt class="luange" />
             <img
@@ -102,7 +111,7 @@
         </div>
       </el-col>
     </div>
-     <!-- 小屏幕展示 抽屉-->
+    <!-- 小屏幕展示 抽屉-->
     <el-drawer :visible.sync="drawer" :size="size" :with-header="false">
       <div class="navList">
         <el-menu
@@ -195,6 +204,7 @@ export default {
           link: "",
         },
       ],
+      textss: "2222",
     };
   },
   computed: {
@@ -385,6 +395,17 @@ export default {
     out() {
       this.mouse = true;
     },
+    copyCode() {
+      var copycode = document.getElementById("form_tone");
+      copycode.select(); // 选择对象
+      document.execCommand("Copy"); // 执行浏览器复制命令
+
+      this.$notify({
+        title: "success",
+        message: "已复制到剪切板",
+        type: "success",
+      });
+    },
   },
 };
 </script>
@@ -493,11 +514,10 @@ body {
 .is-opened {
   background: 0 !important;
 }
-.topbanner{
+.topbanner {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
 }
 
 .navs {
@@ -517,7 +537,7 @@ body {
   border-left: 2px solid #70f4a5;
   font-size: 18px;
   border-bottom: 0;
-  color: #70f4a5;
+  color: #70f4a5 !important;
 }
 .navList .el-menu--horizontal > .el-menu-item {
   line-height: 20px;
@@ -573,7 +593,7 @@ body {
 }
 
 .navimgList {
-  text-align: center; 
+  text-align: center;
   margin-right: 20px;
 }
 .navimgList .luange {
