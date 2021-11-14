@@ -30,7 +30,7 @@
         </div>
         <div class="btnBox">
           <img src="@/assets/img/bannerbtn1.png" alt="" />
-          <img src="@/assets/img/bannerbtn2.png" alt="" />
+          <img src="@/assets/img/bannerbtn2.png" alt="" @click="goNFT" />
         </div>
       </div>
     </div>

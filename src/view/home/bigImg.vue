@@ -53,6 +53,7 @@ export default {
 .pcmain {
   .maskmodule {
     position: fixed;
+    z-index: 99;
     width: 100%;
     height: 100%;
     left: 0;
