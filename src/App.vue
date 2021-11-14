@@ -227,7 +227,7 @@ export default {
     this.activeNav();
     // 事件监听滚动条
     window.addEventListener("scroll", this.watchScroll);
-    this.address = window.web3 && window.web3.accounts[0]
+    
     // // this.$toast('提示文字','success')
     // this.$toast("提示文字", "error");
   },
@@ -248,6 +248,9 @@ export default {
         }, 400);
       }
     },
+    address(){
+      return this.address = window.web3 && window.web3.accounts[0]
+    }
   },
   methods: {
     activeNav() {
@@ -305,8 +308,7 @@ export default {
               this.newContract();
               // this.$toast("连接成功", "success");
               // this.mypackage = true
-               this.show = !this.show;
-              this.address = window.web3.accounts[0]
+              
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");

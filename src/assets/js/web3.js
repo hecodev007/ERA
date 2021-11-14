@@ -1,7 +1,7 @@
 
 import BigNumber from "bignumber.js";
 import base from "./base.js"
-
+import {switchChain} from "./metamask"
 
 
 const initContract = () => {
@@ -27,10 +27,21 @@ const initContract = () => {
 
 
 const myAllNFT = async () => {
+
     if (window.web3.contract == null) {
         throw new Error("please connect the wallet");
     }
-
+    var chainID = await window.web3.eth.getChainId()
+    // 检查是否在主网上
+    if (chainID != base.bscTestnet.chainId){
+        try{
+            await switchChain(base.bscTestnet)
+        }catch(error){
+            console.log(error)
+            throw new Error(error);
+        }
+    }
+   
     var count = await window.web3.contract.methods.balanceOf(window.web3.accounts[0]).call()
     console.log("count", count)
     var map = {};

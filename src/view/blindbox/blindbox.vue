@@ -86,12 +86,11 @@
       :show.sync="show"
       :itemData="itemData"
     ></infoBindBox>
-    <linkPackage
+    <!-- <linkPackage
       @getConfirm="getConfirmCheck"
       @getCancel="showpage = false"
       :show.sync="showpage"
-    ></linkPackage>
-
+    ></linkPackage> -->
   </div>
 </template>
 <script>
@@ -111,7 +110,7 @@ export default {
       screenWidth: this.GLOBAL.clientWidth,
       show: false,
       showcheck: false,
-      showpage:false,
+      showpage: false,
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
       list: this.GLOBAL.list,
@@ -181,17 +180,17 @@ export default {
   mounted() {
     this.myNFTs = this.list;
     //  this.myNFTs = this.deepMerge(this.list2,this.list);
-        console.log(window.web3.accounts)
-    if (!window.web3.accounts){
-      return 
-    }
+    console.log(window.web3.accounts);
+    // if (!window.web3.accounts) {
+    //   return;
+    // }
     myAllNFT()
       .then((nfts) => {
         console.log("mynfts", nfts);
         this.myNFTs = this.deepMerge(nfts, this.list);
       })
       .catch((err) => {
-        // this.$toast(err, "error");
+        
         this.$notify({
           title: "error",
           message: err,
@@ -218,7 +217,7 @@ export default {
       }
       return obj1;
     },
-            newContract() {
+    newContract() {
       initContract()
         .then(() => {
           this.$notify({
@@ -249,7 +248,7 @@ export default {
               // this.$toast("连接成功", "success");
               // this.mypackage = true
               // this.show = !this.show;
-              this.address = window.web3.accounts[0]
+              this.address = window.web3.accounts[0];
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");
@@ -333,9 +332,7 @@ export default {
       this.itemData = v;
     },
     //链接钱包
-    getConfirmCheck(){
-      
-    },
+    getConfirmCheck() {},
   },
 };
 </script>
