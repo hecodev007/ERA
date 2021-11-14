@@ -67,7 +67,7 @@
           </div>
           <div class="heyue">
             <span>Contract Address：</span>
-            <i>0c578…567qQ</i>
+            <i>{{address}}</i>
             <img src="./assets/img/copy.png" alt="">
           </div>
           <div class="itemfiexd">
@@ -165,6 +165,7 @@ export default {
       ],
       list:this.GLOBAL.list,
       defaultOpenedsIndex: "1",
+      address:"",
       defaultOpeneds: null,
       navBarFixed: false,
       drawer: false,
@@ -291,6 +292,7 @@ export default {
               // this.$toast("连接成功", "success");
               // this.mypackage = true
               // this.show = !this.show;
+              this.address = window.web3.accounts[0]
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");

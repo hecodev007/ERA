@@ -22,7 +22,7 @@ const _MeatMaskContract = () => {
                 switchChain(base.bscTestnet)
                 return
             }
-            base.web3 = new Web3(window.ethereum);
+            window.web3 = new Web3(window.ethereum);
             try {
                 // Request account access if needed
                 //   await window.ethereum.enable();
@@ -41,10 +41,10 @@ const _MeatMaskContract = () => {
                         // 判断是否连接以太
                         //    if (window.ethereum.networkVersion !== desiredNetwork) {}
                         let currentProvider = web3.currentProvider;
-                        base.web3.setProvider(currentProvider);
+                        window.web3.setProvider(currentProvider);
                         //如果用户同意了登录请求，你就可以拿到用户的账号
-                        base.web3.eth.defaultAccount = accounts[0];
-                        base.accounts = accounts
+                        window.web3.eth.defaultAccount = accounts[0];
+                        window.web3.accounts = accounts
                         //   初始化合约
                         //这里返回用户钱包地址
                         //   callback(accounts[0]);
@@ -58,7 +58,7 @@ const _MeatMaskContract = () => {
         // Legacy dapp browsers...
         else if (window.web3) {
             // Use Mist/MetaMask's provider.
-            base.web3 = window.web3;
+            window.web3 = window.web3;
             console.log("Injected web3 detected.");
             resolve(web3);
         }
@@ -87,7 +87,7 @@ const switchChain = async (data) => {
         });
     } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
-        if (switchError.code === 4902 || switchError.code === -32603) {
+        if (switchError.code === 4902   || switchError.code === -32603) {
             addChain(data);
         }
         // handle other "switch" errors

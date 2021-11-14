@@ -6,8 +6,8 @@ import base from "./base.js"
 
 const initContract = () => {
     return new Promise((resolve, reject) => {
-        base.contract = new base.web3.eth.Contract(JSON.parse(base.abi), base.contractAddress);
-        resolve(base.contract);
+        window.web3.contract = new window.web3.eth.Contract(JSON.parse(base.abi), base.contractAddress);
+        resolve(window.web3.contract);
     })
 }
 
@@ -27,16 +27,16 @@ const initContract = () => {
 
 
 const myAllNFT = async () => {
-    if (base.contract == null) {
+    if (window.web3.contract == null) {
         throw new Error("please connect the wallet");
     }
 
-    var count = await base.contract.methods.balanceOf(base.accounts[0]).call()
+    var count = await window.web3.contract.methods.balanceOf(window.web3.accounts[0]).call()
     console.log("count", count)
     var map = {};
     for (let index = 0; index < count; index++) {
-        var tokenID = await base.contract.methods.tokenOfOwnerByIndex(base.accounts[0], index).call({})
-        var info = await base.contract.methods.getNft(tokenID).call({})
+        var tokenID = await window.web3.contract.methods.tokenOfOwnerByIndex(window.web3.accounts[0], index).call({})
+        var info = await window.web3.contract.methods.getNft(tokenID).call({})
         if (map[info.level]) {
             map[info.level]["count"]++
         } else {
@@ -62,15 +62,15 @@ const mint = (nftName, level, power, res) => {
             }
             return reject("Please install MetaMask Browser plug-in and Connect it");
         }
-        if (base.contract == null) {
+        if (window.web3.contract == null) {
             return reject("wallet cannot connect,Please try again later")
         }
 
-        console.log("base.accounts[0]", base.accounts[0])
+        console.log("window.web3.accounts[0]", window.web3.accounts[0])
         // getPrice().then((price) => {
         let amount = BigNumber("0").multipliedBy(0.08)
-        console.log(base.accounts[0], nftName, level, power, res)
-        base.contract.methods.mint(base.accounts[0], nftName, level, power, res, base.accounts[0]).send({ from: base.accounts[0], value: amount }, function (error, transactionHash) {
+        console.log(window.web3.accounts[0], nftName, level, power, res)
+        window.web3.contract.methods.mint(window.web3.accounts[0], nftName, level, power, res, window.web3.accounts[0]).send({ from: window.web3.accounts[0], value: amount }, function (error, transactionHash) {
             console.log("error>>>>>>>>>", error)
             if (error) {
                 return reject(error.message)
