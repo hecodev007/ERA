@@ -511,7 +511,7 @@ export default {
         }
       }
     },
-    out() {
+    outbottom() {
       for (let index = 0; index < this.navImgbottom.length; index++) {
         this.navImgbottom[index].mouse = true;
       }
