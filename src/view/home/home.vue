@@ -320,11 +320,8 @@
             alt=""
             @mouseout="outbottom(key)"
           />
-          <span v-if="!item.span2">{{ item.span }}</span>
-          <div v-if="item.span2">
-            <span>{{ item.span }}</span>
-            <span>{{ item.span2 }}</span>
-          </div>
+          <span >{{ item.span }}</span>
+          
         </div>
       </div>
     </div>
@@ -434,14 +431,13 @@ export default {
         {
           img: require(`@/assets/img/iconbotton2.png`),
           imgHover: require(`@/assets/img/iconbotton2h.png`),
-          span: "Telegram Internationa",
+          span: "Telegram International",
           mouse: true,
         },
         {
-          img: require(`@/assets/img/iconbotton2.png`),
-          imgHover: require(`@/assets/img/iconbotton2h.png`),
-          span: "Telegram Chinese",
-          span2: "Exchange Group",
+          img: require(`@/assets/img/iconbotton3.png`),
+          imgHover: require(`@/assets/img/iconbotton3h.png`),
+          span: "discord", 
           mouse: true,
         },
       ],
