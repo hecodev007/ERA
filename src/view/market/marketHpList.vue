@@ -3,7 +3,7 @@
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
       <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
         <div class="headerTop">
-          市場歷史
+          Market history
           <img src="../../assets/img/close.png" alt class="close" @click="closemodule" />
         </div>
 
@@ -71,7 +71,7 @@
         <div class="list2" v-if="this.screenWidth < 600">
           <div class="tbHeader">
             <span class="windthFixd">NFT</span>
-            <span>Latest bid (AVS)</span>
+            <span>Latest Bid (AVS)</span>
             <span class="windthFixd3">operate</span>
           </div>
           <div class="tbody">
@@ -89,11 +89,29 @@
               </div>
               <div class="wid2">
                 <span style="margin-bottom:17px">3,234,237,676</span>
-                <span>In auction</span>
+                <span>In auction</span> 
               </div>
               <div class="wid3">
                 <img src="../../assets/img/detail.png" style="margin-bottom:17px" alt />
-                <span>NFT Not collected</span>
+                <!-- <span>NFT Not collected</span> -->
+              </div>
+            </div>
+            <div class="item">
+              <div class="width1">
+                <img src="../../assets/img/xunzhaung1.png" alt />
+                <p>
+                  <span>Medal of Spring…</span>
+                  <span>（#002102）</span>
+                </p>
+              </div>
+              <div class="wid2">
+                <span style="margin-bottom:17px">3,234,237,676</span>
+              
+                <span class="color">Deal done</span>
+              </div>
+              <div class="wid3">
+                <img src="../../assets/img/detail.png" style="margin-bottom:17px" alt />
+                <!-- <span>NFT Not collected</span> -->
               </div>
             </div>
           </div>
@@ -157,6 +175,7 @@ export default {
 <style scoped lang="less">
 .pcmain {
   color: #fff;
+
   .navHearder {
     width: 100%;
     margin: 28px 0;
@@ -281,30 +300,13 @@ height: 400px;
 .el-dialog--center .el-dialog__body {
   padding: 0;
 }
-.headerTop {
-  text-align: center;
-  color: #fff;
-}
-.close {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 26px;
-  top: 26px;
-}
+ 
 .count {
   text-align: right;
   margin: 20px 0;
 }
 
-.close {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 26px;
-  top: 26px;
-}
-
+ 
 .main {
 
   .navHearder {
@@ -373,7 +375,7 @@ height: 400px;
           text-align: left;
           flex: 1;
           img {
-            width: 21px;
+             
             height: 30px;
             max-width: 46px;
             margin: 0;
@@ -391,6 +393,9 @@ height: 400px;
           display: flex;
           flex-direction: column;
           flex: 1;
+          .color{
+           color: rgba(112, 244, 165, 1)
+          }
         }
         .wid3 {
           text-align: right;
@@ -406,5 +411,20 @@ height: 400px;
       }
     }
   }
+}
+.headerTop {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  line-height: 40px;
+  font-weight: 900;
+}
+.close {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+ right: 20px;
+  top: 50%;
+  transform: translate(0,-50%);
 }
 </style>

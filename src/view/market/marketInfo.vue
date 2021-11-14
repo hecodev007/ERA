@@ -14,7 +14,7 @@
         <el-row>
           <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
             <div class="marketImg">
-              <span>100</span>
+              <span>100X</span>
               <img src="../../assets/img/xunzhaung1.png" alt />
             </div>
           </el-col>
@@ -506,6 +506,9 @@ img {
   }
   .info .table .dataTB .wid4 {
     color: rgba(112, 244, 165, 1);
+  }
+  .caintner .info .marketImg{
+    margin-right:0 ;
   }
 }
 .wid1 {

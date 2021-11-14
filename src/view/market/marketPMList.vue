@@ -73,7 +73,7 @@
         <div class="list2" v-if="this.screenWidth < 600">
           <div class="tbHeader">
             <span class="windthFixd">NFT</span>
-            <span>Latest bid (AVS)</span>
+            <span>Latest Bid (AVS)</span>
             <span class="windthFixd3">operate</span>
           </div>
           <div class="tbody">
@@ -94,7 +94,7 @@
                 <span>In auction</span>
               </div>
               <div class="wid3">
-                <img src="../../assets/img/detail.png" style="margin-bottom:17px" alt />
+                <img src="../../assets/img/detail.png" style="margin-bottom:10px" alt />
                 <span>NFT Not collected</span>
               </div>
             </div>
@@ -159,6 +159,7 @@ export default {
 <style scoped lang="less">
 .pcmain {
   color: #fff;
+  
   .navHearder {
     width: 100%;
     margin: 28px 0;
@@ -286,26 +287,24 @@ height: 400px;
 .headerTop {
   text-align: center;
   color: #fff;
+  position: relative;
+  line-height: 40px;
+  font-weight: 900;
 }
 .close {
   width: 25px;
   height: 25px;
   position: absolute;
-  right: 26px;
-  top: 26px;
+ right: 20px;
+  top: 50%;
+  transform: translate(0,-50%);
 }
 .count {
   text-align: right;
   margin: 20px 0;
 }
 
-.close {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 26px;
-  top: 26px;
-}
+ 
 
 .main {
 
@@ -371,11 +370,12 @@ height: 400px;
         font-size: 10px;
         font-family: "Futura-Book-2" !important;
         .width1 {
+          width: 70px;
           display: flex;
           text-align: left;
           flex: 1;
           img {
-            width: 21px;
+             
             height: 30px;
             max-width: 46px;
             margin: 0;

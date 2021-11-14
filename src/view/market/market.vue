@@ -42,7 +42,7 @@
               </el-dropdown>
               <el-dropdown trigger="click">
                 <span class="el-dropdown-link">
-                  Newest bid
+                  Newest Bid
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -94,7 +94,7 @@
               </div>
               <div class="infoItme">
                 <div class="info">
-                  <span>Newest bid</span>
+                  <span>Newest Bid</span>
                   <span class="weight">
                     <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
                     333,234,567,676
@@ -119,7 +119,7 @@
               </div>
               <div class="infoItme">
                 <div class="info">
-                  <span>Newest bid</span>
+                  <span>Newest Bid</span>
                   <span class="weight">
                     <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
                     333,234,567,676

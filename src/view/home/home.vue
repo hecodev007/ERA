@@ -153,9 +153,11 @@
         <img src="@/assets/img/data4.png" class="datas" alt="" />
         <p>
           <span>Contract Address：</span>
+
+          <!-- <input type="text" v-model="test" style="display:none"> -->
           <i
             >0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ
-            <img src="@/assets/img/copy.png" alt=""
+            <img src="@/assets/img/copy.png" alt="" @click="copyCode()"
           /></i>
         </p>
       </div>
@@ -305,19 +307,18 @@
       </div>
       <img src="@/assets/img/bottonlogo.png" class="bottonlogo" alt="" />
       <div class="boxflex">
-        <div class="item">
-          <img src="@/assets/img/iconbotton1.png" alt="" />
-          <span>Twitter</span>
-        </div>
-        <div class="item">
-          <img src="@/assets/img/iconbotton2.png" alt="" />
-          <span>Telegram International</span>
-        </div>
-        <div class="item">
-          <img src="@/assets/img/iconbotton2.png" alt="" />
-          <div>
-            <span>Telegram Chinese</span>
-            <span>Exchange Group</span>
+        <div
+          class="item"
+          v-for="(item, key) in navImgbottom"
+          :key="key"
+          @mouseenter="enterbottom(key)"
+        >
+          <img :src="item.img" alt="" v-if="item.mouse"/>
+          <img :src="item.imgHover" v-if="!item.mouse" alt="" @mouseout="outbottom(key)"/>
+          <span v-if="!item.span2">{{ item.span }}</span>
+          <div v-if="item.span2">
+            <span>{{ item.span }}</span>
+            <span>{{ item.span2 }}</span>
           </div>
         </div>
       </div>
@@ -345,7 +346,19 @@
         </el-col>
         <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
           <div class="footImg">
-            <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
+            <div
+              v-for="(item, key) in navImg"
+              :key="key"
+              @mouseenter="enter(key)"
+            >
+              <img :src="item.img" alt v-if="item.mouse" />
+              <img
+                :src="item.imgHover"
+                alt
+                v-if="!item.mouse"
+                @mouseout="out(key)"
+              />
+            </div>
           </div>
         </el-col>
         <el-col
@@ -360,7 +373,7 @@
         </el-col>
       </el-row>
     </div>
-    <bigImg v-if="shows" :show="shows"  @getCancel="shows = false"></bigImg>
+    <bigImg v-if="shows" :show="shows" @getCancel="shows = false"></bigImg>
   </div>
 </template>
 <script>
@@ -379,26 +392,54 @@ export default {
       tilebanner: "",
       part6bjIMg: "",
       btn: "@/assets/img/btnn.png",
-      list: this.GLOBAL.list,
+      list: this.GLOBAL.list, 
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
+          imgHover: require(`@/assets/img/navRight1h.png`),
+          mouse: true,
           link: "",
         },
         {
           img: require(`@/assets/img/navRight2.png`),
+          imgHover: require(`@/assets/img/navRight2h.png`),
           link: "",
+          mouse: true,
         },
         {
           img: require(`@/assets/img/navRight3.png`),
+          imgHover: require(`@/assets/img/navRight3h.png`),
           link: "",
+          mouse: true,
         },
         {
           img: require(`@/assets/img/navRight4.png`),
+          imgHover: require(`@/assets/img/navRight4h.png`),
           link: "",
+          mouse: true,
         },
       ],
-      carouselArr: ["1", "1"],
+      navImgbottom: [
+        {
+          img: require(`@/assets/img/iconbotton1.png`),
+          imgHover: require(`@/assets/img/iconbotton1h.png`),
+          span: "Twitter",
+          mouse: true,
+        },
+        {
+          img: require(`@/assets/img/iconbotton2.png`),
+          imgHover: require(`@/assets/img/iconbotton2h.png`),
+          span: "Telegram Internationa",
+          mouse: true,
+        },
+        {
+          img: require(`@/assets/img/iconbotton2.png`),
+          imgHover: require(`@/assets/img/iconbotton2h.png`),
+          span: "Telegram Chinese",
+          span2: "Exchange Group",
+          mouse: true,
+        },
+      ],
       swiperOption: {
         //显示分页
         pagination: {
@@ -413,6 +454,7 @@ export default {
         //开启循环模式
         loop: true,
       },
+      test:"0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ",
       indexActiveswiper: 1,
       desr: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
     };
@@ -454,6 +496,57 @@ export default {
         path: "/blindbox",
       });
     },
+    //第七部分的滑动
+    enterbottom(i) {
+      for (let index = 0; index < this.navImgbottom.length; index++) {
+        if (i == index) {
+          this.navImgbottom[index].mouse = false;
+        } else {
+          this.navImgbottom[index].mouse = true;
+        }
+      }
+    },
+     out() {
+      for (let index = 0; index < this.navImgbottom.length; index++) {
+        this.navImgbottom[index].mouse = true;
+      }
+    },
+    //底部的部分的滑动
+    enter(i) {
+      for (let index = 0; index < this.navImg.length; index++) {
+        if (i == index) {
+          this.navImg[index].mouse = false;
+        } else {
+          this.navImg[index].mouse = true;
+        }
+      }
+    },
+    out() {
+      for (let index = 0; index < this.navImg.length; index++) {
+        this.navImg[index].mouse = true;
+      }
+    },
+     copyCode(data) {
+      
+      //创建一个input元素
+      let input = document.createElement('input') 
+      //给input的内容复制
+      input.value = this.test   
+      // 在body里面插入这个元素
+      document.body.appendChild(input)   
+      // 选中input里面内容
+      input.select()  
+      //执行document里面的复制方法
+      document.execCommand("Copy") 
+      // 复制之后移除这个元素
+      document.body.removeChild(input)
+  
+      this.$notify({
+        title: "success",
+        message: "已复制到剪切板",
+        type: "success",
+      });
+    },
     gohttp() {
       window.location.href = "https://youtube/AngelValley";
     },
@@ -479,8 +572,8 @@ export default {
       }
     },
     bigimg() {
-      console.log("2")
-      this.shows= true;
+      console.log("2");
+      this.shows = true;
     },
   },
 };
@@ -503,7 +596,7 @@ export default {
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-    
+
     .bannerm {
       position: absolute;
       transform: translate(-50%, -50%);
@@ -705,6 +798,7 @@ export default {
         img {
           width: 125px;
           margin-right: 20px;
+
         }
         span {
           font-size: 20px;
@@ -727,6 +821,7 @@ export default {
           margin-left: 10px;
           width: 30px;
           height: 30px;
+          vertical-align: middle;
         }
       }
     }
@@ -812,10 +907,12 @@ export default {
         }
       }
       .swiperLeft {
-        width: 40px;
+            width: 33px;
+    height: 30px;
       }
       .swiperRight {
-        width: 40px;
+            width: 33px;
+    height: 30px;
       }
     }
     p {
@@ -977,6 +1074,9 @@ export default {
   }
   .footImg {
     text-align: right;
+    div {
+      display: inline-block;
+    }
     img {
       margin-right: 10px;
       width: 30px;
@@ -993,7 +1093,12 @@ export default {
   .pcmain .xunzhang .swipers {
     position: relative;
   }
-
+.xunzhang .left .swiperLeft{
+  left: 0px;
+}
+.xunzhang .left .swiperRight{
+  right: 0;
+}
   .btnxzs {
     width: 100%;
   }

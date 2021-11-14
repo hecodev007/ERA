@@ -69,16 +69,23 @@
           <div class="heyue">
             <span>Contract Address：</span>
             <i>0c578…567qQ</i>
-            <input
-              type="text"
-              v-model="textss"
-              style="display: none"
-              id="form_tone"
-            />
+            
             <img src="./assets/img/copy.png" alt="" @click="copyCode" />
           </div>
           <div class="itemfiexd">
-            <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
+            <div
+              v-for="(item, key) in navImg"
+              :key="key"
+              @mouseenter="enternav(key)"
+            >
+              <img :src="item.img" alt v-if="item.mouse" />
+              <img
+                :src="item.imgHover"
+                alt
+                v-if="!item.mouse"
+                @mouseout="outnav(key)"
+              />
+            </div>
           </div>
         </div>
         <!-- 小屏幕展示 -->
@@ -176,7 +183,7 @@ export default {
       ],
       list: this.GLOBAL.list,
       defaultOpenedsIndex: "1",
-      address:"",
+      address: "",
       defaultOpeneds: null,
       navBarFixed: false,
       drawer: false,
@@ -188,22 +195,30 @@ export default {
       navImg: [
         {
           img: require(`@/assets/img/navRight1.png`),
+          imgHover: require(`@/assets/img/navRight1h.png`),
+          mouse: true,
           link: "",
         },
         {
           img: require(`@/assets/img/navRight2.png`),
+          imgHover: require(`@/assets/img/navRight2h.png`),
           link: "",
+          mouse: true,
         },
         {
           img: require(`@/assets/img/navRight3.png`),
+          imgHover: require(`@/assets/img/navRight3h.png`),
           link: "",
+          mouse: true,
         },
         {
           img: require(`@/assets/img/navRight4.png`),
+          imgHover: require(`@/assets/img/navRight4h.png`),
           link: "",
+          mouse: true,
         },
       ],
-      textss: "2222",
+       test:"0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ",//复制的内容
     };
   },
   computed: {
@@ -260,7 +275,20 @@ export default {
         this.GLOBAL.clientWidth = this.screenWidth;
       }
     },
-
+    enternav(i) {
+      for (let index = 0; index < this.navImg.length; index++) {
+        if (i == index) {
+          this.navImg[index].mouse = false;
+        } else {
+          this.navImg[index].mouse = true;
+        }
+      }
+    },
+    outnav() {
+      for (let index = 0; index < this.navImg.length; index++) {
+        this.navImg[index].mouse = true;
+      }
+    },
     watchScroll() {
       var scrollTop =
         window.pageYOffset ||
@@ -284,7 +312,7 @@ export default {
               // this.$toast("连接成功", "success");
               // this.mypackage = true
               // this.show = !this.show;
-              this.address = window.web3.accounts[0]
+              this.address = window.web3.accounts[0];
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");
@@ -374,10 +402,19 @@ export default {
       this.mouse = true;
     },
     copyCode() {
-      var copycode = document.getElementById("form_tone");
-      copycode.select(); // 选择对象
-      document.execCommand("Copy"); // 执行浏览器复制命令
-
+       //创建一个input元素
+      let input = document.createElement('input') 
+      //给input的内容复制
+      input.value = this.test   
+      // 在body里面插入这个元素
+      document.body.appendChild(input)   
+      // 选中input里面内容
+      input.select()  
+      //执行document里面的复制方法
+      document.execCommand("Copy") 
+      // 复制之后移除这个元素
+      document.body.removeChild(input)
+  
       this.$notify({
         title: "success",
         message: "已复制到剪切板",
@@ -548,11 +585,13 @@ body {
   position: fixed;
   top: 130px;
 }
-.box .itemfiexd img {
+.box .itemfiexd div {
   display: block;
-  width: 24px;
-
+  width: 24px; 
   margin-bottom: 20px;
+}
+.box .itemfiexd img {
+width: 100%;
 }
 .navimg .luange {
   width: 24px;

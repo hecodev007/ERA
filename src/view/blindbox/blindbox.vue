@@ -312,7 +312,7 @@ export default {
     },
     //链接钱包
     getConfirmCheck(){
-      
+
     },
   },
 };
