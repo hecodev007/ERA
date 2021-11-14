@@ -48,7 +48,7 @@ const _MeatMaskContract = () => {
                         //   初始化合约
                         //这里返回用户钱包地址
                         //   callback(accounts[0]);
-                        resolve(web3);
+                        resolve(window.web3);
                     });
                 // Acccounts now exposed 
             } catch (error) {

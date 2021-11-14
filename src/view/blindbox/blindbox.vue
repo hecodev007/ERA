@@ -92,6 +92,7 @@
 import infoBindBox from "./infoBindBox.vue";
 import { mint, myAllNFT } from "@/assets/js/web3.js";
 import checkbox from "./checkbox.vue";
+import { initContract } from "@/assets/js/web3.js";
 import { _WalletContract } from "@/assets/js/walletconnect.js";
 import { _MeatMaskContract } from "@/assets/js/metamask.js";
 export default {
@@ -173,8 +174,8 @@ export default {
   mounted() {
     this.myNFTs = this.list;
     //  this.myNFTs = this.deepMerge(this.list2,this.list);
-    //     console.log( this.myNFTs)
-    if (!window.web3){
+        console.log(window.web3.accounts)
+    if (!window.web3.accounts){
       return 
     }
     myAllNFT()
@@ -209,6 +210,27 @@ export default {
             : (obj1[key] = obj2[key]);
       }
       return obj1;
+    },
+            newContract() {
+      initContract()
+        .then(() => {
+          this.$notify({
+            title: "success",
+            message: "connect success",
+            type: "success",
+          });
+          this.show = !this.show;
+          this.mypackage = true;
+        })
+        .catch((err) => {
+          // this.$toast("connect faild" + err, "error");
+          this.$notify({
+            title: "error",
+            message: "connect faild",
+            type: "error",
+          });
+          this.show = !this.show;
+        });
     },
     getConfirmCheck(v) {
       console.log("choise wallet", v);
