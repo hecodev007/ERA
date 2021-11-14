@@ -92,7 +92,8 @@
 import infoBindBox from "./infoBindBox.vue";
 import { mint, myAllNFT } from "@/assets/js/web3.js";
 import checkbox from "./checkbox.vue";
-
+import { _WalletContract } from "@/assets/js/walletconnect.js";
+import { _MeatMaskContract } from "@/assets/js/metamask.js";
 export default {
   components: {
     infoBindBox,
@@ -173,6 +174,9 @@ export default {
     this.myNFTs = this.list;
     //  this.myNFTs = this.deepMerge(this.list2,this.list);
     //     console.log( this.myNFTs)
+    if (!window.web3){
+      return 
+    }
     myAllNFT()
       .then((nfts) => {
         console.log("mynfts", nfts);
@@ -206,7 +210,69 @@ export default {
       }
       return obj1;
     },
+    getConfirmCheck(v) {
+      console.log("choise wallet", v);
+      switch (v) {
+        case 0:
+          _MeatMaskContract()
+            .then(() => {
+              this.newContract();
+              // this.$toast("连接成功", "success");
+              // this.mypackage = true
+              // this.show = !this.show;
+              this.address = window.web3.accounts[0]
+            })
+            .catch((err) => {
+              // this.$toast("连接metamask出错" + err, "error");
+              this.$notify({
+                title: "error",
+                message: "connect faild",
+                type: "error",
+              });
+              this.show = !this.show;
+            });
+          break;
+        case 1:
+          _WalletContract(
+            (accountsChanged) => {
+              console.log("accountsChanged", accountsChanged);
+              // this.$toast("accountsChanged", "success");
 
+              this.$notify({
+                title: "success",
+                message: "accountsChanged",
+                type: "success",
+              });
+              this.mypackage = true;
+            },
+            (disconnect) => {
+              // this.$toast("disconnect，code" + disconnect, "error");
+              this.$notify({
+                title: "error",
+                message: "disconnect，code" + disconnect,
+                type: "error",
+              });
+            },
+            (accounts) => {
+              console.log("accounts", accounts);
+              this.newContract();
+            },
+            (error) => {
+              this.show = !this.show;
+              // this.$toast(error, "error");
+              this.$notify({
+                title: "error",
+                message: error,
+                type: "error",
+              });
+            }
+          );
+          break;
+
+        default:
+          break;
+      }
+    },
     goMint() {
       // mint(nftName,level,power,res,author)nftName 可以传空 level 等级 1-5 power[1000,2500,6500,14500,35000,90000] res 随便 author 随便
       mint(

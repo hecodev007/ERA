@@ -145,7 +145,6 @@
 <script>
 import NFTmedule from "./components/NFTmedule.vue";
 import linkPackage from "./components/linkPackage.vue"; // 第一步 先使用import导入你要在该组件中使用的子组件
-import { initContract } from "@/assets/js/web3.js";
 import { _WalletContract } from "@/assets/js/walletconnect.js";
 import { _MeatMaskContract } from "@/assets/js/metamask.js";
 export default {
@@ -263,27 +262,6 @@ export default {
       } else {
         this.navBarFixed = false;
       }
-    },
-    newContract() {
-      initContract()
-        .then(() => {
-          this.$notify({
-            title: "success",
-            message: "connect success",
-            type: "success",
-          });
-          this.show = !this.show;
-          this.mypackage = true;
-        })
-        .catch((err) => {
-          // this.$toast("connect faild" + err, "error");
-          this.$notify({
-            title: "error",
-            message: "connect faild",
-            type: "error",
-          });
-          this.show = !this.show;
-        });
     },
     //获取钱包链接选择
     getConfirmCheck(v) {
