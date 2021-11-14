@@ -23,7 +23,7 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: resolve => require(['../view/home/home.vue'], resolve),
-    },
+    }, 
     {
       path: '/homepage',
       name: 'Homepage',

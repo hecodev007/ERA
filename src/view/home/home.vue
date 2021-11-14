@@ -144,7 +144,7 @@
         </el-row>
       </div>
     </div>
-    <div class="part5">
+    <div class="part5" id="topscroll">
       <img src="@/assets/img/tittle5.png" alt="" class="tittle" />
       <div class="mianpart5">
         <div class="top">
@@ -464,6 +464,12 @@ export default {
       desr: "Buried in the depths of the ancient volcanic mountains in the Alps, with the appearance of angels, some stones began to show strange elemental reactions. When the elves passed by these rocks with turquoise light, the inside of the stones would burst into explosions. Sound. Function: It can incubate a powerful offensive angel.",
     };
   },
+  watch: {
+    $route(to, from) {
+      this.activeNav();
+    },
+  },
+
   computed: {
     // 获取swiper实例
     swiper() {
@@ -472,24 +478,41 @@ export default {
   },
   mounted() {
     this.setDialogWidth();
-
+    this.activeNav()
+     
     let that = this;
     this.swiper.on("click", function () {
       const clickedIndex = this.activeIndex;
       // 这里的that是Vue的实例
       that.goDetail(clickedIndex);
     });
-  },
+  }, 
   methods: {
+    activeNav(){
+      if(this.screenWidth < 600){
+if (this.$route.query.id) {
+          document.body.scrollTop = document.documentElement.scrollTop = "3250";
+        } else {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+      }else{
+        if (this.$route.query.id) {
+          document.body.scrollTop = document.documentElement.scrollTop = "2900";
+        } else {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+      }
+      
+    },
     setDialogWidth() {
       if (this.screenWidth < 600) {
-        this.bannerbjIMg = require("@/assets/img/bannerbj600.png");
+        this.bannerbjIMg = require("@/assets/img/bannerbj600.jpg");
         this.part3bjIMg = require("@/assets/img/vbj600.png");
-        this.part4bjIMg = require("@/assets/img/part4bj600.png");
+        this.part4bjIMg = require("@/assets/img/part4bj600.jpg");
         this.tilebanner = require("@/assets/img/bannertitle600.png");
         this.part6bjIMg = require("@/assets/img/part6bjIMg600.png");
       } else {
-        this.bannerbjIMg = require("@/assets/img/bannerbj.png");
+        this.bannerbjIMg = require("@/assets/img/bannerbj.jpg");
         this.part3bjIMg = require("@/assets/img/vbj.png");
         this.part4bjIMg = require("@/assets/img/part4bj.png");
         this.tilebanner = require("@/assets/img/bannertitle.png");

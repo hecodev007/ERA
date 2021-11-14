@@ -14,21 +14,32 @@
           v-if="Object.keys(rightNavItems).length === 0 ? true : false"
           class="box"
         >
-          <el-menu
+          <!-- <el-menu
             :default-active="this.$route.path"
             id="navid"
             class="nav"
             mode="horizontal"
             :default-openeds="defaultOpeneds"
-            router
+            
           >
             <el-menu-item
               :key="key"
               v-for="(item, key) in leftNavItems"
               :index="item.activeIndex"
+              @click="activeNavabs(key)"
               >{{ item.name }}</el-menu-item
             >
-          </el-menu>
+          </el-menu> -->
+          <ul class="menu">
+            <li
+              :class="[defaultOpeneds == item.index ? 'active' : '']"
+              @click="activeNavabs(key)"
+              v-for="(item, key) in leftNavItems"
+              :key="key"
+            >
+              {{ item.name }}
+            </li>
+          </ul>
           <div class="navimg">
             <img src="./assets/img/en.png" alt class="luange" />
             <div @mouseenter="enter" v-if="!mypackage">
@@ -69,7 +80,7 @@
           <div class="heyue">
             <span>Contract Address：</span>
             <i>0c578…567qQ</i>
-            
+
             <img src="./assets/img/copy.png" alt="" @click="copyCode" />
           </div>
           <div class="itemfiexd">
@@ -121,7 +132,7 @@
     <!-- 小屏幕展示 抽屉-->
     <el-drawer :visible.sync="drawer" :size="size" :with-header="false">
       <div class="navList">
-        <el-menu
+        <!-- <el-menu
           :default-active="this.$route.path"
           id="navid"
           class="nav"
@@ -135,7 +146,17 @@
             :index="item.activeIndex"
             >{{ item.name }}</el-menu-item
           >
-        </el-menu>
+        </el-menu> -->
+        <ul class="menu">
+          <li
+            :class="[defaultOpeneds == item.index ? 'active' : '']"
+            @click="activeNavabs(key)"
+            v-for="(item, key) in rightNavItems"
+            :key="key"
+          >
+            {{ item.name }}
+          </li>
+        </ul>
       </div>
       <div class="itemList">
         <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
@@ -175,6 +196,12 @@ export default {
       screenWidth: document.body.clientWidth,
       navItems: [
         { name: "Home", activeIndex: "/home", index: "1" },
+        {
+          name: "Game Coin",
+          activeIndex: "/home?id='part'",
+          id: "part",
+          index: "11",
+        },
         { name: "NFT", activeIndex: "/blindbox", index: "2" },
         { name: "Market", activeIndex: "/market", index: "3" },
         // { name: "Pledge Mining", activeIndex: "/arrowheads", index: "4" },
@@ -219,7 +246,7 @@ export default {
           mouse: true,
         },
       ],
-       test:"0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ",//复制的内容
+      test: "0c57822fdsgfdbcv 435axcxd64767vsfgdfgvfd3455567qQ", //复制的内容
     };
   },
   computed: {
@@ -242,7 +269,7 @@ export default {
     this.activeNav();
     // 事件监听滚动条
     window.addEventListener("scroll", this.watchScroll);
-    
+
     // // this.$toast('提示文字','success')
     // this.$toast("提示文字", "error");
   },
@@ -263,20 +290,35 @@ export default {
         }, 400);
       }
     },
-    address(){
-      return this.address = window.web3 && window.web3.accounts[0]
-    }
+    address() {
+      return (this.address = window.web3 && window.web3.accounts[0]);
+    },
   },
   methods: {
     activeNav() {
       let path = this.$route.path;
       let thisNav = this.navItems.find((item) => {
-        return item.activeIndex.includes(path);
+        return item.activeIndex.includes(path)
+          ? item.activeIndex.includes(path)
+          : null;
       });
-      if (thisNav) {
+      if (this.$route.query.id) {
+        this.defaultOpeneds = [this.navItems[1].index];
+        this.defaultOpenedsIndex = 11;
+      } else if (thisNav) {
         this.defaultOpeneds = [thisNav.index];
         this.defaultOpenedsIndex = thisNav.index;
         this.GLOBAL.clientWidth = this.screenWidth;
+      } else {
+      }
+    },
+    activeNavabs(key) {
+      let item = this.navItems[key];
+      this.$router.push({
+        path: item.activeIndex,
+      });
+      if (item.id) {
+        this.defaultOpeneds = [item.index];
       }
     },
     enternav(i) {
@@ -305,7 +347,7 @@ export default {
         this.navBarFixed = false;
       }
     },
-        newContract() {
+    newContract() {
       initContract()
         .then(() => {
           this.$notify({
@@ -338,7 +380,6 @@ export default {
               // this.mypackage = true
               // this.show = !this.show;
               this.address = window.web3.accounts[0];
-              
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");
@@ -428,19 +469,19 @@ export default {
       this.mouse = true;
     },
     copyCode() {
-       //创建一个input元素
-      let input = document.createElement('input') 
+      //创建一个input元素
+      let input = document.createElement("input");
       //给input的内容复制
-      input.value = this.test   
+      input.value = this.test;
       // 在body里面插入这个元素
-      document.body.appendChild(input)   
+      document.body.appendChild(input);
       // 选中input里面内容
-      input.select()  
+      input.select();
       //执行document里面的复制方法
-      document.execCommand("Copy") 
+      document.execCommand("Copy");
       // 复制之后移除这个元素
-      document.body.removeChild(input)
-  
+      document.body.removeChild(input);
+
       this.$notify({
         title: "success",
         message: "已复制到剪切板",
@@ -484,6 +525,32 @@ body {
 .el-menu {
   background: 0;
 }
+.menu {
+  display: flex;
+}
+.menu li {
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.menu li.active {
+  position: relative;
+  border-bottom: 0 !important;
+  font-size: 18px;
+  color: #70f4a5;
+  font-weight: 900;
+}
+.menu li.active::after {
+  background: #70f4a5 !important;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 34px;
+  height: 4px;
+  top: 33px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 .logoimg {
   width: 70%;
   margin-left: 10%;
@@ -521,7 +588,7 @@ body {
   background: 0 !important;
   color: #fff !important;
   font-family: "ProximaNova-Xbold.woff";
-  transition:none!important;
+  transition: none !important;
 }
 
 .header .el-menu--horizontal > .el-menu-item {
@@ -570,6 +637,26 @@ body {
 .el-drawer.rtl {
   background: rgba(38, 53, 44, 1);
 }
+.navList .menu {
+  display: block;
+}
+.navList .menu li {
+  border-bottom: 0;
+  cursor: pointer;
+  line-height: 20px;
+  margin: 40px 0;
+  text-align: center;
+  width: 100%;
+}
+.navList .menu li.active {
+  border-left: 2px solid #70f4a5;
+  font-size: 18px;
+  color: #70f4a5 !important;
+  border-bottom: 0 !important;
+}
+.navList .menu li.active::after {
+  display: none;
+}
 .navList .el-menu--horizontal > .el-menu-item {
   padding: 0;
   width: 100%;
@@ -614,11 +701,11 @@ body {
 }
 .box .itemfiexd div {
   display: block;
-  width: 24px; 
+  width: 24px;
   margin-bottom: 20px;
 }
 .box .itemfiexd img {
-width: 100%;
+  width: 100%;
 }
 .navimg .luange {
   width: 24px;

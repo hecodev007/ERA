@@ -98,9 +98,9 @@ export default {
   methods: {
     setDialogWidth() {
       if (this.screenWidth < 600) {
-        this.bannerbjIMg = require("@/assets/img/infobj600.png");
+        this.bannerbjIMg = require("@/assets/img/infobj600.jpg");
       } else {
-        this.bannerbjIMg = require("@/assets/img/infobj.png");
+        this.bannerbjIMg = require("@/assets/img/infobj.jpg");
       }
     },
     goback() {

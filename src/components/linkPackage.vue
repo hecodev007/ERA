@@ -15,6 +15,10 @@
             <img src="../assets/img/WalletConnect.png" alt />
             <span>WalletConnect</span>
           </div>
+           <div :class="['item',active==2? 'active':'']" @click="check(2)">
+            <img src="../assets/img/TokenPocket.png" alt />
+            <span>TokenPocket</span>
+          </div>
         </div>
       </div>
     </el-dialog>

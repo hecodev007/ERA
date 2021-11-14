@@ -7,7 +7,7 @@
      <div class="maskmodule">
       <div class="cainter" :style="{ width: dialogWidth }">
         <img src="@/assets/img/close.png" alt="" class="close" @click="closemodule" />
-        <img src="@/assets/img/bigImg.png" alt="" class="bigImg" />
+        <img src="@/assets/img/bigImg.jpg" alt="" class="bigImg" />
       </div>
      </div>
   </div>
