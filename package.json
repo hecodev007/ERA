@@ -14,6 +14,7 @@
     "bignumber.js": "^9.0.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
+    "svgaplayerweb": "^2.3.2",
     "swiper": "^5.4.5",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",

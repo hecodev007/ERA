@@ -75,6 +75,8 @@
           </el-col>
         </el-row>
       </div>
+
+       <!-- <div id="demoCanvas" class="svga" ref="canvas"></div> -->
     </div>
     <checkbox
       @getCancelclose="showcheck = false"
@@ -100,6 +102,7 @@ import checkbox from "./checkbox.vue";
 import { initContract } from "@/assets/js/web3.js";
 import { _WalletContract } from "@/assets/js/walletconnect.js";
 import { _MeatMaskContract } from "@/assets/js/metamask.js";
+import SVGA from "svgaplayerweb";
 export default {
   components: {
     infoBindBox,
@@ -181,6 +184,13 @@ export default {
     this.myNFTs = this.list;
     //  this.myNFTs = this.deepMerge(this.list2,this.list);
     console.log(window.web3.accounts);
+    //svga文件读取 ---舍弃
+    //  var player = new SVGA.Player("#demoCanvas");
+    //     var parser = new SVGA.Parser("#demoCanvas");
+    //     parser.load("@/assets/img/svga.svga", function(videoItem) {
+    //         player.setVideoItem(videoItem);
+    //         player.startAnimation();
+    //     });
     // if (!window.web3.accounts) {
     //   return;
     // }
@@ -203,7 +213,7 @@ export default {
       if (this.keycount > 6) {
         this.keycount = 1;
       }
-    }, 800);
+    }, 700);
   },
   methods: {
     deepMerge(obj1, obj2) {
@@ -552,11 +562,11 @@ export default {
 }
 @keyframes identifier {
   0% {
-    -webkit-transform: scale(0.2);
-    -moz-transform: scale(0.2);
-    -ms-transform: scale(0.2);
-    -o-transform: scale(0.2);
-    transform: scale(0.2);
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
     opacity: 0.5;
   }
   50% {
@@ -568,11 +578,11 @@ export default {
     opacity: 1;
   }
   100% {
-    -webkit-transform: scale(0.2);
-    -moz-transform: scale(0.2);
-    -ms-transform: scale(0.2);
-    -o-transform: scale(0.2);
-    transform: scale(0.2);
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -ms-transform:scale(0.4);
+    -o-transform: scale(0.4);
+    transform: scale(0.4);
     opacity: 0.5;
   }
 }
