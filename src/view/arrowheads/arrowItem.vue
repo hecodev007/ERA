@@ -3,7 +3,7 @@
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
       <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
         <div class="headerTop">
-          取消算力
+          Upgrade HashRate
           <img src="../../assets/img/close.png" alt class="close" @click="closemodule" />
         </div>
         <div class="Box">
@@ -11,26 +11,26 @@
             <img src="../../assets/img/arrowIcon.png" alt />
             <div>
               <p>13,253,571</p>
-              <span>鎖倉金額（ERA）</span>
+              <span>Balance（ERA）</span>
             </div>
           </div>
-          <div class="tip">7天鎖倉時間結束後不再收取手續費</div>
+          <div class="tip">No handling fee will be charged after the end of the 7-day lock-up period</div>
           <div class="time">
-            （剩餘時間：
+            （Time Remaining：
             <span>120:12:12</span> ）
           </div>
           <div class="list">
             <div class="item">
-              <div class="name">手續費：</div>
+              <div class="name">Fee：</div>
               <span>200 ERA</span>
             </div>
             <div class="item">
-              <div class="name">可收到：</div>
+              <div class="name">receivedable：</div>
               <span>200 ERA</span>
             </div>
           </div>
           <img src="../../assets/img/arrowQR.png" alt class="submit" />
-          <div class="time">注：未滿足鎖倉7天提前取消算力，将扣除鎖倉金額的10%，进入總矿池</div>
+          <div class="time">Note: a penalty of 10% of the position will be executed if you cancel hashrate in advance (7 days)，all fines will go into the ore pool.</div>
         </div>
       </div>
     </el-dialog>

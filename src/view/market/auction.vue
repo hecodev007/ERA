@@ -20,7 +20,7 @@
           <div class="iconMain">
             <img src="../../assets/img/xunzhaung1.png" alt class="iconxunzhang" />
             <div class="boxname">
-              <div class="name">泉水琉璃勛章</div>
+              <div class="name">Power Badge</div>
               <span>ID：002102</span>
             </div>
           </div>

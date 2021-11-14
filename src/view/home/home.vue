@@ -3,7 +3,7 @@
     <!-- <img :src="bannerbjIMg" alt class="banner" /> -->
     <div
       class="banner"
-      :style="`background: url(${bannerbjIMg}) no-repeat center;background-size: cover;`"
+      :style="`background-image: url(${bannerbjIMg});background-size: cover;`"
     >
       <div class="bannerm">
         <img src="@/assets/img/bannerlogo.png" alt="" class="bannerlogo" />
@@ -502,6 +502,8 @@ export default {
     min-height: 960px;
     position: relative;
     background-size: cover;
+    background-repeat: no-repeat;
+    
     .bannerm {
       position: absolute;
       transform: translate(-50%, -50%);

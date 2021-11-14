@@ -3,7 +3,7 @@
     <el-dialog :show-close="false" :visible.sync="centerDialogVisible" :width="dialogWidth" center>
       <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
         <div class="headerTop">
-          拍賣歷史
+          Bid history
           <img src="../../assets/img/close.png" alt class="close" @click="closemodule" />
         </div>
 
@@ -26,12 +26,12 @@
               <div class="navRight">
                 <el-dropdown trigger="click">
                   <span class="el-dropdown-link">
-                    拍賣歷史
+                    Bid history
                     <i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                   <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>拍賣中</el-dropdown-item>
-                    <el-dropdown-item>已结束</el-dropdown-item>
+                    <el-dropdown-item>Auction</el-dropdown-item>
+                    <el-dropdown-item>Ended</el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
               </div>
@@ -41,11 +41,11 @@
         <div class="list" v-if="this.screenWidth >= 600">
           <div class="tbHeader">
             <span class="windthFixd">NFT</span>
-            <span>起價(ERA)</span>
-            <span>最新出價(ERA)</span>
-            <span>利潤（ERA）</span>
-            <span>狀態</span>
-            <span class="windthFixd3">操作</span>
+            <span>Start Price(ERA)</span>
+            <span>Latest Bid(ERA)</span>
+            <span>Profits（ERA）</span>
+            <span>Status</span>
+            <span class="windthFixd3">Operate</span>
           </div>
           <div class="tbody">
             <div class="dataNo" v-if="list.length=0">
@@ -56,7 +56,7 @@
               <div class="width1">
                 <img src="../../assets/img/xunzhaung1.png" alt />
                 <p>
-                  <span>泉水琉璃勛章</span>
+                  <span>Power Badge</span>
                   <span>（#002102）</span>
                 </p>
               </div>

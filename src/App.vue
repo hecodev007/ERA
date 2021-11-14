@@ -1,14 +1,15 @@
 <template>
   <div id="app">
     <div :class="[navBarFixed == true ? 'navBarWrap' : '', 'header']">
-      <el-col :xs="12" :sm="6" :md="4" :lg="3" :xl="8">
+      <el-col :xs="6" :sm="6" :md="4" :lg="3" :xl="8">
         <img
           :class="['logoimg', this.screenWidth >= 600 ? '' : 'logoimg600']"
           src="./assets/img/logo.png"
           alt="logo"
         />
       </el-col>
-      <el-col :xs="12" :sm="18" :md="18" :lg="20" :xl="20">
+      <el-col :xs="18" :sm="18" :md="18" :lg="20" :xl="20">
+        <!-- 大屏幕展示 -->
         <div
           v-if="Object.keys(rightNavItems).length === 0 ? true : false"
           class="box"
@@ -74,33 +75,35 @@
             <img :src="item.img" alt v-for="(item, key) in navImg" :key="key" />
           </div>
         </div>
-
-        <img
-          class="navs"
-          @click="drawer = true"
-          v-if="Object.keys(rightNavItems).length === 0 ? false : true"
-          src="./assets/img/navlist.png"
-        />
+        <!-- 小屏幕展示 -->
+        <div class="topbanner" v-if="Object.keys(rightNavItems).length === 0 ? false : true">
+          <div class="navimgList">
+            <img src="./assets/img/en.png" alt class="luange" />
+            <img
+              src="./assets/img/package.png"
+              v-if="!mypackage"
+              alt
+              class="package"
+              @click="linkShow"
+            />
+            <img
+              src="./assets/img/mypackage.png"
+              alt
+              class="package"
+              v-if="mypackage"
+              @click="linkPackageShow"
+            />
+          </div>
+          <img
+            class="navs"
+            @click="drawer = true"
+            src="./assets/img/navlist.png"
+          />
+        </div>
       </el-col>
     </div>
+     <!-- 小屏幕展示 抽屉-->
     <el-drawer :visible.sync="drawer" :size="size" :with-header="false">
-      <div class="navimgList">
-        <img src="./assets/img/en.png" alt class="luange" />
-        <img
-          src="./assets/img/package.png"
-          v-if="!mypackage"
-          alt
-          class="package"
-          @click="linkShow"
-        />
-        <img
-          src="./assets/img/mypackage.png"
-          alt
-          class="package"
-          v-if="mypackage"
-          @click="linkPackageShow"
-        />
-      </div>
       <div class="navList">
         <el-menu
           :default-active="this.$route.path"
@@ -163,7 +166,7 @@ export default {
         // { name: "Contract" },
         // { name: "Backstage" }
       ],
-      list:this.GLOBAL.list,
+      list: this.GLOBAL.list,
       defaultOpenedsIndex: "1",
       address:"",
       defaultOpeneds: null,
@@ -262,21 +265,22 @@ export default {
       }
     },
     newContract() {
-      initContract().then(() => {
+      initContract()
+        .then(() => {
           this.$notify({
-            title: 'success',
-            message: 'connect success',
-            type: 'success'
+            title: "success",
+            message: "connect success",
+            type: "success",
           });
           this.show = !this.show;
-          this.mypackage=true
+          this.mypackage = true;
         })
         .catch((err) => {
           // this.$toast("connect faild" + err, "error");
           this.$notify({
-            title: 'error',
-            message: 'connect faild',
-            type: 'error'
+            title: "error",
+            message: "connect faild",
+            type: "error",
           });
           this.show = !this.show;
         });
@@ -288,7 +292,7 @@ export default {
         case 0:
           _MeatMaskContract()
             .then(() => {
-              this.newContract()
+              this.newContract();
               // this.$toast("连接成功", "success");
               // this.mypackage = true
               // this.show = !this.show;
@@ -296,10 +300,10 @@ export default {
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");
-               this.$notify({
-                title: 'error',
-                message: 'connect faild',
-                type: 'error'
+              this.$notify({
+                title: "error",
+                message: "connect faild",
+                type: "error",
               });
               this.show = !this.show;
             });
@@ -309,35 +313,33 @@ export default {
             (accountsChanged) => {
               console.log("accountsChanged", accountsChanged);
               // this.$toast("accountsChanged", "success");
-              
+
               this.$notify({
-                title: 'success',
-                message: 'accountsChanged',
-                type: 'success'
+                title: "success",
+                message: "accountsChanged",
+                type: "success",
               });
-              this.mypackage=true
+              this.mypackage = true;
             },
             (disconnect) => {
               // this.$toast("disconnect，code" + disconnect, "error");
               this.$notify({
-                title: 'error',
+                title: "error",
                 message: "disconnect，code" + disconnect,
-                type: 'error'
+                type: "error",
               });
-
             },
             (accounts) => {
               console.log("accounts", accounts);
               this.newContract();
-              
             },
             (error) => {
               this.show = !this.show;
               // this.$toast(error, "error");
-               this.$notify({
-                title: 'error',
+              this.$notify({
+                title: "error",
                 message: error,
-                type: 'error'
+                type: "error",
               });
             }
           );
@@ -357,25 +359,24 @@ export default {
       this.show = !this.show;
     },
     //NFT方法
-    getConfirmNFT(v) { 
-      this.showNFT = false
-        this.$router.push({
-          path: "/marketInfo",
-          query: {
-            actives: this.actives,
-            souse:"my"
-          }
-        });
-      
+    getConfirmNFT(v) {
+      this.showNFT = false;
+      this.$router.push({
+        path: "/marketInfo",
+        query: {
+          actives: this.actives,
+          souse: "my",
+        },
+      });
     },
-    getConfirmNFTsell(index){
-      this.showNFT = false
+    getConfirmNFTsell(index) {
+      this.showNFT = false;
       this.$router.push({
         path: "/marketBuyInfo",
         query: {
           actives: this.actives,
-          souse:"my"
-        }
+          souse: "my",
+        },
       });
     },
     enter() {
@@ -402,9 +403,8 @@ body {
 #app div {
   font-family: "Share-Tech";
 }
-.tittleFont{
-
-  font-family: "ProximaNova-Xbold.woff"!important;
+.tittleFont {
+  font-family: "ProximaNova-Xbold.woff" !important;
 }
 /* .pcmain{
   min-height: 100vh;
@@ -427,7 +427,7 @@ body {
   margin-left: 10%;
 }
 .logoimg600 {
-  width: 40%;
+  width: 80%;
   margin-left: 10%;
 }
 .el-menu.el-menu--horizontal {
@@ -458,7 +458,7 @@ body {
 .el-menu-item {
   background: 0 !important;
   color: #fff !important;
-   font-family: "ProximaNova-Xbold.woff";
+  font-family: "ProximaNova-Xbold.woff";
 }
 
 .header .el-menu--horizontal > .el-menu-item {
@@ -493,11 +493,17 @@ body {
 .is-opened {
   background: 0 !important;
 }
+.topbanner{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
 
 .navs {
-  width: 16%;
+  width: 12%;
   float: right;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 .el-drawer.rtl {
   background: rgba(38, 53, 44, 1);
@@ -525,30 +531,30 @@ body {
   margin-right: 30px;
   text-align: right;
 }
-.box .heyue{
-font-size: 12px;
-} 
-.box .heyue span{
+.box .heyue {
+  font-size: 12px;
+}
+.box .heyue span {
   color: rgba(112, 244, 165, 1);
-} 
-.box .heyue i{
+}
+.box .heyue i {
   font-style: normal;
-} 
-.box .heyue img{
+}
+.box .heyue img {
   width: 20px;
   margin-left: 5px;
   display: inline-block;
   vertical-align: middle;
-} 
-.box .itemfiexd{
-  position: fixed;
-top: 130px;
 }
-.box .itemfiexd img{
-display: block;
-width: 24px; 
+.box .itemfiexd {
+  position: fixed;
+  top: 130px;
+}
+.box .itemfiexd img {
+  display: block;
+  width: 24px;
 
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .navimg .luange {
   width: 24px;
@@ -565,9 +571,10 @@ margin-bottom: 20px;
   width: 24px;
   margin: 0 12px;
 }
+
 .navimgList {
-  text-align: center;
-  margin: 30px 0 50px;
+  text-align: center; 
+  margin-right: 20px;
 }
 .navimgList .luange {
   width: 24px;
@@ -616,7 +623,7 @@ ul {
   margin: 0;
   padding: 0;
 }
- .el-dialog__body {
+.el-dialog__body {
   background: rgba(38, 53, 44, 1) !important;
   padding: 20px;
 }
