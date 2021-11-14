@@ -97,7 +97,7 @@
                   <span>Newest Bid</span>
                   <span class="weight">
                     <img src="@/assets/img/iconMoney.png" alt class="iconMoney" />
-                    333,234,567,676
+                    <span class="weight">333,234,567,676</span> 
                   </span>
                 </div>
                 <div class="info" v-if="activeNav==1">
@@ -319,6 +319,20 @@ export default {
     .headerMarket .navRight {
       width: 94%;
       margin: 0 auto;
+    }
+    .main600 .item .imgItem{
+      margin-bottom: 10px;
+    }
+    .main600 .item .imgItem .xz{
+      margin: 0 auto ;
+    }
+    .main600 .item .infoItme {
+      margin-top: 10px;
+    }
+   .main600 .item .infoItme .info{
+          flex-direction: column;
+          line-height: 20px;
+          margin-bottom: 5px;
     }
   }
 }
