@@ -309,11 +309,7 @@ export default {
     minting(v) {
       this.show = true;
       this.itemData = v;
-    },
-    //链接钱包
-    getConfirmCheck(){
-
-    },
+    }, 
   },
 };
 </script>
