@@ -86,18 +86,18 @@
       :show.sync="show"
       :itemData="itemData"
     ></infoBindBox>
-    <linkPackage
+    <!-- <linkPackage
       @getConfirm="getConfirmCheck"
       @getCancel="showpage = false"
       :show.sync="showpage"
-    ></linkPackage>
-
+    ></linkPackage> -->
   </div>
 </template>
 <script>
 import infoBindBox from "./infoBindBox.vue";
 import { mint, myAllNFT } from "@/assets/js/web3.js";
 import checkbox from "./checkbox.vue";
+import { initContract } from "@/assets/js/web3.js";
 import { _WalletContract } from "@/assets/js/walletconnect.js";
 import { _MeatMaskContract } from "@/assets/js/metamask.js";
 export default {
@@ -110,7 +110,7 @@ export default {
       screenWidth: this.GLOBAL.clientWidth,
       show: false,
       showcheck: false,
-      showpage:false,
+      showpage: false,
       power: [1000, 2500, 6500, 14500, 35000, 90000],
       myNFTs: [],
       list: this.GLOBAL.list,
@@ -180,17 +180,17 @@ export default {
   mounted() {
     this.myNFTs = this.list;
     //  this.myNFTs = this.deepMerge(this.list2,this.list);
-    //     console.log( this.myNFTs)
-    if (!window.web3){
-      return 
-    }
+    console.log(window.web3.accounts);
+    // if (!window.web3.accounts) {
+    //   return;
+    // }
     myAllNFT()
       .then((nfts) => {
         console.log("mynfts", nfts);
         this.myNFTs = this.deepMerge(nfts, this.list);
       })
       .catch((err) => {
-        // this.$toast(err, "error");
+        
         this.$notify({
           title: "error",
           message: err,
@@ -217,6 +217,27 @@ export default {
       }
       return obj1;
     },
+    newContract() {
+      initContract()
+        .then(() => {
+          this.$notify({
+            title: "success",
+            message: "connect success",
+            type: "success",
+          });
+          this.show = !this.show;
+          this.mypackage = true;
+        })
+        .catch((err) => {
+          // this.$toast("connect faild" + err, "error");
+          this.$notify({
+            title: "error",
+            message: "connect faild",
+            type: "error",
+          });
+          this.show = !this.show;
+        });
+    },
     getConfirmCheck(v) {
       console.log("choise wallet", v);
       switch (v) {
@@ -227,7 +248,7 @@ export default {
               // this.$toast("连接成功", "success");
               // this.mypackage = true
               // this.show = !this.show;
-              this.address = window.web3.accounts[0]
+              this.address = window.web3.accounts[0];
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");

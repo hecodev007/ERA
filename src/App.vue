@@ -161,6 +161,7 @@
 <script>
 import NFTmedule from "./components/NFTmedule.vue";
 import linkPackage from "./components/linkPackage.vue"; // 第一步 先使用import导入你要在该组件中使用的子组件
+import { initContract } from "@/assets/js/web3.js";
 import { _WalletContract } from "@/assets/js/walletconnect.js";
 import { _MeatMaskContract } from "@/assets/js/metamask.js";
 export default {
@@ -241,7 +242,7 @@ export default {
     this.activeNav();
     // 事件监听滚动条
     window.addEventListener("scroll", this.watchScroll);
-
+    
     // // this.$toast('提示文字','success')
     // this.$toast("提示文字", "error");
   },
@@ -262,6 +263,9 @@ export default {
         }, 400);
       }
     },
+    address(){
+      return this.address = window.web3 && window.web3.accounts[0]
+    }
   },
   methods: {
     activeNav() {
@@ -301,6 +305,27 @@ export default {
         this.navBarFixed = false;
       }
     },
+        newContract() {
+      initContract()
+        .then(() => {
+          this.$notify({
+            title: "success",
+            message: "connect success",
+            type: "success",
+          });
+          this.show = !this.show;
+          this.mypackage = true;
+        })
+        .catch((err) => {
+          // this.$toast("connect faild" + err, "error");
+          this.$notify({
+            title: "error",
+            message: "connect faild",
+            type: "error",
+          });
+          this.show = !this.show;
+        });
+    },
     //获取钱包链接选择
     getConfirmCheck(v) {
       console.log("choise wallet", v);
@@ -313,6 +338,7 @@ export default {
               // this.mypackage = true
               // this.show = !this.show;
               this.address = window.web3.accounts[0];
+              
             })
             .catch((err) => {
               // this.$toast("连接metamask出错" + err, "error");

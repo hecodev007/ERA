@@ -19,8 +19,8 @@ const _MeatMaskContract = () => {
         // Modern dapp browsers...
         if (window.ethereum) {
             if (window.ethereum.chainId != base.bscTestnet.chainId) {
-                switchChain(base.bscTestnet)
-                return
+                return switchChain(base.bscTestnet)
+                
             }
             window.web3 = new Web3(window.ethereum);
             try {
@@ -48,7 +48,7 @@ const _MeatMaskContract = () => {
                         //   初始化合约
                         //这里返回用户钱包地址
                         //   callback(accounts[0]);
-                        resolve(web3);
+                        resolve(window.web3);
                     });
                 // Acccounts now exposed 
             } catch (error) {
@@ -78,6 +78,8 @@ const _MeatMaskContract = () => {
 }
 
 
+
+
 const switchChain = async (data) => {
     try {
         let { chainId } = data;
@@ -88,24 +90,23 @@ const switchChain = async (data) => {
     } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
         if (switchError.code === 4902   || switchError.code === -32603) {
-            addChain(data);
+              return  addChain(data);
         }
+        console.log("switchError",switchError)
+        throw new Error(switchError.message)
         // handle other "switch" errors
     }
 }
 
-const addChain = async (data) => {
-    try {
-        await window.ethereum.request({
+const addChain = (data) => {
+      return  window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [data],
         });
-    } catch (addError) {
-        console.log(addError)
-    }
 }
 
 
 export {
-    _MeatMaskContract
+    _MeatMaskContract,
+    switchChain
 }

@@ -4,9 +4,9 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 
 
 async function Init(callback) {
-    if (base.web3 != undefined) {
-        base.accounts = await base.web3.eth.getAccounts();
-        callback(base.accounts)
+    if (window.web3 != undefined) {
+        window.web3.accounts = await window.web3.eth.getAccounts();
+        callback(window.web3.accounts)
     }
 }
 
@@ -33,7 +33,7 @@ const _WalletContract = function _WalletContract(accountsChanged,disconnect,succ
     });
     provider.enable().then((res) => {
       
-        base.web3 = new Web3(provider);
+        window.web3 = new Web3(provider);
 
         //账户更改触发的方法
         provider.on("accountsChanged", (accounts) => {
@@ -43,8 +43,8 @@ const _WalletContract = function _WalletContract(accountsChanged,disconnect,succ
         //账户断开的方法
         provider.on("disconnect", (code, reason) => {
 
-            base.web3 = null
-            base.contract = null
+            window.web3 = null
+            window.web3.contract = null
             disconnect(code)
         });
 
