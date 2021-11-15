@@ -49,7 +49,7 @@
           <div class="tbody">
             <div class="dataNo" v-if="list.length=0">
               <img src="../../assets/img/nodata.png" alt />
-              <p class="textNO">暫無數據</p>
+              <p class="textNO">No data</p>
             </div>
             <div class="item">
               <div class="width1">
@@ -77,7 +77,7 @@
           <div class="tbody">
             <div class="dataNo" v-if="list.length=0">
               <img src="../../assets/img/nodata.png" alt />
-              <p class="textNO">暫無數據</p>
+              <p class="textNO">No datas</p>
             </div>
             <div class="item">
               <div class="width1">

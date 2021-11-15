@@ -251,10 +251,10 @@ export default {
   },
   computed: {
     leftNavItems: function () {
-      return this.screenWidth >= 600 ? this.navItems : {};
+      return this.screenWidth >= 1280 ? this.navItems : {};
     },
     rightNavItems: function () {
-      return this.screenWidth < 600 ? this.navItems : {};
+      return this.screenWidth < 1280 ? this.navItems : {};
     },
   },
   mounted() {
@@ -552,11 +552,13 @@ body {
   transform: translate(-50%, 0);
 }
 .logoimg {
+  max-width: 84px;
   width: 70%;
   margin-left: 10%;
 }
 .logoimg600 {
   width: 80%;
+   max-width: 75px;
   margin-left: 10%;
 }
 .el-menu.el-menu--horizontal {
@@ -631,6 +633,7 @@ body {
 
 .navs {
   width: 12%;
+  max-width: 40px;
   float: right;
   margin-right: 5%;
 }

@@ -13,7 +13,7 @@
           <img src="@/assets/img/goback.png" alt />
         </div>
       </div>
-      <div class="info">
+      <div class="info" style="padding-top:30px">
         <el-row>
           <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
             <div class="marketImg">
@@ -51,7 +51,7 @@
                 <div class="infoBox">
                   <p class="money">
                     <span>Owner</span>
-                    <span class="line">未定義的</span>
+                    <span class="line">undefined</span>
                   </p>
                   <p class="money">
                     <span>Contract address</span>
@@ -207,7 +207,7 @@ img {
     .info {
       width: 78%;
       margin: 0 auto;
-      padding: 30px 0;
+      
 
       .marketImg {
         background: #26352c;
@@ -339,6 +339,12 @@ img {
     .rule {
       width: 100%;
     }
+  }
+  .caintner .info .marketImg {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 20px;
+    height: 300px;
   }
 }
 </style>

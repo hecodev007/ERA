@@ -8,7 +8,7 @@
       <div class="bannerm">
         <img src="@/assets/img/bannerlogo.png" alt="" class="bannerlogo" />
         <img :src="tilebanner" alt="" class="bannertitle" />
-        <div class="navs">
+        <div class="navss">
           <div>
             <img src="@/assets/img/inconbanner.png" alt="" /><span>Battle</span>
           </div>
@@ -44,6 +44,7 @@
                 <img src="@/assets/img/vido.png" alt="" />
                 <img src="@/assets/img/vidoimg.png" alt="" class="vidoimg" />
                 <img src="@/assets/img/topleft.png" alt="" class="topleft" />
+                <img src="@/assets/img/play.png" alt="" class="play" @click="gohttp">
               </div>
             </el-col>
             <el-col :xs="24" :md="10" :lg="10" :xl="10">
@@ -189,7 +190,8 @@
         </el-col>
         <el-col :xs="24" :md="10" :lg="10" :xl="10">
           <div class="left">
-            <img src="@/assets/img/right5.png" alt="" @click="bigimg" />
+            <img src="@/assets/img/right5.png" alt="" @click="bigimg" class="mainmap" />
+            <img src="@/assets/img/maptip.png" alt="" class="tip">
           </div>
         </el-col>
       </el-row>
@@ -320,8 +322,7 @@
             alt=""
             @mouseout="outbottom(key)"
           />
-          <span >{{ item.span }}</span>
-          
+          <span>{{ item.span }}</span>
         </div>
       </div>
     </div>
@@ -437,7 +438,7 @@ export default {
         {
           img: require(`@/assets/img/iconbotton3.png`),
           imgHover: require(`@/assets/img/iconbotton3h.png`),
-          span: "discord", 
+          span: "discord",
           mouse: true,
         },
       ],
@@ -474,31 +475,30 @@ export default {
   },
   mounted() {
     this.setDialogWidth();
-    this.activeNav()
-     
+    this.activeNav();
+
     let that = this;
     this.swiper.on("click", function () {
       const clickedIndex = this.activeIndex;
       // 这里的that是Vue的实例
       that.goDetail(clickedIndex);
     });
-  }, 
+  },
   methods: {
-    activeNav(){
-      if(this.screenWidth < 600){
-if (this.$route.query.id) {
+    activeNav() {
+      if (this.screenWidth < 600) {
+        if (this.$route.query.id) {
           document.body.scrollTop = document.documentElement.scrollTop = "3250";
         } else {
           document.body.scrollTop = document.documentElement.scrollTop = 0;
         }
-      }else{
+      } else {
         if (this.$route.query.id) {
           document.body.scrollTop = document.documentElement.scrollTop = "2900";
         } else {
           document.body.scrollTop = document.documentElement.scrollTop = 0;
         }
       }
-      
     },
     setDialogWidth() {
       if (this.screenWidth < 600) {
@@ -605,6 +605,7 @@ if (this.$route.query.id) {
 .pcmain {
   background: rgba(19, 29, 23, 1);
   font-size: 12px;
+  font-family: "Share-Tech.woff";
   .caintner {
     max-width: 1970px;
     width: 80%;
@@ -638,7 +639,7 @@ if (this.$route.query.id) {
         margin: 0 auto;
         margin-bottom: 18px;
       }
-      .navs {
+      .navss {
         display: flex;
         width: 700px;
         justify-content: space-between;
@@ -694,6 +695,13 @@ if (this.$route.query.id) {
           width: 40%;
           left: -20px;
           top: -40px;
+        }
+        .play{
+           position: absolute;
+          width: 40px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
       }
       .right {
@@ -753,9 +761,6 @@ if (this.$route.query.id) {
       margin: 64px auto 0;
       max-width: 1280px;
       width: 80%;
-      overflow: scroll;
-
-      overflow: scroll;
       img {
         width: 20%;
         // margin-right: 20px;
@@ -872,8 +877,16 @@ if (this.$route.query.id) {
       align-items: center;
       .left {
         width: 100%;
-        img {
+        position: relative;
+        .mainmap {
           width: 100%;
+        }
+        .tip{
+          position: absolute;
+          width: 175px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          top: 30px;
         }
       }
     }
@@ -1182,7 +1195,7 @@ if (this.$route.query.id) {
       .bannertitle {
         width: 70%;
       }
-      .navs {
+      .navss {
         width: 100%;
         margin: 0 auto;
         margin-bottom: 150px;
@@ -1218,7 +1231,11 @@ if (this.$route.query.id) {
           display: flex;
           flex-direction: column;
         }
-
+        .left {
+          .topleft {
+            top: -23px;
+          }
+        }
         .right {
           margin-left: 0;
           .color {
@@ -1357,6 +1374,20 @@ if (this.$route.query.id) {
     .xunzhang .left .itemMain {
       height: 210px;
     }
+      .boxflex .left {
+        width: 100%;
+        position: relative;
+        .mainmap {
+          width: 100%;
+        }
+        .tip{
+          position: absolute;
+          width: 175px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          top: 25px;
+        }
+      }
   }
   .part7 {
     padding: 40px 10px;

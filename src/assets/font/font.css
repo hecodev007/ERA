@@ -1,13 +1,13 @@
 
   @font-face {
-    font-family: 'ProximaNova-Xbold.woff';
+    font-family: 'ProximaNova-Xbold';
     src: url('./ProximaNova-Xbold.woff.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-size: 14px;
   }
   @font-face {
-    font-family: 'Share-Tech.woff';
+    font-family: 'Share-Tech';
     src: url('./Share-Tech.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;

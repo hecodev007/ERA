@@ -356,10 +356,10 @@ export default {
         }
         .info {
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
           align-items: center;
           img {
-            width: 40%;
+            width: 37%;
             margin: 10px 0;
           }
         }

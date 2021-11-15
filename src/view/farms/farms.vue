@@ -1,10 +1,20 @@
 <template>
-  <div :class="['pcmain',this.screenWidth >= 600 ?'':'main']">
+  <div :class="['pcmain', this.screenWidth >= 600 ? '' : 'main']">
     <div class="caintner">
       <div class="topimg">
-        <img src="@/assets/img/farmBj.png"  v-if="this.screenWidth >= 600" alt class="banner" />
-         <img src="@/assets/img/farm600.png"  v-if="this.screenWidth < 600" alt class="banner" />
-       
+        <img
+          src="@/assets/img/farmBj.png"
+          v-if="this.screenWidth >= 600"
+          alt
+          class="banner"
+        />
+        <img
+          src="@/assets/img/farm600.png"
+          v-if="this.screenWidth < 600"
+          alt
+          class="banner"
+        />
+
         <div class="topmain">
           <img src="@/assets/img/logo.png" alt />
           <div class="headertext">
@@ -15,15 +25,35 @@
       </div>
 
       <div class="btnabox">
-        <img src="@/assets/img/NFTbtn.png" v-if="activeItem==1" alt @click="active(1)"/>
-        <img src="@/assets/img/NFTbtnno.png"  v-if="activeItem==2" alt @click="active(1)"/>
-        <img src="@/assets/img/LPbtn.png" alt  v-if="activeItem==2" @click="active(2)"/>
-        <img src="@/assets/img/LPbtnno.png" alt  v-if="activeItem==1" @click="active(2)"/>
+        <img
+          src="@/assets/img/NFTbtn.png"
+          v-if="activeItem == 1"
+          alt
+          @click="active(1)"
+        />
+        <img
+          src="@/assets/img/NFTbtnno.png"
+          v-if="activeItem == 2"
+          alt
+          @click="active(1)"
+        />
+        <img
+          src="@/assets/img/LPbtn.png"
+          alt
+          v-if="activeItem == 2"
+          @click="active(2)"
+        />
+        <img
+          src="@/assets/img/LPbtnno.png"
+          alt
+          v-if="activeItem == 1"
+          @click="active(2)"
+        />
       </div>
-      <div v-if="activeItem==1">
+      <div v-if="activeItem == 1">
         <arrowheads></arrowheads>
       </div>
-      <div v-if="activeItem==2">
+      <div v-if="activeItem == 2">
         <el-row>
           <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="boxfarms left">
@@ -34,7 +64,13 @@
               <div class="boxfarmsmain">
                 <div class="peapol">
                   <div class="headeImg">
-                    <img src="@/assets/img/navRight1.png" alt />
+                    <img
+                      v-for="(item, index) in listImg"
+                      :key="index"
+                      :style="`left:${index * 30 - index * 40}px`"
+                      :src="item.img"
+                      alt
+                    />
                   </div>
                   <div class="name">ANS/Pancake</div>
                 </div>
@@ -45,7 +81,7 @@
                   </div>
                   <div class="item">
                     <p>ANS</p>
-                    <span>Earm</span>
+                    <span>Earn</span>
                   </div>
                 </div>
                 <div class="change margin0">
@@ -59,7 +95,7 @@
                   <p>Staked (ANS/Pancake)</p>
                   <div class="mars">
                     <span>0.00</span>
-                    <img src="@/assets/img/stake.png" alt @click="goLpstake"/>
+                    <img src="@/assets/img/stake.png" alt @click="goLpstake" />
                   </div>
                 </div>
               </div>
@@ -68,7 +104,7 @@
 
           <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="boxfarms right">
-                <img src="@/assets/img/tip.png" class="tip" alt="">
+              <img src="@/assets/img/tip.png" class="tip" alt="" />
               <div class="boxfarmstop">
                 <div class="count">253,571</div>
                 <p class="intra">Remaining tokens in pool（ANS） ≈ $ 736,259</p>
@@ -76,7 +112,13 @@
               <div class="boxfarmsmain">
                 <div class="peapol">
                   <div class="headeImg">
-                    <img v-for="(item , index) in listImg" :key="index" :style="`left:${index*30-index*40}px`" src="@/assets/img/navRight1.png" alt />
+                    <img
+                      v-for="(item, index) in listImg"
+                      :key="index"
+                      :style="`left:${index * 30 - index * 40}px`"
+                      :src="item.img"
+                      alt
+                    />
                   </div>
                   <div class="name">ANS/Pancake</div>
                 </div>
@@ -87,14 +129,13 @@
                   </div>
                   <div class="item">
                     <p>ANS</p>
-                    <span>Earm</span>
+                    <span>Earn</span>
                   </div>
                 </div>
                 <div class="change margin0">
                   <p>Harvest (ANS) ≈ $0</p>
                   <div class="mars">
                     <span>0.00</span>
-                    
                   </div>
                 </div>
                 <div class="change">
@@ -107,29 +148,37 @@
             </div>
           </el-col>
         </el-row>
-       </div>
+      </div>
     </div>
 
-<farmLpModule   @getConfirmUp="getConfirmUp"
+    <farmLpModule
+      @getConfirmUp="getConfirmUp"
       @getCancel="showarrowUp = false"
-      :showarrowUp.sync="showarrowUp"></farmLpModule>
-
+      :showarrowUp.sync="showarrowUp"
+    ></farmLpModule>
   </div>
 </template>
 <script>
 import arrowheads from "../arrowheads/arrowheads";
 import farmLpModule from "./farmLpModule";
 export default {
-   components: {
-    arrowheads, 
-    farmLpModule
+  components: {
+    arrowheads,
+    farmLpModule,
   },
   data() {
     return {
-      screenWidth: this.GLOBAL.clientWidth, 
-      listImg:[1,2,3],
-      activeItem:1,
-      showarrowUp:false
+      screenWidth: this.GLOBAL.clientWidth,
+      listImg: [
+        {
+          img: require("@/assets/img/heaser11.png"),
+        },
+        {
+          img: require("@/assets/img/header1.png"),
+        },
+      ],
+      activeItem: 1,
+      showarrowUp: false,
     };
   },
   mounted() {
@@ -137,19 +186,16 @@ export default {
     console.log(this.screenWidth);
   },
   methods: {
-    setDialogWidth() { 
+    setDialogWidth() {},
+    active(v) {
+      console.log(v);
+      this.activeItem = v;
     },
-    active(v){
-        console.log(v)
-        this.activeItem = v
+    getConfirmUp() {},
+    goLpstake() {
+      this.showarrowUp = true;
     },
-    getConfirmUp(){
-      
-    },
-    goLpstake(){
-      this.showarrowUp=true
-    }
-  }
+  },
 };
 </script>
 <style scoped  lang="less">
@@ -221,11 +267,10 @@ export default {
           height: 80px;
           align-items: center;
           justify-content: space-between;
-          .headeImg { 
+          .headeImg {
             img {
               width: 40px;
               position: relative;
-     
             }
           }
           .name {
@@ -258,8 +303,8 @@ export default {
             justify-content: space-between;
             align-items: center;
             height: 60px;
-            span{
-                font-size: 24px;
+            span {
+              font-size: 24px;
             }
             img {
               width: 100px;
@@ -282,12 +327,12 @@ export default {
       border-radius: 16px;
       margin-left: 10px;
       position: relative;
-      .tip{
-          position: absolute;
-          top: 30px;
-          left: 0;
-          width: 100px;
-          width: 20%;
+      .tip {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 100px;
+        width: 20%;
       }
     }
   }
@@ -297,19 +342,19 @@ export default {
   .caintner {
     width: 95%;
     padding: 40px 0;
-    .topimg .topmain{
-        width: 100%;
-        img{
-            width: 100px;
-        }
-        .headertext p{
-            font-size: 20px;
-        }
-        .headertext span{
-            font-size: 12px;
-        }
+    .topimg .topmain {
+      width: 100%;
+      img {
+        width: 100px;
+      }
+      .headertext p {
+        font-size: 20px;
+      }
+      .headertext span {
+        font-size: 12px;
+      }
     }
-    
+
     .logos {
       width: 90px;
       position: absolute;
@@ -317,20 +362,20 @@ export default {
       top: 50%;
       transform: translate(0, -50%);
     }
-    .btnabox{
-        text-align: center;
-        img{
-            margin: 0 20px;
-        }
+    .btnabox {
+      text-align: center;
+      img {
+        margin: 0 20px;
+      }
     }
-   .boxfarms  .boxfarmsmain{
-       width: 80%;
+    .boxfarms .boxfarmsmain {
+      width: 80%;
     }
-    .left{
-margin:0 10px 10px;
+    .left {
+      margin: 0 10px 10px;
     }
     .right {
-    margin:0 10px 10px;
+      margin: 0 10px 10px;
     }
   }
 }

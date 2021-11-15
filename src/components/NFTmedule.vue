@@ -57,7 +57,7 @@
               <div class="tbody">
                 <!-- <div class="dataNo">
                   <img src="../assets/img/nodata.png" alt />
-                  <p class="textNO">暫無數據</p>
+                  <p class="textNO">No data</p>
                 </div> -->
                 <div class="item">
                   <div

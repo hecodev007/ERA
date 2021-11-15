@@ -10,7 +10,7 @@
           <img src="@/assets/img/goback.png" alt />
         </div>
       </div>
-      <div class="info">
+      <div class="info" style="padding-top: 30px">
         <el-row>
           <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
             <div class="marketImg">
@@ -55,7 +55,7 @@
                 <div class="infoBox">
                   <p class="money">
                     <span>Owner</span>
-                    <span class="line">未定義的</span>
+                    <span class="line">undefined</span>
                   </p>
                   <p class="money">
                     <span>Contract address</span>
@@ -108,7 +108,7 @@
                 <div class="tbody">
                   <div class="dataNo">
                     <img src="../../assets/img/nodata.png" alt />
-                    <p class="textNO">暫無數據</p>
+                    <p class="textNO">No data</p>
                   </div>
                   <div class="item">
                     <span class="wid1" v-if="this.screenWidth >= 600"
@@ -126,13 +126,12 @@
                       >Deal done</span
                     >
                     <!-- 多状态 -->
-                     <!-- <span class="wid6" v-if="this.screenWidth >= 600"
+                    <!-- <span class="wid6" v-if="this.screenWidth >= 600"
                       >In auction</span
                     > -->
                     <!--<span class="wid6" v-if="this.screenWidth >= 600"
                       >Missed</span
                     > -->
-                    
                   </div>
                 </div>
               </div>
@@ -286,7 +285,6 @@ img {
       }
     }
     .info {
-      padding: 30px 0;
       width: 78%;
       margin: 0 auto;
       .marketImg {
@@ -507,8 +505,11 @@ img {
   .info .table .dataTB .wid4 {
     color: rgba(112, 244, 165, 1);
   }
-  .caintner .info .marketImg{
-    margin-right:0 ;
+  .caintner .info .marketImg {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 20px;
+    height: 300px;
   }
 }
 .wid1 {
@@ -529,7 +530,7 @@ img {
 .wid6 {
   width: 57px;
 }
-.wid6.color{
- color: rgba(112, 244, 165, 1)
+.wid6.color {
+  color: rgba(112, 244, 165, 1);
 }
 </style>
